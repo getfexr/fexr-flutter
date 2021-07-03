@@ -4,4 +4,4 @@ REST Client for Fexr
 
 ## Getting Started
 
-[More info](https://getfexr.com/),
+[More info on website](https://getfexr.com/)
