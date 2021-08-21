@@ -1,5 +1,5 @@
 name: fexr
-description: REST Client for Fexr. (Under development)
+description: REST Client for Fexr.
 repository: https://github.com/fexrapis/fexr-flutter
 issue_tracker: https://github.com/fexrapis/fexr-flutter/issues
 version: 0.0.1
@@ -13,9 +13,15 @@ dependencies:
   flutter:
     sdk: flutter
 
+  json_serializable: ^5.0.0
+  built_value: ^8.1.2
+  built_value_generator: ^8.1.2
+  http: ^0.13.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  dart_code_metrics: ^4.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
