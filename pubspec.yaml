@@ -1,8 +1,8 @@
 name: fexr
-description: REST Client for Fexr.
-repository: https://github.com/fexrapis/fexr-flutter
-issue_tracker: https://github.com/fexrapis/fexr-flutter/issues
-version: 0.0.1
+description: RPC SDK for Fexr.
+repository: https://github.com/getfexr/fexr-flutter
+issue_tracker: https://github.com/getfexr/fexr-flutter/issues
+version: 0.6.0
 homepage:
 
 environment:
@@ -12,11 +12,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-  json_serializable: ^5.0.0
-  built_value: ^8.1.2
-  built_value_generator: ^8.1.2
-  http: ^0.13.3
+  grpc: ^3.0.2
+  protobuf: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -33,6 +30,14 @@ flutter:
       android:
         package: com.getfexr.fexr
         pluginClass: Fexr
+      ios:
+        pluginClass: Fexr
+      macos:
+        pluginClass: Fexr
+      # windows:
+      #   pluginClass: Fexr
+      # linux:
+      #   pluginClass: Fexr
       # ios:
       #   pluginClass: Fexr
       # macos:
