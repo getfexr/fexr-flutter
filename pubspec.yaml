@@ -13,7 +13,8 @@ dependencies:
   flutter:
     sdk: flutter
   grpc: ^3.0.2
-  protobuf: ^2.0.1
+  protobuf: ^2.1.0
+  # run on terminal before generating proto: dart pub global activate protoc_plugin
 
 dev_dependencies:
   flutter_test:
