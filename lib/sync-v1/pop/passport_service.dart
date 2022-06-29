@@ -1,5 +1,4 @@
 import 'package:grpc/grpc.dart';
-import 'package:fexr/sync-v1/protos/pop/';
 
 class PassportService {
 
