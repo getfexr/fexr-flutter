@@ -8,8 +8,6 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-import '../google/protobuf/empty.pbjson.dart' as $0;
-
 @$core.Deprecated('Use rubixWalletDataDescriptor instead')
 const rubixWalletData$json = const {
   '1': 'rubixWalletData',
@@ -189,31 +187,3 @@ const txnStatus_TRANSACTION_STATUS$json = const {
 
 /// Descriptor for `txnStatus`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List txnStatusDescriptor = $convert.base64Decode('Cgl0eG5TdGF0dXMSEAoDdGlkGAEgASgJUgN0aWQSPAoGc3RhdHVzGAIgASgOMiQucHJvdG9zLnR4blN0YXR1cy5UUkFOU0FDVElPTl9TVEFUVVNSBnN0YXR1cxIdCgdtZXNzYWdlGAMgASgJSABSB21lc3NhZ2WIAQEiSwoSVFJBTlNBQ1RJT05fU1RBVFVTEgsKB1NVQ0NFU1MQABIKCgZGQUlMRUQQARIOCgpWQUxJREFUSU5HEAISDAoIQ0FOQ0VMRUQQA0IKCghfbWVzc2FnZQ==');
-const $core.Map<$core.String, $core.dynamic> POPServiceBase$json = const {
-  '1': 'POPService',
-  '2': const [
-    const {'1': 'validateCertificate', '2': '.protos.web3WalletPermission', '3': '.protos.p2pConnectionStatus', '4': const {}},
-    const {'1': 'fetchWalletData', '2': '.protos.web3WalletPermission', '3': '.protos.rubixWalletData', '4': const {}, '6': true},
-    const {'1': 'uploadWalletKeys', '2': '.protos.rubixWalletData', '3': '.protos.web3WalletPermission', '4': const {}},
-    const {'1': 'invalidateCertificate', '2': '.protos.web3WalletPermission', '3': '.protos.p2pConnectionStatus', '4': const {}},
-    const {'1': 'initRubixTxn', '2': '.protos.txnPayload', '3': '.protos.txnStatus', '4': const {}, '6': true},
-    const {'1': 'Listen', '2': '.google.protobuf.Empty', '3': '.protos.PushNotification', '4': const {}, '6': true},
-  ],
-};
-
-@$core.Deprecated('Use pOPServiceDescriptor instead')
-const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> POPServiceBase$messageJson = const {
-  '.protos.web3WalletPermission': web3WalletPermission$json,
-  '.protos.p2pConnectionStatus': p2pConnectionStatus$json,
-  '.protos.rubixWalletData': rubixWalletData$json,
-  '.protos.TransactionHistory': TransactionHistory$json,
-  '.protos.QuorumSignedTransaction': QuorumSignedTransaction$json,
-  '.protos.TokenChain': TokenChain$json,
-  '.protos.txnPayload': txnPayload$json,
-  '.protos.txnStatus': txnStatus$json,
-  '.google.protobuf.Empty': $0.Empty$json,
-  '.protos.PushNotification': PushNotification$json,
-};
-
-/// Descriptor for `POPService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
-final $typed_data.Uint8List pOPServiceDescriptor = $convert.base64Decode('CgpQT1BTZXJ2aWNlElIKE3ZhbGlkYXRlQ2VydGlmaWNhdGUSHC5wcm90b3Mud2ViM1dhbGxldFBlcm1pc3Npb24aGy5wcm90b3MucDJwQ29ubmVjdGlvblN0YXR1cyIAEkwKD2ZldGNoV2FsbGV0RGF0YRIcLnByb3Rvcy53ZWIzV2FsbGV0UGVybWlzc2lvbhoXLnByb3Rvcy5ydWJpeFdhbGxldERhdGEiADABEksKEHVwbG9hZFdhbGxldEtleXMSFy5wcm90b3MucnViaXhXYWxsZXREYXRhGhwucHJvdG9zLndlYjNXYWxsZXRQZXJtaXNzaW9uIgASVAoVaW52YWxpZGF0ZUNlcnRpZmljYXRlEhwucHJvdG9zLndlYjNXYWxsZXRQZXJtaXNzaW9uGhsucHJvdG9zLnAycENvbm5lY3Rpb25TdGF0dXMiABI5Cgxpbml0UnViaXhUeG4SEi5wcm90b3MudHhuUGF5bG9hZBoRLnByb3Rvcy50eG5TdGF0dXMiADABEj4KBkxpc3RlbhIWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eRoYLnByb3Rvcy5QdXNoTm90aWZpY2F0aW9uIgAwAQ==');

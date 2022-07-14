@@ -5,7 +5,9 @@ package protos;
 option go_package = "github.com/getfexr/gofexr/protos";
 import "google/protobuf/empty.proto";
 
-// DART COMMAND: (in bash terminal): protoc --proto_path=lib --dart_out=lib/sync-v1/protos/pop lib/sync-v1/protos/pop.proto google/protobuf/empty.proto
+// DART COMMAND: (in bash terminal): protoc --proto_path=lib --dart_out=grpc:lib/sync-v1/protos/pop lib/sync-v1/protos/pop.proto google/protobuf/empty.proto
+
+//protoc --dart_out=grpc:lib/src/generated -Iprotos protos/helloworld.proto
 
 // GO COMMAND (lib root dir): protoc --proto_path=sync-v1/protos --go_out=sync-v1/protos/pop --go_opt=paths=source_relative pop.proto
 

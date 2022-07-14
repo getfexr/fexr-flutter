@@ -5,12 +5,9 @@
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
-
-import '../google/protobuf/empty.pb.dart' as $0;
 
 import 'pop.pbenum.dart';
 
@@ -911,35 +908,5 @@ class txnStatus extends $pb.GeneratedMessage {
   $core.bool hasMessage() => $_has(2);
   @$pb.TagNumber(3)
   void clearMessage() => clearField(3);
-}
-
-class POPServiceApi {
-  $pb.RpcClient _client;
-  POPServiceApi(this._client);
-
-  $async.Future<p2pConnectionStatus> validateCertificate($pb.ClientContext? ctx, web3WalletPermission request) {
-    var emptyResponse = p2pConnectionStatus();
-    return _client.invoke<p2pConnectionStatus>(ctx, 'POPService', 'validateCertificate', request, emptyResponse);
-  }
-  $async.Future<rubixWalletData> fetchWalletData($pb.ClientContext? ctx, web3WalletPermission request) {
-    var emptyResponse = rubixWalletData();
-    return _client.invoke<rubixWalletData>(ctx, 'POPService', 'fetchWalletData', request, emptyResponse);
-  }
-  $async.Future<web3WalletPermission> uploadWalletKeys($pb.ClientContext? ctx, rubixWalletData request) {
-    var emptyResponse = web3WalletPermission();
-    return _client.invoke<web3WalletPermission>(ctx, 'POPService', 'uploadWalletKeys', request, emptyResponse);
-  }
-  $async.Future<p2pConnectionStatus> invalidateCertificate($pb.ClientContext? ctx, web3WalletPermission request) {
-    var emptyResponse = p2pConnectionStatus();
-    return _client.invoke<p2pConnectionStatus>(ctx, 'POPService', 'invalidateCertificate', request, emptyResponse);
-  }
-  $async.Future<txnStatus> initRubixTxn($pb.ClientContext? ctx, txnPayload request) {
-    var emptyResponse = txnStatus();
-    return _client.invoke<txnStatus>(ctx, 'POPService', 'initRubixTxn', request, emptyResponse);
-  }
-  $async.Future<PushNotification> listen($pb.ClientContext? ctx, $0.Empty request) {
-    var emptyResponse = PushNotification();
-    return _client.invoke<PushNotification>(ctx, 'POPService', 'Listen', request, emptyResponse);
-  }
 }
 
