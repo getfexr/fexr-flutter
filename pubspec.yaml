@@ -25,16 +25,16 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
-flutter:
-  plugin:
-    platforms:
-      android:
-        package: com.getfexr.fexr
-        pluginClass: Fexr
-      ios:
-        pluginClass: Fexr
-      macos:
-        pluginClass: Fexr
+#flutter:
+ # plugin:
+  #  platforms:
+   #   android:
+    #    package: fexr
+     #   pluginClass: Fexr
+      #ios:
+       # pluginClass: Fexr
+      #macos:
+       # pluginClass: Fexr
       # windows:
       #   pluginClass: Fexr
       # linux:

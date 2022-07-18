@@ -15,7 +15,7 @@ class PassportService {
       String proxyIP, String dID, int code) async {
     final channel = ClientChannel(
       proxyIP,
-      port: 6942,
+      port: 53550,
       options: ChannelOptions(
         credentials: ChannelCredentials.insecure(),
         codecRegistry:
