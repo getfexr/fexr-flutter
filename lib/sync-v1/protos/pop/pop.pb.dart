@@ -583,7 +583,7 @@ class web3WalletPermission extends $pb.GeneratedMessage {
 class p2pConnectionStatus extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'p2pConnectionStatus', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'connected')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'code')
+    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'code', $pb.PbFieldType.O3)
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
     ..hasRequiredFields = false
   ;
@@ -591,7 +591,7 @@ class p2pConnectionStatus extends $pb.GeneratedMessage {
   p2pConnectionStatus._() : super();
   factory p2pConnectionStatus({
     $core.bool? connected,
-    $core.String? code,
+    $core.int? code,
     $core.String? message,
   }) {
     final _result = create();
@@ -637,9 +637,9 @@ class p2pConnectionStatus extends $pb.GeneratedMessage {
   void clearConnected() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get code => $_getSZ(1);
+  $core.int get code => $_getIZ(1);
   @$pb.TagNumber(2)
-  set code($core.String v) { $_setString(1, v); }
+  set code($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasCode() => $_has(1);
   @$pb.TagNumber(2)

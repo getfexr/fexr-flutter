@@ -105,7 +105,7 @@ const p2pConnectionStatus$json = const {
   '1': 'p2pConnectionStatus',
   '2': const [
     const {'1': 'connected', '3': 1, '4': 1, '5': 8, '10': 'connected'},
-    const {'1': 'code', '3': 2, '4': 1, '5': 9, '10': 'code'},
+    const {'1': 'code', '3': 2, '4': 1, '5': 5, '10': 'code'},
     const {'1': 'message', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'message', '17': true},
   ],
   '8': const [
@@ -114,7 +114,7 @@ const p2pConnectionStatus$json = const {
 };
 
 /// Descriptor for `p2pConnectionStatus`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List p2pConnectionStatusDescriptor = $convert.base64Decode('ChNwMnBDb25uZWN0aW9uU3RhdHVzEhwKCWNvbm5lY3RlZBgBIAEoCFIJY29ubmVjdGVkEhIKBGNvZGUYAiABKAlSBGNvZGUSHQoHbWVzc2FnZRgDIAEoCUgAUgdtZXNzYWdliAEBQgoKCF9tZXNzYWdl');
+final $typed_data.Uint8List p2pConnectionStatusDescriptor = $convert.base64Decode('ChNwMnBDb25uZWN0aW9uU3RhdHVzEhwKCWNvbm5lY3RlZBgBIAEoCFIJY29ubmVjdGVkEhIKBGNvZGUYAiABKAVSBGNvZGUSHQoHbWVzc2FnZRgDIAEoCUgAUgdtZXNzYWdliAEBQgoKCF9tZXNzYWdl');
 @$core.Deprecated('Use txnPayloadDescriptor instead')
 const txnPayload$json = const {
   '1': 'txnPayload',

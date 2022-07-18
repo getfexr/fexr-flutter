@@ -11,11 +11,12 @@ class PassportService {
   late POPServiceClient stub;
   
 
-  Future<void> web3WalletPermissionRequest(
+  Future<String> web3WalletPermissionRequest(
       String proxyIP, String dID, int code) async {
+        String result = "";
     final channel = ClientChannel(
       proxyIP,
-      port: 53550,
+      port: 6942,
       options: ChannelOptions(
         credentials: ChannelCredentials.insecure(),
         codecRegistry:
@@ -26,19 +27,23 @@ class PassportService {
    stub = POPServiceClient(channel,options: CallOptions(timeout: Duration(seconds: 30)));
 
     try {
-      var response = await stub.validateCertificate(web3WalletPermission(
+      var response = await stub.validatePermission(web3WalletPermission(
           dID: dID, code: code));
+    
 
       print('Response from web3WalletPermisiion: ${response.toString()}');
-      var walletData = await stub.fetchWalletData(web3WalletPermission(
+      var walletData = await stub.syncWalletData(web3WalletPermission(
           dID: dID, code: code));
       print('Response from fetchWalletData: ${walletData.toString()}');
+
+    result = response.toString();
 
 
     } catch (e) {
       print('Caught error: $e');
-    }
-    await channel.shutdown();
+    } 
+    return Future.value(result);
+   // await channel.shutdown();
   }
   // ResponseFuture<p2pConnectionStatus> p2pConnectionStatusRequest(bool connectionStatus, String code){
   // return stub.validateCertificate(
