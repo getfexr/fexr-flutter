@@ -12,24 +12,32 @@ import 'dart:typed_data' as $typed_data;
 const rubixWalletData$json = const {
   '1': 'rubixWalletData',
   '2': const [
-    const {'1': 'DIDShare', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'DIDShare', '17': true},
-    const {'1': 'PublicShare', '3': 2, '4': 1, '5': 9, '9': 1, '10': 'PublicShare', '17': true},
-    const {'1': 'PrivateShare', '3': 3, '4': 1, '5': 9, '9': 2, '10': 'PrivateShare', '17': true},
-    const {'1': 'balance', '3': 5, '4': 1, '5': 1, '9': 3, '10': 'balance', '17': true},
-    const {'1': 'th', '3': 6, '4': 3, '5': 11, '6': '.protos.TransactionHistory', '10': 'th'},
-    const {'1': 'qst', '3': 7, '4': 3, '5': 11, '6': '.protos.QuorumSignedTransaction', '10': 'qst'},
-    const {'1': 'tc', '3': 8, '4': 3, '5': 11, '6': '.protos.TokenChain', '10': 'tc'},
+    const {'1': 'dIDHash', '3': 1, '4': 1, '5': 9, '10': 'dIDHash'},
+    const {'1': 'peerID', '3': 2, '4': 1, '5': 9, '10': 'peerID'},
+    const {'1': 'credits', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'credits', '17': true},
+    const {'1': 'totalTxn', '3': 4, '4': 1, '5': 9, '9': 1, '10': 'totalTxn', '17': true},
+    const {'1': 'stakedTokens', '3': 5, '4': 1, '5': 9, '9': 2, '10': 'stakedTokens', '17': true},
+    const {'1': 'dIDShare', '3': 6, '4': 1, '5': 9, '9': 3, '10': 'dIDShare', '17': true},
+    const {'1': 'publicShare', '3': 7, '4': 1, '5': 9, '9': 4, '10': 'publicShare', '17': true},
+    const {'1': 'privateShare', '3': 8, '4': 1, '5': 9, '9': 5, '10': 'privateShare', '17': true},
+    const {'1': 'balance', '3': 9, '4': 1, '5': 1, '9': 6, '10': 'balance', '17': true},
+    const {'1': 'txnHistory', '3': 10, '4': 3, '5': 11, '6': '.protos.TransactionHistory', '10': 'txnHistory'},
+    const {'1': 'qSignedTxns', '3': 11, '4': 3, '5': 11, '6': '.protos.QuorumSignedTransaction', '10': 'qSignedTxns'},
+    const {'1': 'tChains', '3': 12, '4': 3, '5': 11, '6': '.protos.TokenChain', '10': 'tChains'},
   ],
   '8': const [
-    const {'1': '_DIDShare'},
-    const {'1': '_PublicShare'},
-    const {'1': '_PrivateShare'},
+    const {'1': '_credits'},
+    const {'1': '_totalTxn'},
+    const {'1': '_stakedTokens'},
+    const {'1': '_dIDShare'},
+    const {'1': '_publicShare'},
+    const {'1': '_privateShare'},
     const {'1': '_balance'},
   ],
 };
 
 /// Descriptor for `rubixWalletData`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List rubixWalletDataDescriptor = $convert.base64Decode('Cg9ydWJpeFdhbGxldERhdGESHwoIRElEU2hhcmUYASABKAlIAFIIRElEU2hhcmWIAQESJQoLUHVibGljU2hhcmUYAiABKAlIAVILUHVibGljU2hhcmWIAQESJwoMUHJpdmF0ZVNoYXJlGAMgASgJSAJSDFByaXZhdGVTaGFyZYgBARIdCgdiYWxhbmNlGAUgASgBSANSB2JhbGFuY2WIAQESKgoCdGgYBiADKAsyGi5wcm90b3MuVHJhbnNhY3Rpb25IaXN0b3J5UgJ0aBIxCgNxc3QYByADKAsyHy5wcm90b3MuUXVvcnVtU2lnbmVkVHJhbnNhY3Rpb25SA3FzdBIiCgJ0YxgIIAMoCzISLnByb3Rvcy5Ub2tlbkNoYWluUgJ0Y0ILCglfRElEU2hhcmVCDgoMX1B1YmxpY1NoYXJlQg8KDV9Qcml2YXRlU2hhcmVCCgoIX2JhbGFuY2U=');
+final $typed_data.Uint8List rubixWalletDataDescriptor = $convert.base64Decode('Cg9ydWJpeFdhbGxldERhdGESGAoHZElESGFzaBgBIAEoCVIHZElESGFzaBIWCgZwZWVySUQYAiABKAlSBnBlZXJJRBIdCgdjcmVkaXRzGAMgASgJSABSB2NyZWRpdHOIAQESHwoIdG90YWxUeG4YBCABKAlIAVIIdG90YWxUeG6IAQESJwoMc3Rha2VkVG9rZW5zGAUgASgJSAJSDHN0YWtlZFRva2Vuc4gBARIfCghkSURTaGFyZRgGIAEoCUgDUghkSURTaGFyZYgBARIlCgtwdWJsaWNTaGFyZRgHIAEoCUgEUgtwdWJsaWNTaGFyZYgBARInCgxwcml2YXRlU2hhcmUYCCABKAlIBVIMcHJpdmF0ZVNoYXJliAEBEh0KB2JhbGFuY2UYCSABKAFIBlIHYmFsYW5jZYgBARI6Cgp0eG5IaXN0b3J5GAogAygLMhoucHJvdG9zLlRyYW5zYWN0aW9uSGlzdG9yeVIKdHhuSGlzdG9yeRJBCgtxU2lnbmVkVHhucxgLIAMoCzIfLnByb3Rvcy5RdW9ydW1TaWduZWRUcmFuc2FjdGlvblILcVNpZ25lZFR4bnMSLAoHdENoYWlucxgMIAMoCzISLnByb3Rvcy5Ub2tlbkNoYWluUgd0Q2hhaW5zQgoKCF9jcmVkaXRzQgsKCV90b3RhbFR4bkIPCg1fc3Rha2VkVG9rZW5zQgsKCV9kSURTaGFyZUIOCgxfcHVibGljU2hhcmVCDwoNX3ByaXZhdGVTaGFyZUIKCghfYmFsYW5jZQ==');
 @$core.Deprecated('Use tokenChainDescriptor instead')
 const TokenChain$json = const {
   '1': 'TokenChain',
@@ -88,18 +96,18 @@ final $typed_data.Uint8List transactionHistoryDescriptor = $convert.base64Decode
 const web3WalletPermission$json = const {
   '1': 'web3WalletPermission',
   '2': const [
-    const {'1': 'DID', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'DID', '17': true},
+    const {'1': 'dID', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'dID', '17': true},
     const {'1': 'code', '3': 2, '4': 1, '5': 5, '10': 'code'},
-    const {'1': 'peerID', '3': 3, '4': 1, '5': 9, '9': 1, '10': 'peerID', '17': true},
+    const {'1': 'payload', '3': 3, '4': 1, '5': 9, '9': 1, '10': 'payload', '17': true},
   ],
   '8': const [
-    const {'1': '_DID'},
-    const {'1': '_peerID'},
+    const {'1': '_dID'},
+    const {'1': '_payload'},
   ],
 };
 
 /// Descriptor for `web3WalletPermission`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List web3WalletPermissionDescriptor = $convert.base64Decode('ChR3ZWIzV2FsbGV0UGVybWlzc2lvbhIVCgNESUQYASABKAlIAFIDRElEiAEBEhIKBGNvZGUYAiABKAVSBGNvZGUSGwoGcGVlcklEGAMgASgJSAFSBnBlZXJJRIgBAUIGCgRfRElEQgkKB19wZWVySUQ=');
+final $typed_data.Uint8List web3WalletPermissionDescriptor = $convert.base64Decode('ChR3ZWIzV2FsbGV0UGVybWlzc2lvbhIVCgNkSUQYASABKAlIAFIDZElEiAEBEhIKBGNvZGUYAiABKAVSBGNvZGUSHQoHcGF5bG9hZBgDIAEoCUgBUgdwYXlsb2FkiAEBQgYKBF9kSURCCgoIX3BheWxvYWQ=');
 @$core.Deprecated('Use p2pConnectionStatusDescriptor instead')
 const p2pConnectionStatus$json = const {
   '1': 'p2pConnectionStatus',
