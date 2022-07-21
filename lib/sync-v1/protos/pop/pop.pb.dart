@@ -17,9 +17,9 @@ class rubixWalletData extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'rubixWalletData', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dIDHash', protoName: 'dIDHash')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peerID', protoName: 'peerID')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'credits')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalTxn', protoName: 'totalTxn')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stakedTokens', protoName: 'stakedTokens')
+    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'credits', $pb.PbFieldType.O3)
+    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalTxn', $pb.PbFieldType.O3, protoName: 'totalTxn')
+    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stakedTokens', $pb.PbFieldType.O3, protoName: 'stakedTokens')
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dIDShare', protoName: 'dIDShare')
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicShare', protoName: 'publicShare')
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'privateShare', protoName: 'privateShare')
@@ -34,9 +34,9 @@ class rubixWalletData extends $pb.GeneratedMessage {
   factory rubixWalletData({
     $core.String? dIDHash,
     $core.String? peerID,
-    $core.String? credits,
-    $core.String? totalTxn,
-    $core.String? stakedTokens,
+    $core.int? credits,
+    $core.int? totalTxn,
+    $core.int? stakedTokens,
     $core.String? dIDShare,
     $core.String? publicShare,
     $core.String? privateShare,
@@ -124,27 +124,27 @@ class rubixWalletData extends $pb.GeneratedMessage {
   void clearPeerID() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get credits => $_getSZ(2);
+  $core.int get credits => $_getIZ(2);
   @$pb.TagNumber(3)
-  set credits($core.String v) { $_setString(2, v); }
+  set credits($core.int v) { $_setSignedInt32(2, v); }
   @$pb.TagNumber(3)
   $core.bool hasCredits() => $_has(2);
   @$pb.TagNumber(3)
   void clearCredits() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get totalTxn => $_getSZ(3);
+  $core.int get totalTxn => $_getIZ(3);
   @$pb.TagNumber(4)
-  set totalTxn($core.String v) { $_setString(3, v); }
+  set totalTxn($core.int v) { $_setSignedInt32(3, v); }
   @$pb.TagNumber(4)
   $core.bool hasTotalTxn() => $_has(3);
   @$pb.TagNumber(4)
   void clearTotalTxn() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get stakedTokens => $_getSZ(4);
+  $core.int get stakedTokens => $_getIZ(4);
   @$pb.TagNumber(5)
-  set stakedTokens($core.String v) { $_setString(4, v); }
+  set stakedTokens($core.int v) { $_setSignedInt32(4, v); }
   @$pb.TagNumber(5)
   $core.bool hasStakedTokens() => $_has(4);
   @$pb.TagNumber(5)
@@ -410,9 +410,9 @@ class TransactionHistory extends $pb.GeneratedMessage {
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'date')
     ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'role')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalTime', protoName: 'totalTime')
+    ..a<$core.double>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalTime', $pb.PbFieldType.OD, protoName: 'totalTime')
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'comment')
-    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status')
+    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'statusCode', protoName: 'statusCode')
     ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'quorumList', protoName: 'quorumList')
     ..hasRequiredFields = false
   ;
@@ -425,9 +425,9 @@ class TransactionHistory extends $pb.GeneratedMessage {
     $core.String? amount,
     $core.String? date,
     $core.String? role,
-    $core.String? totalTime,
+    $core.double? totalTime,
     $core.String? comment,
-    $core.String? status,
+    $core.String? statusCode,
     $core.String? quorumList,
   }) {
     final _result = create();
@@ -455,8 +455,8 @@ class TransactionHistory extends $pb.GeneratedMessage {
     if (comment != null) {
       _result.comment = comment;
     }
-    if (status != null) {
-      _result.status = status;
+    if (statusCode != null) {
+      _result.statusCode = statusCode;
     }
     if (quorumList != null) {
       _result.quorumList = quorumList;
@@ -539,9 +539,9 @@ class TransactionHistory extends $pb.GeneratedMessage {
   void clearRole() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.String get totalTime => $_getSZ(6);
+  $core.double get totalTime => $_getN(6);
   @$pb.TagNumber(7)
-  set totalTime($core.String v) { $_setString(6, v); }
+  set totalTime($core.double v) { $_setDouble(6, v); }
   @$pb.TagNumber(7)
   $core.bool hasTotalTime() => $_has(6);
   @$pb.TagNumber(7)
@@ -557,13 +557,13 @@ class TransactionHistory extends $pb.GeneratedMessage {
   void clearComment() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.String get status => $_getSZ(8);
+  $core.String get statusCode => $_getSZ(8);
   @$pb.TagNumber(9)
-  set status($core.String v) { $_setString(8, v); }
+  set statusCode($core.String v) { $_setString(8, v); }
   @$pb.TagNumber(9)
-  $core.bool hasStatus() => $_has(8);
+  $core.bool hasStatusCode() => $_has(8);
   @$pb.TagNumber(9)
-  void clearStatus() => clearField(9);
+  void clearStatusCode() => clearField(9);
 
   @$pb.TagNumber(10)
   $core.String get quorumList => $_getSZ(9);
@@ -729,7 +729,7 @@ class txnPayload extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'txnPayload', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderDID', protoName: 'senderDID')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiverDID', protoName: 'receiverDID')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount')
+    ..a<$core.double>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount', $pb.PbFieldType.OD)
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'comment')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'quorumList', protoName: 'quorumList')
     ..hasRequiredFields = false
@@ -739,7 +739,7 @@ class txnPayload extends $pb.GeneratedMessage {
   factory txnPayload({
     $core.String? senderDID,
     $core.String? receiverDID,
-    $core.String? amount,
+    $core.double? amount,
     $core.String? comment,
     $core.String? quorumList,
   }) {
@@ -801,9 +801,9 @@ class txnPayload extends $pb.GeneratedMessage {
   void clearReceiverDID() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get amount => $_getSZ(2);
+  $core.double get amount => $_getN(2);
   @$pb.TagNumber(3)
-  set amount($core.String v) { $_setString(2, v); }
+  set amount($core.double v) { $_setDouble(2, v); }
   @$pb.TagNumber(3)
   $core.bool hasAmount() => $_has(2);
   @$pb.TagNumber(3)

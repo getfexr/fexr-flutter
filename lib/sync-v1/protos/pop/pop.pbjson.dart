@@ -14,9 +14,9 @@ const rubixWalletData$json = const {
   '2': const [
     const {'1': 'dIDHash', '3': 1, '4': 1, '5': 9, '10': 'dIDHash'},
     const {'1': 'peerID', '3': 2, '4': 1, '5': 9, '10': 'peerID'},
-    const {'1': 'credits', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'credits', '17': true},
-    const {'1': 'totalTxn', '3': 4, '4': 1, '5': 9, '9': 1, '10': 'totalTxn', '17': true},
-    const {'1': 'stakedTokens', '3': 5, '4': 1, '5': 9, '9': 2, '10': 'stakedTokens', '17': true},
+    const {'1': 'credits', '3': 3, '4': 1, '5': 5, '9': 0, '10': 'credits', '17': true},
+    const {'1': 'totalTxn', '3': 4, '4': 1, '5': 5, '9': 1, '10': 'totalTxn', '17': true},
+    const {'1': 'stakedTokens', '3': 5, '4': 1, '5': 5, '9': 2, '10': 'stakedTokens', '17': true},
     const {'1': 'dIDShare', '3': 6, '4': 1, '5': 9, '9': 3, '10': 'dIDShare', '17': true},
     const {'1': 'publicShare', '3': 7, '4': 1, '5': 9, '9': 4, '10': 'publicShare', '17': true},
     const {'1': 'privateShare', '3': 8, '4': 1, '5': 9, '9': 5, '10': 'privateShare', '17': true},
@@ -37,7 +37,7 @@ const rubixWalletData$json = const {
 };
 
 /// Descriptor for `rubixWalletData`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List rubixWalletDataDescriptor = $convert.base64Decode('Cg9ydWJpeFdhbGxldERhdGESGAoHZElESGFzaBgBIAEoCVIHZElESGFzaBIWCgZwZWVySUQYAiABKAlSBnBlZXJJRBIdCgdjcmVkaXRzGAMgASgJSABSB2NyZWRpdHOIAQESHwoIdG90YWxUeG4YBCABKAlIAVIIdG90YWxUeG6IAQESJwoMc3Rha2VkVG9rZW5zGAUgASgJSAJSDHN0YWtlZFRva2Vuc4gBARIfCghkSURTaGFyZRgGIAEoCUgDUghkSURTaGFyZYgBARIlCgtwdWJsaWNTaGFyZRgHIAEoCUgEUgtwdWJsaWNTaGFyZYgBARInCgxwcml2YXRlU2hhcmUYCCABKAlIBVIMcHJpdmF0ZVNoYXJliAEBEh0KB2JhbGFuY2UYCSABKAFIBlIHYmFsYW5jZYgBARI6Cgp0eG5IaXN0b3J5GAogAygLMhoucHJvdG9zLlRyYW5zYWN0aW9uSGlzdG9yeVIKdHhuSGlzdG9yeRJBCgtxU2lnbmVkVHhucxgLIAMoCzIfLnByb3Rvcy5RdW9ydW1TaWduZWRUcmFuc2FjdGlvblILcVNpZ25lZFR4bnMSLAoHdENoYWlucxgMIAMoCzISLnByb3Rvcy5Ub2tlbkNoYWluUgd0Q2hhaW5zQgoKCF9jcmVkaXRzQgsKCV90b3RhbFR4bkIPCg1fc3Rha2VkVG9rZW5zQgsKCV9kSURTaGFyZUIOCgxfcHVibGljU2hhcmVCDwoNX3ByaXZhdGVTaGFyZUIKCghfYmFsYW5jZQ==');
+final $typed_data.Uint8List rubixWalletDataDescriptor = $convert.base64Decode('Cg9ydWJpeFdhbGxldERhdGESGAoHZElESGFzaBgBIAEoCVIHZElESGFzaBIWCgZwZWVySUQYAiABKAlSBnBlZXJJRBIdCgdjcmVkaXRzGAMgASgFSABSB2NyZWRpdHOIAQESHwoIdG90YWxUeG4YBCABKAVIAVIIdG90YWxUeG6IAQESJwoMc3Rha2VkVG9rZW5zGAUgASgFSAJSDHN0YWtlZFRva2Vuc4gBARIfCghkSURTaGFyZRgGIAEoCUgDUghkSURTaGFyZYgBARIlCgtwdWJsaWNTaGFyZRgHIAEoCUgEUgtwdWJsaWNTaGFyZYgBARInCgxwcml2YXRlU2hhcmUYCCABKAlIBVIMcHJpdmF0ZVNoYXJliAEBEh0KB2JhbGFuY2UYCSABKAFIBlIHYmFsYW5jZYgBARI6Cgp0eG5IaXN0b3J5GAogAygLMhoucHJvdG9zLlRyYW5zYWN0aW9uSGlzdG9yeVIKdHhuSGlzdG9yeRJBCgtxU2lnbmVkVHhucxgLIAMoCzIfLnByb3Rvcy5RdW9ydW1TaWduZWRUcmFuc2FjdGlvblILcVNpZ25lZFR4bnMSLAoHdENoYWlucxgMIAMoCzISLnByb3Rvcy5Ub2tlbkNoYWluUgd0Q2hhaW5zQgoKCF9jcmVkaXRzQgsKCV90b3RhbFR4bkIPCg1fc3Rha2VkVG9rZW5zQgsKCV9kSURTaGFyZUIOCgxfcHVibGljU2hhcmVCDwoNX3ByaXZhdGVTaGFyZUIKCghfYmFsYW5jZQ==');
 @$core.Deprecated('Use tokenChainDescriptor instead')
 const TokenChain$json = const {
   '1': 'TokenChain',
@@ -80,9 +80,9 @@ const TransactionHistory$json = const {
     const {'1': 'amount', '3': 4, '4': 1, '5': 9, '10': 'amount'},
     const {'1': 'date', '3': 5, '4': 1, '5': 9, '10': 'date'},
     const {'1': 'role', '3': 6, '4': 1, '5': 9, '10': 'role'},
-    const {'1': 'totalTime', '3': 7, '4': 1, '5': 9, '10': 'totalTime'},
+    const {'1': 'totalTime', '3': 7, '4': 1, '5': 1, '10': 'totalTime'},
     const {'1': 'comment', '3': 8, '4': 1, '5': 9, '10': 'comment'},
-    const {'1': 'status', '3': 9, '4': 1, '5': 9, '10': 'status'},
+    const {'1': 'statusCode', '3': 9, '4': 1, '5': 9, '10': 'statusCode'},
     const {'1': 'quorumList', '3': 10, '4': 1, '5': 9, '9': 0, '10': 'quorumList', '17': true},
   ],
   '8': const [
@@ -91,7 +91,7 @@ const TransactionHistory$json = const {
 };
 
 /// Descriptor for `TransactionHistory`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List transactionHistoryDescriptor = $convert.base64Decode('ChJUcmFuc2FjdGlvbkhpc3RvcnkSEAoDdHhuGAEgASgJUgN0eG4SHAoJc2VuZGVyRElEGAIgASgJUglzZW5kZXJESUQSIAoLcmVjZWl2ZXJESUQYAyABKAlSC3JlY2VpdmVyRElEEhYKBmFtb3VudBgEIAEoCVIGYW1vdW50EhIKBGRhdGUYBSABKAlSBGRhdGUSEgoEcm9sZRgGIAEoCVIEcm9sZRIcCgl0b3RhbFRpbWUYByABKAlSCXRvdGFsVGltZRIYCgdjb21tZW50GAggASgJUgdjb21tZW50EhYKBnN0YXR1cxgJIAEoCVIGc3RhdHVzEiMKCnF1b3J1bUxpc3QYCiABKAlIAFIKcXVvcnVtTGlzdIgBAUINCgtfcXVvcnVtTGlzdA==');
+final $typed_data.Uint8List transactionHistoryDescriptor = $convert.base64Decode('ChJUcmFuc2FjdGlvbkhpc3RvcnkSEAoDdHhuGAEgASgJUgN0eG4SHAoJc2VuZGVyRElEGAIgASgJUglzZW5kZXJESUQSIAoLcmVjZWl2ZXJESUQYAyABKAlSC3JlY2VpdmVyRElEEhYKBmFtb3VudBgEIAEoCVIGYW1vdW50EhIKBGRhdGUYBSABKAlSBGRhdGUSEgoEcm9sZRgGIAEoCVIEcm9sZRIcCgl0b3RhbFRpbWUYByABKAFSCXRvdGFsVGltZRIYCgdjb21tZW50GAggASgJUgdjb21tZW50Eh4KCnN0YXR1c0NvZGUYCSABKAlSCnN0YXR1c0NvZGUSIwoKcXVvcnVtTGlzdBgKIAEoCUgAUgpxdW9ydW1MaXN0iAEBQg0KC19xdW9ydW1MaXN0');
 @$core.Deprecated('Use web3WalletPermissionDescriptor instead')
 const web3WalletPermission$json = const {
   '1': 'web3WalletPermission',
@@ -129,7 +129,7 @@ const txnPayload$json = const {
   '2': const [
     const {'1': 'senderDID', '3': 1, '4': 1, '5': 9, '10': 'senderDID'},
     const {'1': 'receiverDID', '3': 2, '4': 1, '5': 9, '10': 'receiverDID'},
-    const {'1': 'amount', '3': 3, '4': 1, '5': 9, '10': 'amount'},
+    const {'1': 'amount', '3': 3, '4': 1, '5': 1, '10': 'amount'},
     const {'1': 'comment', '3': 4, '4': 1, '5': 9, '10': 'comment'},
     const {'1': 'quorumList', '3': 5, '4': 1, '5': 9, '9': 0, '10': 'quorumList', '17': true},
   ],
@@ -139,7 +139,7 @@ const txnPayload$json = const {
 };
 
 /// Descriptor for `txnPayload`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List txnPayloadDescriptor = $convert.base64Decode('Cgp0eG5QYXlsb2FkEhwKCXNlbmRlckRJRBgBIAEoCVIJc2VuZGVyRElEEiAKC3JlY2VpdmVyRElEGAIgASgJUgtyZWNlaXZlckRJRBIWCgZhbW91bnQYAyABKAlSBmFtb3VudBIYCgdjb21tZW50GAQgASgJUgdjb21tZW50EiMKCnF1b3J1bUxpc3QYBSABKAlIAFIKcXVvcnVtTGlzdIgBAUINCgtfcXVvcnVtTGlzdA==');
+final $typed_data.Uint8List txnPayloadDescriptor = $convert.base64Decode('Cgp0eG5QYXlsb2FkEhwKCXNlbmRlckRJRBgBIAEoCVIJc2VuZGVyRElEEiAKC3JlY2VpdmVyRElEGAIgASgJUgtyZWNlaXZlckRJRBIWCgZhbW91bnQYAyABKAFSBmFtb3VudBIYCgdjb21tZW50GAQgASgJUgdjb21tZW50EiMKCnF1b3J1bUxpc3QYBSABKAlIAFIKcXVvcnVtTGlzdIgBAUINCgtfcXVvcnVtTGlzdA==');
 @$core.Deprecated('Use pushNotificationDescriptor instead')
 const PushNotification$json = const {
   '1': 'PushNotification',
