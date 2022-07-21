@@ -1,66 +1,115 @@
+import 'package:fexr/sync-v1/const.dart';
 import 'package:fexr/sync-v1/protos/pop/pop.pbgrpc.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:grpc/grpc.dart';
-import 'package:fexr/sync-v1/protos/pop/pop.pb.dart';
-import 'package:fexr/sync-v1/protos/pop/pop.pbenum.dart';
-import 'package:fexr/sync-v1/protos/pop/pop.pbjson.dart';
-import 'package:protobuf/protobuf.dart';
 
 class PassportService {
   late POPServiceClient stub;
-  
 
-  Future<String> web3WalletPermissionRequest(
+  Future<p2pConnectionStatus> validatePermission(
       String proxyIP, String dID, int code) async {
-        String result = "";
+    p2pConnectionStatus response;
     final channel = ClientChannel(
       proxyIP,
-      port: 6942,
+      port: Const.PORT,
       options: ChannelOptions(
         credentials: ChannelCredentials.insecure(),
         codecRegistry:
             CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
       ),
     );
-    
-   stub = POPServiceClient(channel,options: CallOptions(timeout: Duration(seconds: 30)));
+
+    stub = POPServiceClient(channel,
+        options: CallOptions(timeout: Duration(seconds: 10)));
 
     try {
-      var response = await stub.validatePermission(web3WalletPermission(
-          dID: dID, code: code));
-    
-
-      print('Response from web3WalletPermisiion: ${response.toString()}');
-      var walletData = await stub.syncWalletData(web3WalletPermission(
-          dID: dID, code: code));
-      print('Response from fetchWalletData: ${walletData.toString()}');
-
-    result = response.toString();
-
-
+      response = await stub
+          .validatePermission(web3WalletPermission(dID: dID, code: code));
+      // result = response.toString();
     } catch (e) {
-      print('Caught error: $e');
-    } 
-    return Future.value(result);
-   // await channel.shutdown();
+      return p2pConnectionStatus(
+          connected: false, code: 404, message: e.toString());
+    }
+    return response;
+    // await channel.shutdown();
   }
-  // ResponseFuture<p2pConnectionStatus> p2pConnectionStatusRequest(bool connectionStatus, String code){
-  // return stub.validateCertificate(
-  //     web3WalletPermissionRequest(proxyIP, dID, code)()
-  //       ..dID = User.dID
-  //       ..code = code
-  //       ..peerID = User.peerID);      
-        
-  // }
+
+  Future<void> syncWalletData(
+      String proxyIP, String dID, int code) async {
+    rubixWalletData response;
+    final channel = ClientChannel(
+      proxyIP,
+      port: Const.PORT,
+      options: ChannelOptions(
+        credentials: ChannelCredentials.insecure(),
+        codecRegistry:
+            CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
+      ),
+    );
+
+    stub = POPServiceClient(channel,
+        options: CallOptions(timeout: Duration(seconds: 10)));
+
+    await for (var walletData
+        in stub.syncWalletData(web3WalletPermission(dID: dID, code: code))) {
+      print(walletData.toString());
+    }
+  }
+
+  Future<p2pConnectionStatus> uploadWalletKeys(
+      String proxyIP, String dID, int code) async {
+    p2pConnectionStatus response;
+    final channel = ClientChannel(
+      proxyIP,
+      port: Const.PORT,
+      options: ChannelOptions(
+        credentials: ChannelCredentials.insecure(),
+        codecRegistry:
+            CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
+      ),
+    );
+
+    stub = POPServiceClient(channel,
+        options: CallOptions(timeout: Duration(seconds: 10)));
+
+    try {
+      response = await stub
+          .validatePermission(web3WalletPermission(dID: dID, code: code));
+
+      // result = response.toString();
+    } catch (e) {
+      return p2pConnectionStatus(
+          connected: false, code: 404, message: e.toString());
+    }
+    return response;
+    // await channel.shutdown();
+  }
+
+  Future<p2pConnectionStatus> invalidatePermission(
+      String proxyIP, String dID, int code) async {
+    p2pConnectionStatus response;
+    final channel = ClientChannel(
+      proxyIP,
+      port: Const.PORT,
+      options: ChannelOptions(
+        credentials: ChannelCredentials.insecure(),
+        codecRegistry:
+            CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
+      ),
+    );
+
+    stub = POPServiceClient(channel,
+        options: CallOptions(timeout: Duration(seconds: 10)));
+
+    try {
+      response = await stub
+          .invalidatePermission(web3WalletPermission(dID: dID, code: code));
+
+      // result = response.toString();
+    } catch (e) {
+      return p2pConnectionStatus(
+          connected: false, code: 404, message: e.toString());
+    }
+    return response;
+    // await channel.shutdown();
+  }
 }
-
-
-
-
-  
-
-
-
-
-
