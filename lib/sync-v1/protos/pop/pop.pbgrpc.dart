@@ -61,12 +61,10 @@ class POPServiceClient extends $grpc.Client {
     return $createUnaryCall(_$validatePermission, request, options: options);
   }
 
-  $grpc.ResponseStream<$0.rubixWalletData> syncWalletData(
+  $grpc.ResponseFuture<$0.rubixWalletData> syncWalletData(
       $0.web3WalletPermission request,
       {$grpc.CallOptions? options}) {
-    return $createStreamingCall(
-        _$syncWalletData, $async.Stream.fromIterable([request]),
-        options: options);
+    return $createUnaryCall(_$syncWalletData, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.web3WalletPermission> uploadWalletKeys(
@@ -113,7 +111,7 @@ abstract class POPServiceBase extends $grpc.Service {
         'SyncWalletData',
         syncWalletData_Pre,
         false,
-        true,
+        false,
         ($core.List<$core.int> value) =>
             $0.web3WalletPermission.fromBuffer(value),
         ($0.rubixWalletData value) => value.writeToBuffer()));
@@ -155,9 +153,9 @@ abstract class POPServiceBase extends $grpc.Service {
     return validatePermission(call, await request);
   }
 
-  $async.Stream<$0.rubixWalletData> syncWalletData_Pre($grpc.ServiceCall call,
-      $async.Future<$0.web3WalletPermission> request) async* {
-    yield* syncWalletData(call, await request);
+  $async.Future<$0.rubixWalletData> syncWalletData_Pre($grpc.ServiceCall call,
+      $async.Future<$0.web3WalletPermission> request) async {
+    return syncWalletData(call, await request);
   }
 
   $async.Future<$0.web3WalletPermission> uploadWalletKeys_Pre(
@@ -183,7 +181,7 @@ abstract class POPServiceBase extends $grpc.Service {
 
   $async.Future<$0.p2pConnectionStatus> validatePermission(
       $grpc.ServiceCall call, $0.web3WalletPermission request);
-  $async.Stream<$0.rubixWalletData> syncWalletData(
+  $async.Future<$0.rubixWalletData> syncWalletData(
       $grpc.ServiceCall call, $0.web3WalletPermission request);
   $async.Future<$0.web3WalletPermission> uploadWalletKeys(
       $grpc.ServiceCall call, $0.rubixWalletData request);

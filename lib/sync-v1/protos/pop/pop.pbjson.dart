@@ -131,15 +131,12 @@ const txnPayload$json = const {
     const {'1': 'receiverDID', '3': 2, '4': 1, '5': 9, '10': 'receiverDID'},
     const {'1': 'amount', '3': 3, '4': 1, '5': 1, '10': 'amount'},
     const {'1': 'comment', '3': 4, '4': 1, '5': 9, '10': 'comment'},
-    const {'1': 'quorumList', '3': 5, '4': 1, '5': 9, '9': 0, '10': 'quorumList', '17': true},
-  ],
-  '8': const [
-    const {'1': '_quorumList'},
+    const {'1': 'quorumList', '3': 5, '4': 3, '5': 9, '10': 'quorumList'},
   ],
 };
 
 /// Descriptor for `txnPayload`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List txnPayloadDescriptor = $convert.base64Decode('Cgp0eG5QYXlsb2FkEhwKCXNlbmRlckRJRBgBIAEoCVIJc2VuZGVyRElEEiAKC3JlY2VpdmVyRElEGAIgASgJUgtyZWNlaXZlckRJRBIWCgZhbW91bnQYAyABKAFSBmFtb3VudBIYCgdjb21tZW50GAQgASgJUgdjb21tZW50EiMKCnF1b3J1bUxpc3QYBSABKAlIAFIKcXVvcnVtTGlzdIgBAUINCgtfcXVvcnVtTGlzdA==');
+final $typed_data.Uint8List txnPayloadDescriptor = $convert.base64Decode('Cgp0eG5QYXlsb2FkEhwKCXNlbmRlckRJRBgBIAEoCVIJc2VuZGVyRElEEiAKC3JlY2VpdmVyRElEGAIgASgJUgtyZWNlaXZlckRJRBIWCgZhbW91bnQYAyABKAFSBmFtb3VudBIYCgdjb21tZW50GAQgASgJUgdjb21tZW50Eh4KCnF1b3J1bUxpc3QYBSADKAlSCnF1b3J1bUxpc3Q=');
 @$core.Deprecated('Use pushNotificationDescriptor instead')
 const PushNotification$json = const {
   '1': 'PushNotification',

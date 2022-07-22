@@ -731,7 +731,7 @@ class txnPayload extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiverDID', protoName: 'receiverDID')
     ..a<$core.double>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount', $pb.PbFieldType.OD)
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'comment')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'quorumList', protoName: 'quorumList')
+    ..pPS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'quorumList', protoName: 'quorumList')
     ..hasRequiredFields = false
   ;
 
@@ -741,7 +741,7 @@ class txnPayload extends $pb.GeneratedMessage {
     $core.String? receiverDID,
     $core.double? amount,
     $core.String? comment,
-    $core.String? quorumList,
+    $core.Iterable<$core.String>? quorumList,
   }) {
     final _result = create();
     if (senderDID != null) {
@@ -757,7 +757,7 @@ class txnPayload extends $pb.GeneratedMessage {
       _result.comment = comment;
     }
     if (quorumList != null) {
-      _result.quorumList = quorumList;
+      _result.quorumList.addAll(quorumList);
     }
     return _result;
   }
@@ -819,13 +819,7 @@ class txnPayload extends $pb.GeneratedMessage {
   void clearComment() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get quorumList => $_getSZ(4);
-  @$pb.TagNumber(5)
-  set quorumList($core.String v) { $_setString(4, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasQuorumList() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearQuorumList() => clearField(5);
+  $core.List<$core.String> get quorumList => $_getList(4);
 }
 
 class PushNotification extends $pb.GeneratedMessage {
