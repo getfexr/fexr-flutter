@@ -29,12 +29,11 @@ class PassportService {
       return p2pConnectionStatus(
           connected: false, code: 404, message: e.toString());
     }
+    await channel.shutdown();
     return response;
-    // await channel.shutdown();
   }
 
-  Future<void> syncWalletData(
-      String proxyIP, String dID, int code) async {
+  Future<rubixWalletData> syncWalletData(String proxyIP, String dID, int code) async {
     rubixWalletData response;
     final channel = ClientChannel(
       proxyIP,
@@ -49,10 +48,21 @@ class PassportService {
     stub = POPServiceClient(channel,
         options: CallOptions(timeout: Duration(seconds: 10)));
 
-    await for (var walletData
-        in stub.syncWalletData(web3WalletPermission(dID: dID, code: code))) {
-      print(walletData.toString());
+    try {
+      response = await stub
+          .syncWalletData(web3WalletPermission(dID: dID, code: code));
+      // result = response.toString();
+    } catch (e) {
+      return rubixWalletData();
     }
+
+    await channel.shutdown();
+    return response;
+
+    // await for (var walletData
+    //     in stub.syncWalletData(web3WalletPermission(dID: dID, code: code))) {
+  
+    // }
   }
 
   Future<p2pConnectionStatus> uploadWalletKeys(

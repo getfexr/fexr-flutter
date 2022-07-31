@@ -70,9 +70,10 @@ message txnPayload {
     double amount = 3;
     string comment = 4;
     repeated string quorumList = 5;
+    optional string fexrId = 6;
 }
 
-message PushNotification {
+message pushNotification {
     enum NOTIFICATION_TYPE {
         PAY = 0;
         SIGN = 1;
@@ -102,5 +103,5 @@ service POPService {
   rpc UploadWalletKeys (rubixWalletData) returns (web3WalletPermission) {}
   rpc InvalidatePermission (web3WalletPermission) returns (p2pConnectionStatus) {}
   rpc InitRubixTxn (txnPayload) returns (stream txnStatus) {}
-  rpc WalletNotification(google.protobuf.Empty) returns (stream PushNotification) {}
+  rpc WalletNotification(google.protobuf.Empty) returns (pushNotification) {}
 }
