@@ -18,6 +18,8 @@ dependencies:
   pem: ^2.0.1
   share_plus: ^4.0.4
   elliptic: ^0.3.8
+  image: ^3.2.0
+  sha3: ^0.2.0
   # run on terminal before generating proto: dart pub global activate protoc_plugin
 
 dev_dependencies:
