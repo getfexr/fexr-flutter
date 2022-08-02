@@ -11,7 +11,7 @@ import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
 import 'pop.pb.dart' as $0;
-import '../../google/protobuf/empty.pb.dart' as $1;
+import '../google/protobuf/empty.pb.dart' as $1;
 export 'pop.pb.dart';
 
 class POPServiceClient extends $grpc.Client {

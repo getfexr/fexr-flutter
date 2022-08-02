@@ -33,7 +33,8 @@ class PassportService {
     return response;
   }
 
-  Future<rubixWalletData> syncWalletData(String proxyIP, String dID, int code) async {
+  Future<rubixWalletData> syncWalletData(
+      String proxyIP, String dID, int code) async {
     rubixWalletData response;
     final channel = ClientChannel(
       proxyIP,
@@ -49,8 +50,8 @@ class PassportService {
         options: CallOptions(timeout: Duration(seconds: 10)));
 
     try {
-      response = await stub
-          .syncWalletData(web3WalletPermission(dID: dID, code: code));
+      response =
+          await stub.syncWalletData(web3WalletPermission(dID: dID, code: code));
       // result = response.toString();
     } catch (e) {
       return rubixWalletData();
@@ -61,7 +62,7 @@ class PassportService {
 
     // await for (var walletData
     //     in stub.syncWalletData(web3WalletPermission(dID: dID, code: code))) {
-  
+
     // }
   }
 
