@@ -142,14 +142,14 @@ const txnPayload$json = const {
 /// Descriptor for `txnPayload`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List txnPayloadDescriptor = $convert.base64Decode('Cgp0eG5QYXlsb2FkEhwKCXNlbmRlckRJRBgBIAEoCVIJc2VuZGVyRElEEiAKC3JlY2VpdmVyRElEGAIgASgJUgtyZWNlaXZlckRJRBIWCgZhbW91bnQYAyABKAFSBmFtb3VudBIYCgdjb21tZW50GAQgASgJUgdjb21tZW50Eh4KCnF1b3J1bUxpc3QYBSADKAlSCnF1b3J1bUxpc3QSGwoGZmV4cklkGAYgASgJSABSBmZleHJJZIgBAUIJCgdfZmV4cklk');
 @$core.Deprecated('Use pushNotificationDescriptor instead')
-const pushNotification$json = const {
-  '1': 'pushNotification',
+const PushNotification$json = const {
+  '1': 'PushNotification',
   '2': const [
-    const {'1': 'notification', '3': 1, '4': 1, '5': 14, '6': '.protos.pushNotification.NOTIFICATION_TYPE', '10': 'notification'},
+    const {'1': 'notification', '3': 1, '4': 1, '5': 14, '6': '.protos.PushNotification.NOTIFICATION_TYPE', '10': 'notification'},
     const {'1': 'message', '3': 2, '4': 1, '5': 9, '9': 0, '10': 'message', '17': true},
     const {'1': 'txn', '3': 3, '4': 1, '5': 11, '6': '.protos.TransactionHistory', '9': 1, '10': 'txn', '17': true},
   ],
-  '4': const [pushNotification_NOTIFICATION_TYPE$json],
+  '4': const [PushNotification_NOTIFICATION_TYPE$json],
   '8': const [
     const {'1': '_message'},
     const {'1': '_txn'},
@@ -157,7 +157,7 @@ const pushNotification$json = const {
 };
 
 @$core.Deprecated('Use pushNotificationDescriptor instead')
-const pushNotification_NOTIFICATION_TYPE$json = const {
+const PushNotification_NOTIFICATION_TYPE$json = const {
   '1': 'NOTIFICATION_TYPE',
   '2': const [
     const {'1': 'PAY', '2': 0},
@@ -167,8 +167,8 @@ const pushNotification_NOTIFICATION_TYPE$json = const {
   ],
 };
 
-/// Descriptor for `pushNotification`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List pushNotificationDescriptor = $convert.base64Decode('ChBwdXNoTm90aWZpY2F0aW9uEk4KDG5vdGlmaWNhdGlvbhgBIAEoDjIqLnByb3Rvcy5wdXNoTm90aWZpY2F0aW9uLk5PVElGSUNBVElPTl9UWVBFUgxub3RpZmljYXRpb24SHQoHbWVzc2FnZRgCIAEoCUgAUgdtZXNzYWdliAEBEjEKA3R4bhgDIAEoCzIaLnByb3Rvcy5UcmFuc2FjdGlvbkhpc3RvcnlIAVIDdHhuiAEBIkMKEU5PVElGSUNBVElPTl9UWVBFEgcKA1BBWRAAEggKBFNJR04QARIMCghSRU1JTkRFUhACEg0KCVBST01PVElPThADQgoKCF9tZXNzYWdlQgYKBF90eG4=');
+/// Descriptor for `PushNotification`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List pushNotificationDescriptor = $convert.base64Decode('ChBQdXNoTm90aWZpY2F0aW9uEk4KDG5vdGlmaWNhdGlvbhgBIAEoDjIqLnByb3Rvcy5QdXNoTm90aWZpY2F0aW9uLk5PVElGSUNBVElPTl9UWVBFUgxub3RpZmljYXRpb24SHQoHbWVzc2FnZRgCIAEoCUgAUgdtZXNzYWdliAEBEjEKA3R4bhgDIAEoCzIaLnByb3Rvcy5UcmFuc2FjdGlvbkhpc3RvcnlIAVIDdHhuiAEBIkMKEU5PVElGSUNBVElPTl9UWVBFEgcKA1BBWRAAEggKBFNJR04QARIMCghSRU1JTkRFUhACEg0KCVBST01PVElPThADQgoKCF9tZXNzYWdlQgYKBF90eG4=');
 @$core.Deprecated('Use txnStatusDescriptor instead')
 const txnStatus$json = const {
   '1': 'txnStatus',

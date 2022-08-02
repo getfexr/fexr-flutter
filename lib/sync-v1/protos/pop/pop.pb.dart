@@ -836,17 +836,17 @@ class txnPayload extends $pb.GeneratedMessage {
   void clearFexrId() => clearField(6);
 }
 
-class pushNotification extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'pushNotification', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
-    ..e<pushNotification_NOTIFICATION_TYPE>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'notification', $pb.PbFieldType.OE, defaultOrMaker: pushNotification_NOTIFICATION_TYPE.PAY, valueOf: pushNotification_NOTIFICATION_TYPE.valueOf, enumValues: pushNotification_NOTIFICATION_TYPE.values)
+class PushNotification extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PushNotification', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
+    ..e<PushNotification_NOTIFICATION_TYPE>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'notification', $pb.PbFieldType.OE, defaultOrMaker: PushNotification_NOTIFICATION_TYPE.PAY, valueOf: PushNotification_NOTIFICATION_TYPE.valueOf, enumValues: PushNotification_NOTIFICATION_TYPE.values)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
     ..aOM<TransactionHistory>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txn', subBuilder: TransactionHistory.create)
     ..hasRequiredFields = false
   ;
 
-  pushNotification._() : super();
-  factory pushNotification({
-    pushNotification_NOTIFICATION_TYPE? notification,
+  PushNotification._() : super();
+  factory PushNotification({
+    PushNotification_NOTIFICATION_TYPE? notification,
     $core.String? message,
     TransactionHistory? txn,
   }) {
@@ -862,31 +862,31 @@ class pushNotification extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory pushNotification.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory pushNotification.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory PushNotification.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PushNotification.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  pushNotification clone() => pushNotification()..mergeFromMessage(this);
+  PushNotification clone() => PushNotification()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  pushNotification copyWith(void Function(pushNotification) updates) => super.copyWith((message) => updates(message as pushNotification)) as pushNotification; // ignore: deprecated_member_use
+  PushNotification copyWith(void Function(PushNotification) updates) => super.copyWith((message) => updates(message as PushNotification)) as PushNotification; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static pushNotification create() => pushNotification._();
-  pushNotification createEmptyInstance() => create();
-  static $pb.PbList<pushNotification> createRepeated() => $pb.PbList<pushNotification>();
+  static PushNotification create() => PushNotification._();
+  PushNotification createEmptyInstance() => create();
+  static $pb.PbList<PushNotification> createRepeated() => $pb.PbList<PushNotification>();
   @$core.pragma('dart2js:noInline')
-  static pushNotification getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<pushNotification>(create);
-  static pushNotification? _defaultInstance;
+  static PushNotification getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PushNotification>(create);
+  static PushNotification? _defaultInstance;
 
   @$pb.TagNumber(1)
-  pushNotification_NOTIFICATION_TYPE get notification => $_getN(0);
+  PushNotification_NOTIFICATION_TYPE get notification => $_getN(0);
   @$pb.TagNumber(1)
-  set notification(pushNotification_NOTIFICATION_TYPE v) { setField(1, v); }
+  set notification(PushNotification_NOTIFICATION_TYPE v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasNotification() => $_has(0);
   @$pb.TagNumber(1)

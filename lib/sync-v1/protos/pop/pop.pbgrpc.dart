@@ -44,11 +44,11 @@ class POPServiceClient extends $grpc.Client {
       ($0.txnPayload value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.txnStatus.fromBuffer(value));
   static final _$walletNotification =
-      $grpc.ClientMethod<$1.Empty, $0.pushNotification>(
+      $grpc.ClientMethod<$1.Empty, $0.PushNotification>(
           '/protos.POPService/WalletNotification',
           ($1.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $0.pushNotification.fromBuffer(value));
+              $0.PushNotification.fromBuffer(value));
 
   POPServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -86,9 +86,11 @@ class POPServiceClient extends $grpc.Client {
         options: options);
   }
 
-  $grpc.ResponseFuture<$0.pushNotification> walletNotification($1.Empty request,
+  $grpc.ResponseStream<$0.PushNotification> walletNotification($1.Empty request,
       {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$walletNotification, request, options: options);
+    return $createStreamingCall(
+        _$walletNotification, $async.Stream.fromIterable([request]),
+        options: options);
   }
 }
 
@@ -136,13 +138,13 @@ abstract class POPServiceBase extends $grpc.Service {
         true,
         ($core.List<$core.int> value) => $0.txnPayload.fromBuffer(value),
         ($0.txnStatus value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.Empty, $0.pushNotification>(
+    $addMethod($grpc.ServiceMethod<$1.Empty, $0.PushNotification>(
         'WalletNotification',
         walletNotification_Pre,
         false,
-        false,
+        true,
         ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
-        ($0.pushNotification value) => value.writeToBuffer()));
+        ($0.PushNotification value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.p2pConnectionStatus> validatePermission_Pre(
@@ -172,9 +174,9 @@ abstract class POPServiceBase extends $grpc.Service {
     yield* initRubixTxn(call, await request);
   }
 
-  $async.Future<$0.pushNotification> walletNotification_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
-    return walletNotification(call, await request);
+  $async.Stream<$0.PushNotification> walletNotification_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
+    yield* walletNotification(call, await request);
   }
 
   $async.Future<$0.p2pConnectionStatus> validatePermission(
@@ -187,6 +189,6 @@ abstract class POPServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.web3WalletPermission request);
   $async.Stream<$0.txnStatus> initRubixTxn(
       $grpc.ServiceCall call, $0.txnPayload request);
-  $async.Future<$0.pushNotification> walletNotification(
+  $async.Stream<$0.PushNotification> walletNotification(
       $grpc.ServiceCall call, $1.Empty request);
 }

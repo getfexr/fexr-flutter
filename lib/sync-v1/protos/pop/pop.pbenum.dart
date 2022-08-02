@@ -9,23 +9,23 @@
 import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-class pushNotification_NOTIFICATION_TYPE extends $pb.ProtobufEnum {
-  static const pushNotification_NOTIFICATION_TYPE PAY = pushNotification_NOTIFICATION_TYPE._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PAY');
-  static const pushNotification_NOTIFICATION_TYPE SIGN = pushNotification_NOTIFICATION_TYPE._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SIGN');
-  static const pushNotification_NOTIFICATION_TYPE REMINDER = pushNotification_NOTIFICATION_TYPE._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REMINDER');
-  static const pushNotification_NOTIFICATION_TYPE PROMOTION = pushNotification_NOTIFICATION_TYPE._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PROMOTION');
+class PushNotification_NOTIFICATION_TYPE extends $pb.ProtobufEnum {
+  static const PushNotification_NOTIFICATION_TYPE PAY = PushNotification_NOTIFICATION_TYPE._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PAY');
+  static const PushNotification_NOTIFICATION_TYPE SIGN = PushNotification_NOTIFICATION_TYPE._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'SIGN');
+  static const PushNotification_NOTIFICATION_TYPE REMINDER = PushNotification_NOTIFICATION_TYPE._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'REMINDER');
+  static const PushNotification_NOTIFICATION_TYPE PROMOTION = PushNotification_NOTIFICATION_TYPE._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PROMOTION');
 
-  static const $core.List<pushNotification_NOTIFICATION_TYPE> values = <pushNotification_NOTIFICATION_TYPE> [
+  static const $core.List<PushNotification_NOTIFICATION_TYPE> values = <PushNotification_NOTIFICATION_TYPE> [
     PAY,
     SIGN,
     REMINDER,
     PROMOTION,
   ];
 
-  static final $core.Map<$core.int, pushNotification_NOTIFICATION_TYPE> _byValue = $pb.ProtobufEnum.initByValue(values);
-  static pushNotification_NOTIFICATION_TYPE? valueOf($core.int value) => _byValue[value];
+  static final $core.Map<$core.int, PushNotification_NOTIFICATION_TYPE> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static PushNotification_NOTIFICATION_TYPE? valueOf($core.int value) => _byValue[value];
 
-  const pushNotification_NOTIFICATION_TYPE._($core.int v, $core.String n) : super(v, n);
+  const PushNotification_NOTIFICATION_TYPE._($core.int v, $core.String n) : super(v, n);
 }
 
 class txnStatus_TRANSACTION_STATUS extends $pb.ProtobufEnum {
