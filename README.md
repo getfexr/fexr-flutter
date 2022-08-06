@@ -25,7 +25,7 @@
     <img src="https://getfexr.com/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">gofexr</h3>
+  <h3 align="center">fexr-flutter</h3>
 
   <p align="center">
     Secure wrapper and lite wallet authenticator for your Rubix Wallet (node)
@@ -35,9 +35,9 @@
     <br />
     <a href="">View Demo</a>
     ·
-    <a href="https://github.com/getfexr/gofexr/issues">Report Bug</a>
+    <a href="https://github.com/getfexr/fexr-flutter/issues">Report Bug</a>
     ·
-    <a href="https://github.com/getfexr/gofexr/issues">Request Feature</a>
+    <a href="https://github.com/getfexr/fexr-flutter/issues">Request Feature</a>
   </p>
 </div>
 
@@ -88,7 +88,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Your Name - [@getfexr](https://twitter.com/getfexr) - support@getfexr.com
 
-Project Link: [https://github.com/getfexr/gofexr](https://github.com/getfexr/gofexr)
+Project Link: [https://github.com/getfexr/fexr-flutter](https://github.com/getfexr/fexr-flutter)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
