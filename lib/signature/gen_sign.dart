@@ -1,25 +1,29 @@
 import 'dart:convert';
-import 'dart:js';
+
 import 'package:path_provider/path_provider.dart';
 import 'package:sha3/sha3.dart';
 
 import 'package:fexr/signature/dependencies.dart';
 
 class GenerateSign {
-  Future<String> genSignFromShares(String imagePath, String hash) async{
+ Future<List<int>> genSignFromShares(String imagePath, String hash) async{
     Future<String> firstPrivatebin = Dependencies().imageToBinary(imagePath);
     String firstPrivate = await firstPrivatebin;
-    List<int> privateIntegerArray = firstPrivate.split('').map(int.parse).toList();
-    JsonCodec P = Dependencies().randomPositions("signer", hash, 32, privateIntegerArray);
-    List<int> finalPos = P.decode(P.toString())["posForSign"];
+    
+  
+    List<String> privateIntegerArrayString = List<String>.generate(firstPrivate.length, (index) => firstPrivate[index]);
+    
+  
+     List<int> privateIntegerArray = privateIntegerArrayString.map((index) => int.parse(index)).toList();
+     
+    Map P = Dependencies().randomPositions("signer", hash, 32, privateIntegerArray);
+    
+    var finalPos = P["posForSign"];
+    
     List<int> p1Sign = Dependencies().getPrivatePosition(finalPos, privateIntegerArray);
-    //convert the list of int to string
-  /*  StringBuffer p1SignString = new StringBuffer();
-    for (int i = 0; i < p1Sign.length; i++) {
-      p1SignString.write(p1Sign[i].toString());
-    }*/
-    String p1SignString = utf8.decode(p1Sign);
-    return p1SignString.toString();
+   
+
+   return p1Sign;
 
 
 
@@ -27,26 +31,22 @@ class GenerateSign {
 
   Future<String> sign(String detailsString) async {
     String hash;
-    JsObject details = new JsObject(context['JSON'], [detailsString]);
+    var details = json.decode(detailsString);
     String decentralizedID = details['did'];
-    String path = (await getApplicationSupportDirectory()).path;
-    String pvtSharePath = '$path/privateShare.png';
-    var k = SHA3(256, KECCAK_PADDING, 256);
-    k.update(utf8.encode(detailsString));
-    hash = k.digest().toString();
+   // String path = (await getApplicationSupportDirectory()).path;
+    String path = '/storage/emulated/0/Download';
+    String pvtSharePath = '$path/PrivateShare.png';
+
+   
+    hash = Dependencies().calculateHash(detailsString);
     Future<String> firstPrivatebin = Dependencies().imageToBinary(pvtSharePath);
     String firstPrivate = await firstPrivatebin;
     List<int> privateIntegerArray = firstPrivate.split('').map(int.parse).toList();
-    JsonCodec P = Dependencies().randomPositions("signer", hash, 32, privateIntegerArray);
-    List<int> finalPos = P.decode(P.toString())["posForSign"];
+    var P = Dependencies().randomPositions("signer", hash, 32, privateIntegerArray);
+    List<int> finalPos = P["posForSign"];
     List<int> p1Sign = Dependencies().getPrivatePosition(finalPos, privateIntegerArray);
-    //convert the list of int to string
-  /*  StringBuffer p1SignString = new StringBuffer();
-    for (int i = 0; i < p1Sign.length; i++) {
-      p1SignString.write(p1Sign[i].toString());
-    }*/
-    String p1SignString = utf8.decode(p1Sign);
-    return p1SignString.toString();
+   
+    return p1Sign.join("");
 
 
   }
