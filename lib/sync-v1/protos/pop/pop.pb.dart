@@ -725,6 +725,81 @@ class p2pConnectionStatus extends $pb.GeneratedMessage {
   void clearMessage() => clearField(3);
 }
 
+class p2pChallengeResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'p2pChallengeResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
+    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'connected')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'challenge')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
+    ..hasRequiredFields = false
+  ;
+
+  p2pChallengeResponse._() : super();
+  factory p2pChallengeResponse({
+    $core.bool? connected,
+    $core.String? challenge,
+    $core.String? message,
+  }) {
+    final _result = create();
+    if (connected != null) {
+      _result.connected = connected;
+    }
+    if (challenge != null) {
+      _result.challenge = challenge;
+    }
+    if (message != null) {
+      _result.message = message;
+    }
+    return _result;
+  }
+  factory p2pChallengeResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory p2pChallengeResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  p2pChallengeResponse clone() => p2pChallengeResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  p2pChallengeResponse copyWith(void Function(p2pChallengeResponse) updates) => super.copyWith((message) => updates(message as p2pChallengeResponse)) as p2pChallengeResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static p2pChallengeResponse create() => p2pChallengeResponse._();
+  p2pChallengeResponse createEmptyInstance() => create();
+  static $pb.PbList<p2pChallengeResponse> createRepeated() => $pb.PbList<p2pChallengeResponse>();
+  @$core.pragma('dart2js:noInline')
+  static p2pChallengeResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<p2pChallengeResponse>(create);
+  static p2pChallengeResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.bool get connected => $_getBF(0);
+  @$pb.TagNumber(1)
+  set connected($core.bool v) { $_setBool(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasConnected() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearConnected() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get challenge => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set challenge($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasChallenge() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearChallenge() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get message => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set message($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasMessage() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearMessage() => clearField(3);
+}
+
 class txnPayload extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'txnPayload', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderDID', protoName: 'senderDID')

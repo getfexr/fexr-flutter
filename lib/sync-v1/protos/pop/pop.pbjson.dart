@@ -123,6 +123,21 @@ const p2pConnectionStatus$json = const {
 
 /// Descriptor for `p2pConnectionStatus`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List p2pConnectionStatusDescriptor = $convert.base64Decode('ChNwMnBDb25uZWN0aW9uU3RhdHVzEhwKCWNvbm5lY3RlZBgBIAEoCFIJY29ubmVjdGVkEhIKBGNvZGUYAiABKAVSBGNvZGUSHQoHbWVzc2FnZRgDIAEoCUgAUgdtZXNzYWdliAEBQgoKCF9tZXNzYWdl');
+@$core.Deprecated('Use p2pChallengeResponseDescriptor instead')
+const p2pChallengeResponse$json = const {
+  '1': 'p2pChallengeResponse',
+  '2': const [
+    const {'1': 'connected', '3': 1, '4': 1, '5': 8, '10': 'connected'},
+    const {'1': 'challenge', '3': 2, '4': 1, '5': 9, '10': 'challenge'},
+    const {'1': 'message', '3': 3, '4': 1, '5': 9, '9': 0, '10': 'message', '17': true},
+  ],
+  '8': const [
+    const {'1': '_message'},
+  ],
+};
+
+/// Descriptor for `p2pChallengeResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List p2pChallengeResponseDescriptor = $convert.base64Decode('ChRwMnBDaGFsbGVuZ2VSZXNwb25zZRIcCgljb25uZWN0ZWQYASABKAhSCWNvbm5lY3RlZBIcCgljaGFsbGVuZ2UYAiABKAlSCWNoYWxsZW5nZRIdCgdtZXNzYWdlGAMgASgJSABSB21lc3NhZ2WIAQFCCgoIX21lc3NhZ2U=');
 @$core.Deprecated('Use txnPayloadDescriptor instead')
 const txnPayload$json = const {
   '1': 'txnPayload',

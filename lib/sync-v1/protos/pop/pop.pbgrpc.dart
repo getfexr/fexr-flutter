@@ -15,6 +15,12 @@ import '../google/protobuf/empty.pb.dart' as $1;
 export 'pop.pb.dart';
 
 class POPServiceClient extends $grpc.Client {
+  static final _$requestChallenge =
+      $grpc.ClientMethod<$0.web3WalletPermission, $0.p2pChallengeResponse>(
+          '/protos.POPService/RequestChallenge',
+          ($0.web3WalletPermission value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $0.p2pChallengeResponse.fromBuffer(value));
   static final _$validatePermission =
       $grpc.ClientMethod<$0.web3WalletPermission, $0.p2pConnectionStatus>(
           '/protos.POPService/ValidatePermission',
@@ -54,6 +60,12 @@ class POPServiceClient extends $grpc.Client {
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
+
+  $grpc.ResponseFuture<$0.p2pChallengeResponse> requestChallenge(
+      $0.web3WalletPermission request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$requestChallenge, request, options: options);
+  }
 
   $grpc.ResponseFuture<$0.p2pConnectionStatus> validatePermission(
       $0.web3WalletPermission request,
@@ -98,6 +110,15 @@ abstract class POPServiceBase extends $grpc.Service {
   $core.String get $name => 'protos.POPService';
 
   POPServiceBase() {
+    $addMethod(
+        $grpc.ServiceMethod<$0.web3WalletPermission, $0.p2pChallengeResponse>(
+            'RequestChallenge',
+            requestChallenge_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $0.web3WalletPermission.fromBuffer(value),
+            ($0.p2pChallengeResponse value) => value.writeToBuffer()));
     $addMethod(
         $grpc.ServiceMethod<$0.web3WalletPermission, $0.p2pConnectionStatus>(
             'ValidatePermission',
@@ -147,6 +168,12 @@ abstract class POPServiceBase extends $grpc.Service {
         ($0.PushNotification value) => value.writeToBuffer()));
   }
 
+  $async.Future<$0.p2pChallengeResponse> requestChallenge_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$0.web3WalletPermission> request) async {
+    return requestChallenge(call, await request);
+  }
+
   $async.Future<$0.p2pConnectionStatus> validatePermission_Pre(
       $grpc.ServiceCall call,
       $async.Future<$0.web3WalletPermission> request) async {
@@ -179,6 +206,8 @@ abstract class POPServiceBase extends $grpc.Service {
     yield* walletNotification(call, await request);
   }
 
+  $async.Future<$0.p2pChallengeResponse> requestChallenge(
+      $grpc.ServiceCall call, $0.web3WalletPermission request);
   $async.Future<$0.p2pConnectionStatus> validatePermission(
       $grpc.ServiceCall call, $0.web3WalletPermission request);
   $async.Future<$0.rubixWalletData> syncWalletData(
