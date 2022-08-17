@@ -15,51 +15,41 @@ export 'pop.pbenum.dart';
 
 class rubixWalletData extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'rubixWalletData', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dIDHash', protoName: 'dIDHash')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peerID', protoName: 'peerID')
-    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'credits', $pb.PbFieldType.O3)
-    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalTxn', $pb.PbFieldType.O3, protoName: 'totalTxn')
-    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stakedTokens', $pb.PbFieldType.O3, protoName: 'stakedTokens')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dIDShare', protoName: 'dIDShare')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicShare', protoName: 'publicShare')
-    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'privateShare', protoName: 'privateShare')
-    ..a<$core.double>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'balance', $pb.PbFieldType.OD)
-    ..pc<TransactionHistory>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txnHistory', $pb.PbFieldType.PM, protoName: 'txnHistory', subBuilder: TransactionHistory.create)
-    ..pc<QuorumSignedTransaction>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'qSignedTxns', $pb.PbFieldType.PM, protoName: 'qSignedTxns', subBuilder: QuorumSignedTransaction.create)
-    ..pc<TokenChain>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tChains', $pb.PbFieldType.PM, protoName: 'tChains', subBuilder: TokenChain.create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dIDShare', protoName: 'dIDShare')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicShare', protoName: 'publicShare')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'privateShare', protoName: 'privateShare')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'dIDHash', protoName: 'dIDHash')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peerID', protoName: 'peerID')
+    ..a<$core.int>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalTxn', $pb.PbFieldType.O3, protoName: 'totalTxn')
+    ..a<$core.int>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stakedTokens', $pb.PbFieldType.O3, protoName: 'stakedTokens')
+    ..a<$core.int>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'credits', $pb.PbFieldType.O3)
+    ..a<$core.double>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'balance', $pb.PbFieldType.OD)
+    ..pc<TransactionHistory>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txnHistory', $pb.PbFieldType.PM, protoName: 'txnHistory', subBuilder: TransactionHistory.create)
+    ..pc<QuorumSignedTransaction>(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'qSignedTxns', $pb.PbFieldType.PM, protoName: 'qSignedTxns', subBuilder: QuorumSignedTransaction.create)
+    ..pc<TokenChain>(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tChains', $pb.PbFieldType.PM, protoName: 'tChains', subBuilder: TokenChain.create)
     ..hasRequiredFields = false
   ;
 
   rubixWalletData._() : super();
   factory rubixWalletData({
-    $core.String? dIDHash,
-    $core.String? peerID,
-    $core.int? credits,
-    $core.int? totalTxn,
-    $core.int? stakedTokens,
+    $core.String? signature,
     $core.String? dIDShare,
     $core.String? publicShare,
     $core.String? privateShare,
+    $core.String? dIDHash,
+    $core.String? peerID,
+    $core.int? totalTxn,
+    $core.int? stakedTokens,
+    $core.int? credits,
     $core.double? balance,
     $core.Iterable<TransactionHistory>? txnHistory,
     $core.Iterable<QuorumSignedTransaction>? qSignedTxns,
     $core.Iterable<TokenChain>? tChains,
   }) {
     final _result = create();
-    if (dIDHash != null) {
-      _result.dIDHash = dIDHash;
-    }
-    if (peerID != null) {
-      _result.peerID = peerID;
-    }
-    if (credits != null) {
-      _result.credits = credits;
-    }
-    if (totalTxn != null) {
-      _result.totalTxn = totalTxn;
-    }
-    if (stakedTokens != null) {
-      _result.stakedTokens = stakedTokens;
+    if (signature != null) {
+      _result.signature = signature;
     }
     if (dIDShare != null) {
       _result.dIDShare = dIDShare;
@@ -69,6 +59,21 @@ class rubixWalletData extends $pb.GeneratedMessage {
     }
     if (privateShare != null) {
       _result.privateShare = privateShare;
+    }
+    if (dIDHash != null) {
+      _result.dIDHash = dIDHash;
+    }
+    if (peerID != null) {
+      _result.peerID = peerID;
+    }
+    if (totalTxn != null) {
+      _result.totalTxn = totalTxn;
+    }
+    if (stakedTokens != null) {
+      _result.stakedTokens = stakedTokens;
+    }
+    if (credits != null) {
+      _result.credits = credits;
     }
     if (balance != null) {
       _result.balance = balance;
@@ -106,94 +111,103 @@ class rubixWalletData extends $pb.GeneratedMessage {
   static rubixWalletData? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get dIDHash => $_getSZ(0);
+  $core.String get signature => $_getSZ(0);
   @$pb.TagNumber(1)
-  set dIDHash($core.String v) { $_setString(0, v); }
+  set signature($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasDIDHash() => $_has(0);
+  $core.bool hasSignature() => $_has(0);
   @$pb.TagNumber(1)
-  void clearDIDHash() => clearField(1);
+  void clearSignature() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get peerID => $_getSZ(1);
+  $core.String get dIDShare => $_getSZ(1);
   @$pb.TagNumber(2)
-  set peerID($core.String v) { $_setString(1, v); }
+  set dIDShare($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasPeerID() => $_has(1);
+  $core.bool hasDIDShare() => $_has(1);
   @$pb.TagNumber(2)
-  void clearPeerID() => clearField(2);
+  void clearDIDShare() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.int get credits => $_getIZ(2);
+  $core.String get publicShare => $_getSZ(2);
   @$pb.TagNumber(3)
-  set credits($core.int v) { $_setSignedInt32(2, v); }
+  set publicShare($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasCredits() => $_has(2);
+  $core.bool hasPublicShare() => $_has(2);
   @$pb.TagNumber(3)
-  void clearCredits() => clearField(3);
+  void clearPublicShare() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.int get totalTxn => $_getIZ(3);
+  $core.String get privateShare => $_getSZ(3);
   @$pb.TagNumber(4)
-  set totalTxn($core.int v) { $_setSignedInt32(3, v); }
+  set privateShare($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasTotalTxn() => $_has(3);
+  $core.bool hasPrivateShare() => $_has(3);
   @$pb.TagNumber(4)
-  void clearTotalTxn() => clearField(4);
+  void clearPrivateShare() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.int get stakedTokens => $_getIZ(4);
+  $core.String get dIDHash => $_getSZ(4);
   @$pb.TagNumber(5)
-  set stakedTokens($core.int v) { $_setSignedInt32(4, v); }
+  set dIDHash($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasStakedTokens() => $_has(4);
+  $core.bool hasDIDHash() => $_has(4);
   @$pb.TagNumber(5)
-  void clearStakedTokens() => clearField(5);
+  void clearDIDHash() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get dIDShare => $_getSZ(5);
+  $core.String get peerID => $_getSZ(5);
   @$pb.TagNumber(6)
-  set dIDShare($core.String v) { $_setString(5, v); }
+  set peerID($core.String v) { $_setString(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasDIDShare() => $_has(5);
+  $core.bool hasPeerID() => $_has(5);
   @$pb.TagNumber(6)
-  void clearDIDShare() => clearField(6);
+  void clearPeerID() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.String get publicShare => $_getSZ(6);
+  $core.int get totalTxn => $_getIZ(6);
   @$pb.TagNumber(7)
-  set publicShare($core.String v) { $_setString(6, v); }
+  set totalTxn($core.int v) { $_setSignedInt32(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasPublicShare() => $_has(6);
+  $core.bool hasTotalTxn() => $_has(6);
   @$pb.TagNumber(7)
-  void clearPublicShare() => clearField(7);
+  void clearTotalTxn() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.String get privateShare => $_getSZ(7);
+  $core.int get stakedTokens => $_getIZ(7);
   @$pb.TagNumber(8)
-  set privateShare($core.String v) { $_setString(7, v); }
+  set stakedTokens($core.int v) { $_setSignedInt32(7, v); }
   @$pb.TagNumber(8)
-  $core.bool hasPrivateShare() => $_has(7);
+  $core.bool hasStakedTokens() => $_has(7);
   @$pb.TagNumber(8)
-  void clearPrivateShare() => clearField(8);
+  void clearStakedTokens() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.double get balance => $_getN(8);
+  $core.int get credits => $_getIZ(8);
   @$pb.TagNumber(9)
-  set balance($core.double v) { $_setDouble(8, v); }
+  set credits($core.int v) { $_setSignedInt32(8, v); }
   @$pb.TagNumber(9)
-  $core.bool hasBalance() => $_has(8);
+  $core.bool hasCredits() => $_has(8);
   @$pb.TagNumber(9)
-  void clearBalance() => clearField(9);
+  void clearCredits() => clearField(9);
 
   @$pb.TagNumber(10)
-  $core.List<TransactionHistory> get txnHistory => $_getList(9);
+  $core.double get balance => $_getN(9);
+  @$pb.TagNumber(10)
+  set balance($core.double v) { $_setDouble(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasBalance() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearBalance() => clearField(10);
 
   @$pb.TagNumber(11)
-  $core.List<QuorumSignedTransaction> get qSignedTxns => $_getList(10);
+  $core.List<TransactionHistory> get txnHistory => $_getList(10);
 
   @$pb.TagNumber(12)
-  $core.List<TokenChain> get tChains => $_getList(11);
+  $core.List<QuorumSignedTransaction> get qSignedTxns => $_getList(11);
+
+  @$pb.TagNumber(13)
+  $core.List<TokenChain> get tChains => $_getList(12);
 }
 
 class TokenChain extends $pb.GeneratedMessage {

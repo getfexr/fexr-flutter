@@ -12,32 +12,36 @@ import 'dart:typed_data' as $typed_data;
 const rubixWalletData$json = const {
   '1': 'rubixWalletData',
   '2': const [
-    const {'1': 'dIDHash', '3': 1, '4': 1, '5': 9, '10': 'dIDHash'},
-    const {'1': 'peerID', '3': 2, '4': 1, '5': 9, '10': 'peerID'},
-    const {'1': 'credits', '3': 3, '4': 1, '5': 5, '9': 0, '10': 'credits', '17': true},
-    const {'1': 'totalTxn', '3': 4, '4': 1, '5': 5, '9': 1, '10': 'totalTxn', '17': true},
-    const {'1': 'stakedTokens', '3': 5, '4': 1, '5': 5, '9': 2, '10': 'stakedTokens', '17': true},
-    const {'1': 'dIDShare', '3': 6, '4': 1, '5': 9, '9': 3, '10': 'dIDShare', '17': true},
-    const {'1': 'publicShare', '3': 7, '4': 1, '5': 9, '9': 4, '10': 'publicShare', '17': true},
-    const {'1': 'privateShare', '3': 8, '4': 1, '5': 9, '9': 5, '10': 'privateShare', '17': true},
-    const {'1': 'balance', '3': 9, '4': 1, '5': 1, '9': 6, '10': 'balance', '17': true},
-    const {'1': 'txnHistory', '3': 10, '4': 3, '5': 11, '6': '.protos.TransactionHistory', '10': 'txnHistory'},
-    const {'1': 'qSignedTxns', '3': 11, '4': 3, '5': 11, '6': '.protos.QuorumSignedTransaction', '10': 'qSignedTxns'},
-    const {'1': 'tChains', '3': 12, '4': 3, '5': 11, '6': '.protos.TokenChain', '10': 'tChains'},
+    const {'1': 'signature', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'signature', '17': true},
+    const {'1': 'dIDShare', '3': 2, '4': 1, '5': 9, '9': 1, '10': 'dIDShare', '17': true},
+    const {'1': 'publicShare', '3': 3, '4': 1, '5': 9, '9': 2, '10': 'publicShare', '17': true},
+    const {'1': 'privateShare', '3': 4, '4': 1, '5': 9, '9': 3, '10': 'privateShare', '17': true},
+    const {'1': 'dIDHash', '3': 5, '4': 1, '5': 9, '9': 4, '10': 'dIDHash', '17': true},
+    const {'1': 'peerID', '3': 6, '4': 1, '5': 9, '9': 5, '10': 'peerID', '17': true},
+    const {'1': 'totalTxn', '3': 7, '4': 1, '5': 5, '9': 6, '10': 'totalTxn', '17': true},
+    const {'1': 'stakedTokens', '3': 8, '4': 1, '5': 5, '9': 7, '10': 'stakedTokens', '17': true},
+    const {'1': 'credits', '3': 9, '4': 1, '5': 5, '9': 8, '10': 'credits', '17': true},
+    const {'1': 'balance', '3': 10, '4': 1, '5': 1, '9': 9, '10': 'balance', '17': true},
+    const {'1': 'txnHistory', '3': 11, '4': 3, '5': 11, '6': '.protos.TransactionHistory', '10': 'txnHistory'},
+    const {'1': 'qSignedTxns', '3': 12, '4': 3, '5': 11, '6': '.protos.QuorumSignedTransaction', '10': 'qSignedTxns'},
+    const {'1': 'tChains', '3': 13, '4': 3, '5': 11, '6': '.protos.TokenChain', '10': 'tChains'},
   ],
   '8': const [
-    const {'1': '_credits'},
-    const {'1': '_totalTxn'},
-    const {'1': '_stakedTokens'},
+    const {'1': '_signature'},
     const {'1': '_dIDShare'},
     const {'1': '_publicShare'},
     const {'1': '_privateShare'},
+    const {'1': '_dIDHash'},
+    const {'1': '_peerID'},
+    const {'1': '_totalTxn'},
+    const {'1': '_stakedTokens'},
+    const {'1': '_credits'},
     const {'1': '_balance'},
   ],
 };
 
 /// Descriptor for `rubixWalletData`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List rubixWalletDataDescriptor = $convert.base64Decode('Cg9ydWJpeFdhbGxldERhdGESGAoHZElESGFzaBgBIAEoCVIHZElESGFzaBIWCgZwZWVySUQYAiABKAlSBnBlZXJJRBIdCgdjcmVkaXRzGAMgASgFSABSB2NyZWRpdHOIAQESHwoIdG90YWxUeG4YBCABKAVIAVIIdG90YWxUeG6IAQESJwoMc3Rha2VkVG9rZW5zGAUgASgFSAJSDHN0YWtlZFRva2Vuc4gBARIfCghkSURTaGFyZRgGIAEoCUgDUghkSURTaGFyZYgBARIlCgtwdWJsaWNTaGFyZRgHIAEoCUgEUgtwdWJsaWNTaGFyZYgBARInCgxwcml2YXRlU2hhcmUYCCABKAlIBVIMcHJpdmF0ZVNoYXJliAEBEh0KB2JhbGFuY2UYCSABKAFIBlIHYmFsYW5jZYgBARI6Cgp0eG5IaXN0b3J5GAogAygLMhoucHJvdG9zLlRyYW5zYWN0aW9uSGlzdG9yeVIKdHhuSGlzdG9yeRJBCgtxU2lnbmVkVHhucxgLIAMoCzIfLnByb3Rvcy5RdW9ydW1TaWduZWRUcmFuc2FjdGlvblILcVNpZ25lZFR4bnMSLAoHdENoYWlucxgMIAMoCzISLnByb3Rvcy5Ub2tlbkNoYWluUgd0Q2hhaW5zQgoKCF9jcmVkaXRzQgsKCV90b3RhbFR4bkIPCg1fc3Rha2VkVG9rZW5zQgsKCV9kSURTaGFyZUIOCgxfcHVibGljU2hhcmVCDwoNX3ByaXZhdGVTaGFyZUIKCghfYmFsYW5jZQ==');
+final $typed_data.Uint8List rubixWalletDataDescriptor = $convert.base64Decode('Cg9ydWJpeFdhbGxldERhdGESIQoJc2lnbmF0dXJlGAEgASgJSABSCXNpZ25hdHVyZYgBARIfCghkSURTaGFyZRgCIAEoCUgBUghkSURTaGFyZYgBARIlCgtwdWJsaWNTaGFyZRgDIAEoCUgCUgtwdWJsaWNTaGFyZYgBARInCgxwcml2YXRlU2hhcmUYBCABKAlIA1IMcHJpdmF0ZVNoYXJliAEBEh0KB2RJREhhc2gYBSABKAlIBFIHZElESGFzaIgBARIbCgZwZWVySUQYBiABKAlIBVIGcGVlcklEiAEBEh8KCHRvdGFsVHhuGAcgASgFSAZSCHRvdGFsVHhuiAEBEicKDHN0YWtlZFRva2VucxgIIAEoBUgHUgxzdGFrZWRUb2tlbnOIAQESHQoHY3JlZGl0cxgJIAEoBUgIUgdjcmVkaXRziAEBEh0KB2JhbGFuY2UYCiABKAFICVIHYmFsYW5jZYgBARI6Cgp0eG5IaXN0b3J5GAsgAygLMhoucHJvdG9zLlRyYW5zYWN0aW9uSGlzdG9yeVIKdHhuSGlzdG9yeRJBCgtxU2lnbmVkVHhucxgMIAMoCzIfLnByb3Rvcy5RdW9ydW1TaWduZWRUcmFuc2FjdGlvblILcVNpZ25lZFR4bnMSLAoHdENoYWlucxgNIAMoCzISLnByb3Rvcy5Ub2tlbkNoYWluUgd0Q2hhaW5zQgwKCl9zaWduYXR1cmVCCwoJX2RJRFNoYXJlQg4KDF9wdWJsaWNTaGFyZUIPCg1fcHJpdmF0ZVNoYXJlQgoKCF9kSURIYXNoQgkKB19wZWVySURCCwoJX3RvdGFsVHhuQg8KDV9zdGFrZWRUb2tlbnNCCgoIX2NyZWRpdHNCCgoIX2JhbGFuY2U=');
 @$core.Deprecated('Use tokenChainDescriptor instead')
 const TokenChain$json = const {
   '1': 'TokenChain',
