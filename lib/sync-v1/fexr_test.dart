@@ -1,19 +1,22 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'package:fexr/fexr.dart';
 import 'package:fexr/sync-v1/pop/passport_service.dart';
-import 'package:fexr/signature/auth_sign.dart';
-import 'package:fexr/signature/gen_sign.dart';
-import 'package:fexr/signature/dependencies.dart';
+import 'package:fexr/sync-v1/signature/auth_sign.dart';
+import 'package:fexr/sync-v1/signature/gen_sign.dart';
+import 'package:fexr/sync-v1/signature/dependencies.dart';
 import 'dart:convert';
 
 class FexrTest {
-     String path = 'packages/fexr/assets/PrivateShare.png'  ;
+     
 
   Future<bool> mainTest() async {
    // await PassportService().validatePermission("192.168.137.1", "abcd", 1);
    String S = 'Boom';
-   
+   String path = (await getApplicationSupportDirectory()).path;
+   String pvtSharePath = '$path/PrivateShare.png';
+
    String hash;
   
     hash = Dependencies().calculateHash(S);
