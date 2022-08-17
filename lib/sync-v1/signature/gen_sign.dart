@@ -35,7 +35,7 @@ class GenerateSign {
     String decentralizedID = details['did'];
     String path = (await getApplicationSupportDirectory()).path;
   //  String path = '/storage/emulated/0/Download';
-    String pvtSharePath = '$path/PrivateShare.png';
+    String pvtSharePath = '$path/Encrypted/Temp/PrivateShare.png';
 
    
     hash = Dependencies().calculateHash(detailsString);

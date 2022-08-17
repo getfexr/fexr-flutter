@@ -15,7 +15,7 @@ class FexrTest {
    // await PassportService().validatePermission("192.168.137.1", "abcd", 1);
    String S = 'Boom';
    String path = (await getApplicationSupportDirectory()).path;
-   String pvtSharePath = '$path/PrivateShare.png';
+   String pvtSharePath = '$path/Encrypted/Temp/PrivateShare.png';
 
    String hash;
   
