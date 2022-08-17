@@ -19,13 +19,14 @@ class AuthenticateSign{
    String path = (await getApplicationSupportDirectory()).path; - Path to the folder where the files are stored when the did is generated from the wallet.
 
  */
-  String path = 'packages/fexr/assets';
+  //String path = 'packages/fexr/assets';
+  String path = (await getApplicationSupportDirectory()).path;
   
-  String didPath = '$path/DID.png';
+  String didPath = '$path/Encrypted/Temp/DID.png';
  
   Future<String> senderDidbinary = Dependencies().imageToBinary(didPath);
   String senderDid = await senderDidbinary;
-  String publicSharePath = '$path/PublicShare.png';
+  String publicSharePath = '$path/Encrypted/Temp/PublicShare.png';
   
   Future<String> walletIdbinary = Dependencies().imageToBinary(publicSharePath);
   String walletId = await walletIdbinary;

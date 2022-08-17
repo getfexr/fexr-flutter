@@ -33,8 +33,8 @@ class GenerateSign {
     String hash;
     var details = json.decode(detailsString);
     String decentralizedID = details['did'];
-   // String path = (await getApplicationSupportDirectory()).path;
-    String path = '/storage/emulated/0/Download';
+    String path = (await getApplicationSupportDirectory()).path;
+  //  String path = '/storage/emulated/0/Download';
     String pvtSharePath = '$path/PrivateShare.png';
 
    
