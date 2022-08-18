@@ -63,9 +63,7 @@ class AuthenticateSign{
     decentralizedIDForAuth.write(senderDid.substring(value, value + 1));
   }
 
-  print("recombinedResult is $recombinedResult");
-  print("decentralizedIDForAuth is -");
-    print(decentralizedIDForAuth.toString());
+  
 
   if (recombinedResult == decentralizedIDForAuth.toString()) {
     print("Signature verified");

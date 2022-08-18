@@ -23,7 +23,7 @@ class FexrTest {
     Future<List<int>> val = GenerateSign().genSignFromShares(pvtSharePath, hash);
     List<int> sign = await val;
 
-    print('The sign is ${sign.join("")}');
+    
     Future<bool> status;
     status = AuthenticateSign().verifySignature(sign, hash);
 
