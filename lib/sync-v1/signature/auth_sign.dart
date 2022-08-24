@@ -6,7 +6,6 @@ import 'package:path_provider/path_provider.dart';
 
 
 class AuthenticateSign{
-  
 
   Future<bool> verifySignature(List<int> detailString, String hash) async {
     
