@@ -1,19 +1,14 @@
 class SignModel {
   String? _type;
   Request? _request;
-  Signature? _signature;
   Theme? _theme;
 
-  SignModel(
-      {String? type, Request? request, Signature? signature, Theme? theme}) {
+  SignModel({String? type, Request? request, Theme? theme}) {
     if (type != null) {
       this._type = type;
     }
     if (request != null) {
       this._request = request;
-    }
-    if (signature != null) {
-      this._signature = signature;
     }
     if (theme != null) {
       this._theme = theme;
@@ -24,8 +19,6 @@ class SignModel {
   set type(String? type) => _type = type;
   Request? get request => _request;
   set request(Request? request) => _request = request;
-  Signature? get signature => _signature;
-  set signature(Signature? signature) => _signature = signature;
   Theme? get theme => _theme;
   set theme(Theme? theme) => _theme = theme;
 
@@ -33,9 +26,6 @@ class SignModel {
     _type = json['type'];
     _request =
         json['request'] != null ? new Request.fromJson(json['request']) : null;
-    _signature = json['signature'] != null
-        ? new Signature.fromJson(json['signature'])
-        : null;
     _theme = json['theme'] != null ? new Theme.fromJson(json['theme']) : null;
   }
 
@@ -44,9 +34,6 @@ class SignModel {
     data['type'] = this._type;
     if (this._request != null) {
       data['request'] = this._request!.toJson();
-    }
-    if (this._signature != null) {
-      data['signature'] = this._signature!.toJson();
     }
     if (this._theme != null) {
       data['theme'] = this._theme!.toJson();
@@ -138,9 +125,9 @@ class Request {
 
 class Payload {
   String? _data;
-  int? _amount;
+  double? _amount;
 
-  Payload({String? data, int? amount}) {
+  Payload({String? data, double? amount}) {
     if (data != null) {
       this._data = data;
     }
@@ -151,8 +138,8 @@ class Payload {
 
   String? get data => _data;
   set data(String? data) => _data = data;
-  int? get amount => _amount;
-  set amount(int? amount) => _amount = amount;
+  double? get amount => _amount;
+  set amount(double? amount) => _amount = amount;
 
   Payload.fromJson(Map<String, dynamic> json) {
     _data = json['data'];
@@ -167,86 +154,33 @@ class Payload {
   }
 }
 
-class Signature {
-  String? _signature;
-  String? _signer;
-  String? _signatureType;
-  String? _timestamp;
-
-  Signature(
-      {String? signature,
-      String? signer,
-      String? signatureType,
-      String? timestamp}) {
-    if (signature != null) {
-      this._signature = signature;
-    }
-    if (signer != null) {
-      this._signer = signer;
-    }
-    if (signatureType != null) {
-      this._signatureType = signatureType;
-    }
-    if (timestamp != null) {
-      this._timestamp = timestamp;
-    }
-  }
-
-  String? get signature => _signature;
-  set signature(String? signature) => _signature = signature;
-  String? get signer => _signer;
-  set signer(String? signer) => _signer = signer;
-  String? get signatureType => _signatureType;
-  set signatureType(String? signatureType) => _signatureType = signatureType;
-  String? get timestamp => _timestamp;
-  set timestamp(String? timestamp) => _timestamp = timestamp;
-
-  Signature.fromJson(Map<String, dynamic> json) {
-    _signature = json['signature'];
-    _signer = json['signer'];
-    _signatureType = json['signature_type'];
-    _timestamp = json['timestamp'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['signature'] = this._signature;
-    data['signer'] = this._signer;
-    data['signature_type'] = this._signatureType;
-    data['timestamp'] = this._timestamp;
-    return data;
-  }
-}
-
 class Theme {
-  String? _gradientColorOne;
-  String? _gradientColorTwo;
+  String? _colorOne;
+  String? _colorTwo;
 
-  Theme({String? gradientColorOne, String? gradientColorTwo}) {
-    if (gradientColorOne != null) {
-      this._gradientColorOne = gradientColorOne;
+  Theme({String? colorOne, String? colorTwo}) {
+    if (colorOne != null) {
+      this._colorOne = colorOne;
     }
-    if (gradientColorTwo != null) {
-      this._gradientColorTwo = gradientColorTwo;
+    if (colorTwo != null) {
+      this._colorTwo = colorTwo;
     }
   }
 
-  String? get gradientColorOne => _gradientColorOne;
-  set gradientColorOne(String? gradientColorOne) =>
-      _gradientColorOne = gradientColorOne;
-  String? get gradientColorTwo => _gradientColorTwo;
-  set gradientColorTwo(String? gradientColorTwo) =>
-      _gradientColorTwo = gradientColorTwo;
+  String? get colorOne => _colorOne;
+  set colorOne(String? colorOne) => _colorOne = colorOne;
+  String? get colorTwo => _colorTwo;
+  set colorTwo(String? colorTwo) => _colorTwo = colorTwo;
 
   Theme.fromJson(Map<String, dynamic> json) {
-    _gradientColorOne = json['gradient_color_one'];
-    _gradientColorTwo = json['gradient_color_two'];
+    _colorOne = json['color_one'];
+    _colorTwo = json['color_two'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['gradient_color_one'] = this._gradientColorOne;
-    data['gradient_color_two'] = this._gradientColorTwo;
+    data['color_one'] = this._colorOne;
+    data['color_two'] = this._colorTwo;
     return data;
   }
 }
