@@ -1,14 +1,19 @@
 class SignModel {
   String? _type;
   Request? _request;
+  Signature? _signature;
   Theme? _theme;
 
-  SignModel({String? type, Request? request, Theme? theme}) {
+  SignModel(
+      {String? type, Request? request, Signature? signature, Theme? theme}) {
     if (type != null) {
       this._type = type;
     }
     if (request != null) {
       this._request = request;
+    }
+    if (signature != null) {
+      this._signature = signature;
     }
     if (theme != null) {
       this._theme = theme;
@@ -19,6 +24,8 @@ class SignModel {
   set type(String? type) => _type = type;
   Request? get request => _request;
   set request(Request? request) => _request = request;
+  Signature? get signature => _signature;
+  set signature(Signature? signature) => _signature = signature;
   Theme? get theme => _theme;
   set theme(Theme? theme) => _theme = theme;
 
@@ -26,6 +33,9 @@ class SignModel {
     _type = json['type'];
     _request =
         json['request'] != null ? new Request.fromJson(json['request']) : null;
+    _signature = json['signature'] != null
+        ? new Signature.fromJson(json['signature'])
+        : null;
     _theme = json['theme'] != null ? new Theme.fromJson(json['theme']) : null;
   }
 
@@ -34,6 +44,9 @@ class SignModel {
     data['type'] = this._type;
     if (this._request != null) {
       data['request'] = this._request!.toJson();
+    }
+    if (this._signature != null) {
+      data['signature'] = this._signature!.toJson();
     }
     if (this._theme != null) {
       data['theme'] = this._theme!.toJson();
@@ -150,6 +163,57 @@ class Payload {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['data'] = this._data;
     data['amount'] = this._amount;
+    return data;
+  }
+}
+
+class Signature {
+  String? _signature;
+  String? _signer;
+  String? _signatureType;
+  String? _timestamp;
+
+  Signature(
+      {String? signature,
+      String? signer,
+      String? signatureType,
+      String? timestamp}) {
+    if (signature != null) {
+      this._signature = signature;
+    }
+    if (signer != null) {
+      this._signer = signer;
+    }
+    if (signatureType != null) {
+      this._signatureType = signatureType;
+    }
+    if (timestamp != null) {
+      this._timestamp = timestamp;
+    }
+  }
+
+  String? get signature => _signature;
+  set signature(String? signature) => _signature = signature;
+  String? get signer => _signer;
+  set signer(String? signer) => _signer = signer;
+  String? get signatureType => _signatureType;
+  set signatureType(String? signatureType) => _signatureType = signatureType;
+  String? get timestamp => _timestamp;
+  set timestamp(String? timestamp) => _timestamp = timestamp;
+
+  Signature.fromJson(Map<String, dynamic> json) {
+    _signature = json['signature'];
+    _signer = json['signer'];
+    _signatureType = json['signature_type'];
+    _timestamp = json['timestamp'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['signature'] = this._signature;
+    data['signer'] = this._signer;
+    data['signature_type'] = this._signatureType;
+    data['timestamp'] = this._timestamp;
     return data;
   }
 }
