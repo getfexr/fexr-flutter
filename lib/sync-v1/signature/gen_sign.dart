@@ -31,8 +31,8 @@ class GenerateSign {
 
   Future<String> sign(String detailsString) async {
     String hash;
-    var details = json.decode(detailsString);
-    String decentralizedID = details['did'];
+   // var details = json.decode(detailsString);
+  //  String decentralizedID = details['did'];
     String path = (await getApplicationSupportDirectory()).path;
   
     String pvtSharePath = '$path/Encrypted/Temp/PrivateShare.png';
@@ -45,6 +45,7 @@ class GenerateSign {
     var P = Dependencies().randomPositions("signer", hash, 32, privateIntegerArray);
     List<int> finalPos = P["posForSign"];
     List<int> p1Sign = Dependencies().getPrivatePosition(finalPos, privateIntegerArray);
+    
    
     return p1Sign.join("");
 
