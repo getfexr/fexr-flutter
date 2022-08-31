@@ -23,7 +23,7 @@ class PassportService {
 
     try {
       response = await stub
-          .validatePermission(web3WalletPermission(dID: dID, code: code));
+          .validatePermission(web3WalletPermission(dID: dID, code: code, payload: ""));
       // result = response.toString();
     } catch (e) {
       return p2pConnectionStatus(
