@@ -13,3 +13,4 @@ export 'package:fexr/sync-v1/protos/google/protobuf/empty.pbjson.dart';
 export 'package:fexr/sync-v1/signature/auth_sign.dart';
 export 'package:fexr/sync-v1/signature/gen_sign.dart';
 export 'package:fexr/sync-v1/signature/sign_model.dart';
+export 'package:fexr/sync-v1/buttons.dart';
