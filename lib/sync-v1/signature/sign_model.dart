@@ -30,7 +30,7 @@ class SignModel {
   set theme(Theme? theme) => _theme = theme;
 
   SignModel.fromJson(Map<String, dynamic> json) {
-    _type = json['type'];
+    _type = json['type']!= null ? json['type'] : "";
     _request =
         json['request'] != null ? new Request.fromJson(json['request']) : null;
     _signature = json['signature'] != null
