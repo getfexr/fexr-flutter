@@ -7,6 +7,8 @@ class PassportService {
 
   Future<p2pConnectionStatus> validatePermission(
       String proxyIP, String dID, int code) async {
+    print("Proxy connecting: $proxyIP ...");
+
     p2pConnectionStatus response;
     final channel = ClientChannel(
       proxyIP,
@@ -22,9 +24,9 @@ class PassportService {
         options: CallOptions(timeout: Duration(seconds: 10)));
 
     try {
-      response = await stub
-          .validatePermission(web3WalletPermission(dID: dID, code: code, payload: ""));
-      // result = response.toString();
+      response = await stub.validatePermission(
+          web3WalletPermission(dID: dID, code: code, payload: ""));
+      print(response.toString());
     } catch (e) {
       return p2pConnectionStatus(
           connected: false, code: 404, message: e.toString());
