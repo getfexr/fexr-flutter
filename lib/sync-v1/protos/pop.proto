@@ -107,6 +107,18 @@ message txnStatus {
     optional string message = 3;
 }
 
+message shareUpload {
+    string dID = 1;
+    string publicShare = 2;
+}
+
+message uploadStatus {
+    enum UPLOAD_STATUS {
+        SUCCESS = 0;
+        FAILED = 1;
+    }
+}
+
 service POPService {
   rpc RequestChallenge (web3WalletPermission) returns (p2pChallengeResponse) {}
   rpc ValidatePermission (web3WalletPermission) returns (p2pConnectionStatus) {}
@@ -115,4 +127,5 @@ service POPService {
   rpc InvalidatePermission (web3WalletPermission) returns (p2pConnectionStatus) {}
   rpc InitRubixTxn (txnPayload) returns (stream txnStatus) {}
   rpc WalletNotification(google.protobuf.Empty) returns (stream PushNotification) {}
+  rpc UploadShare(shareUpload) returns (uploadStatus) {}
 }
