@@ -20,6 +20,7 @@ dependencies:
   image: ^3.2.0
   sha3: ^0.2.0
   convert: ^3.0.2
+  
   # run on terminal before generating proto: dart pub global activate protoc_plugin
 
 dev_dependencies:
