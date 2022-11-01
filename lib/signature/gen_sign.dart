@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:path_provider/path_provider.dart';
 import 'package:sha3/sha3.dart';
 
-import 'package:fexr/sync-v1/signature/dependencies.dart';
+import 'package:fexr/signature/dependencies.dart';
 
 class GenerateSign {
  Future<List<int>> genSignFromShares(String imagePath, String hash) async{

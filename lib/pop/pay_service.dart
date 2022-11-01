@@ -1,4 +1,4 @@
-import 'package:fexr/sync-v1/const.dart';
+import 'package:fexr/const.dart';
 import 'package:fexr/sync-v1/protos/google/protobuf/empty.pb.dart';
 import 'package:fexr/sync-v1/protos/pop/pop.pbgrpc.dart';
 import 'package:grpc/grpc.dart';

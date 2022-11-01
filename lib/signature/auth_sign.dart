@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:fexr/sync-v1/signature/dependencies.dart';
+import 'package:fexr/signature/dependencies.dart';
 import 'package:path_provider/path_provider.dart';
 
 
