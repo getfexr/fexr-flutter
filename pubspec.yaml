@@ -2,7 +2,7 @@ name: fexr
 description: RPC SDK for Fexr.
 repository: https://github.com/getfexr/fexr-flutter
 issue_tracker: https://github.com/getfexr/fexr-flutter/issues
-version: 0.6.0
+version: 0.7.0
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -20,6 +20,8 @@ dependencies:
   image: ^3.2.0
   sha3: ^0.2.0
   convert: ^3.0.2
+  fixnum: ^1.0.1
+  
   # run on terminal before generating proto: dart pub global activate protoc_plugin
 
 dev_dependencies:
