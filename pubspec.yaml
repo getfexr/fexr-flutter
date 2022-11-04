@@ -2,7 +2,7 @@ name: fexr
 description: RPC SDK for Fexr.
 repository: https://github.com/getfexr/fexr-flutter
 issue_tracker: https://github.com/getfexr/fexr-flutter/issues
-version: 0.7.1
+version: 0.7.2
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
