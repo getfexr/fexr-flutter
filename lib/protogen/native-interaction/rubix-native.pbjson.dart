@@ -55,13 +55,17 @@ const TxnDetails$json = const {
     const {'1': 'tokenPreviousSender', '3': 7, '4': 1, '5': 9, '10': 'tokenPreviousSender'},
     const {'1': 'doubleSpendString', '3': 8, '4': 1, '5': 9, '10': 'doubleSpendString'},
     const {'1': 'receiverDidIpfsHash', '3': 9, '4': 1, '5': 9, '10': 'receiverDidIpfsHash'},
-    const {'1': 'requestedAmount', '3': 10, '4': 1, '5': 9, '10': 'requestedAmount'},
+    const {'1': 'requestedAmount', '3': 10, '4': 1, '5': 1, '10': 'requestedAmount'},
     const {'1': 'comment', '3': 11, '4': 1, '5': 9, '10': 'comment'},
+    const {'1': 'tid', '3': 12, '4': 1, '5': 9, '10': 'tid'},
+    const {'1': 'allTokens', '3': 13, '4': 1, '5': 9, '10': 'allTokens'},
+    const {'1': 'newPart', '3': 14, '4': 1, '5': 8, '10': 'newPart'},
+    const {'1': 'oldPart', '3': 15, '4': 1, '5': 8, '10': 'oldPart'},
   ],
 };
 
 /// Descriptor for `TxnDetails`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List txnDetailsDescriptor = $convert.base64Decode('CgpUeG5EZXRhaWxzEiAKC3dob2xlVG9rZW5zGAEgASgJUgt3aG9sZVRva2VucxIwChN3aG9sZVRva2VuQ2hhaW5IYXNoGAIgASgJUhN3aG9sZVRva2VuQ2hhaW5IYXNoEi4KEnBhcnRUb2tlbkNoYWluSGFzaBgDIAEoCVIScGFydFRva2VuQ2hhaW5IYXNoEh4KCnBhcnRUb2tlbnMYBCABKAlSCnBhcnRUb2tlbnMSMgoUcGFydFRva2VuQ2hhaW5BcnJheXMYBSABKAlSFHBhcnRUb2tlbkNoYWluQXJyYXlzEiIKDGFtb3VudExlZGdlchgGIAEoCVIMYW1vdW50TGVkZ2VyEjAKE3Rva2VuUHJldmlvdXNTZW5kZXIYByABKAlSE3Rva2VuUHJldmlvdXNTZW5kZXISLAoRZG91YmxlU3BlbmRTdHJpbmcYCCABKAlSEWRvdWJsZVNwZW5kU3RyaW5nEjAKE3JlY2VpdmVyRGlkSXBmc0hhc2gYCSABKAlSE3JlY2VpdmVyRGlkSXBmc0hhc2gSKAoPcmVxdWVzdGVkQW1vdW50GAogASgJUg9yZXF1ZXN0ZWRBbW91bnQSGAoHY29tbWVudBgLIAEoCVIHY29tbWVudA==');
+final $typed_data.Uint8List txnDetailsDescriptor = $convert.base64Decode('CgpUeG5EZXRhaWxzEiAKC3dob2xlVG9rZW5zGAEgASgJUgt3aG9sZVRva2VucxIwChN3aG9sZVRva2VuQ2hhaW5IYXNoGAIgASgJUhN3aG9sZVRva2VuQ2hhaW5IYXNoEi4KEnBhcnRUb2tlbkNoYWluSGFzaBgDIAEoCVIScGFydFRva2VuQ2hhaW5IYXNoEh4KCnBhcnRUb2tlbnMYBCABKAlSCnBhcnRUb2tlbnMSMgoUcGFydFRva2VuQ2hhaW5BcnJheXMYBSABKAlSFHBhcnRUb2tlbkNoYWluQXJyYXlzEiIKDGFtb3VudExlZGdlchgGIAEoCVIMYW1vdW50TGVkZ2VyEjAKE3Rva2VuUHJldmlvdXNTZW5kZXIYByABKAlSE3Rva2VuUHJldmlvdXNTZW5kZXISLAoRZG91YmxlU3BlbmRTdHJpbmcYCCABKAlSEWRvdWJsZVNwZW5kU3RyaW5nEjAKE3JlY2VpdmVyRGlkSXBmc0hhc2gYCSABKAlSE3JlY2VpdmVyRGlkSXBmc0hhc2gSKAoPcmVxdWVzdGVkQW1vdW50GAogASgBUg9yZXF1ZXN0ZWRBbW91bnQSGAoHY29tbWVudBgLIAEoCVIHY29tbWVudBIQCgN0aWQYDCABKAlSA3RpZBIcCglhbGxUb2tlbnMYDSABKAlSCWFsbFRva2VucxIYCgduZXdQYXJ0GA4gASgIUgduZXdQYXJ0EhgKB29sZFBhcnQYDyABKAhSB29sZFBhcnQ=');
 @$core.Deprecated('Use requestTransactionPayloadResDescriptor instead')
 const RequestTransactionPayloadRes$json = const {
   '1': 'RequestTransactionPayloadRes',

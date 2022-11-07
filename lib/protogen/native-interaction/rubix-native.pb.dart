@@ -217,8 +217,12 @@ class TxnDetails extends $pb.GeneratedMessage {
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tokenPreviousSender', protoName: 'tokenPreviousSender')
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'doubleSpendString', protoName: 'doubleSpendString')
     ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiverDidIpfsHash', protoName: 'receiverDidIpfsHash')
-    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'requestedAmount', protoName: 'requestedAmount')
+    ..a<$core.double>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'requestedAmount', $pb.PbFieldType.OD, protoName: 'requestedAmount')
     ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'comment')
+    ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tid')
+    ..aOS(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'allTokens', protoName: 'allTokens')
+    ..aOB(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'newPart', protoName: 'newPart')
+    ..aOB(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'oldPart', protoName: 'oldPart')
     ..hasRequiredFields = false
   ;
 
@@ -233,8 +237,12 @@ class TxnDetails extends $pb.GeneratedMessage {
     $core.String? tokenPreviousSender,
     $core.String? doubleSpendString,
     $core.String? receiverDidIpfsHash,
-    $core.String? requestedAmount,
+    $core.double? requestedAmount,
     $core.String? comment,
+    $core.String? tid,
+    $core.String? allTokens,
+    $core.bool? newPart,
+    $core.bool? oldPart,
   }) {
     final _result = create();
     if (wholeTokens != null) {
@@ -269,6 +277,18 @@ class TxnDetails extends $pb.GeneratedMessage {
     }
     if (comment != null) {
       _result.comment = comment;
+    }
+    if (tid != null) {
+      _result.tid = tid;
+    }
+    if (allTokens != null) {
+      _result.allTokens = allTokens;
+    }
+    if (newPart != null) {
+      _result.newPart = newPart;
+    }
+    if (oldPart != null) {
+      _result.oldPart = oldPart;
     }
     return _result;
   }
@@ -375,9 +395,9 @@ class TxnDetails extends $pb.GeneratedMessage {
   void clearReceiverDidIpfsHash() => clearField(9);
 
   @$pb.TagNumber(10)
-  $core.String get requestedAmount => $_getSZ(9);
+  $core.double get requestedAmount => $_getN(9);
   @$pb.TagNumber(10)
-  set requestedAmount($core.String v) { $_setString(9, v); }
+  set requestedAmount($core.double v) { $_setDouble(9, v); }
   @$pb.TagNumber(10)
   $core.bool hasRequestedAmount() => $_has(9);
   @$pb.TagNumber(10)
@@ -391,6 +411,42 @@ class TxnDetails extends $pb.GeneratedMessage {
   $core.bool hasComment() => $_has(10);
   @$pb.TagNumber(11)
   void clearComment() => clearField(11);
+
+  @$pb.TagNumber(12)
+  $core.String get tid => $_getSZ(11);
+  @$pb.TagNumber(12)
+  set tid($core.String v) { $_setString(11, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasTid() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearTid() => clearField(12);
+
+  @$pb.TagNumber(13)
+  $core.String get allTokens => $_getSZ(12);
+  @$pb.TagNumber(13)
+  set allTokens($core.String v) { $_setString(12, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasAllTokens() => $_has(12);
+  @$pb.TagNumber(13)
+  void clearAllTokens() => clearField(13);
+
+  @$pb.TagNumber(14)
+  $core.bool get newPart => $_getBF(13);
+  @$pb.TagNumber(14)
+  set newPart($core.bool v) { $_setBool(13, v); }
+  @$pb.TagNumber(14)
+  $core.bool hasNewPart() => $_has(13);
+  @$pb.TagNumber(14)
+  void clearNewPart() => clearField(14);
+
+  @$pb.TagNumber(15)
+  $core.bool get oldPart => $_getBF(14);
+  @$pb.TagNumber(15)
+  set oldPart($core.bool v) { $_setBool(14, v); }
+  @$pb.TagNumber(15)
+  $core.bool hasOldPart() => $_has(14);
+  @$pb.TagNumber(15)
+  void clearOldPart() => clearField(15);
 }
 
 class RequestTransactionPayloadRes_TxnSignPayload extends $pb.GeneratedMessage {
