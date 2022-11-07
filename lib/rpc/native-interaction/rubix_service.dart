@@ -14,7 +14,7 @@ class rubixService {
           options: const ChannelOptions(
               credentials: ChannelCredentials.insecure()));
        return RubixServiceClient(channel, options: CallOptions(metadata: {
-      'Authorization': 'Access $accessToken'
+      'Authorization': 'Bearer $accessToken'
     }));
   
    }
