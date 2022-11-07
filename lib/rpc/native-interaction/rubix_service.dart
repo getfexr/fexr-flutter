@@ -6,26 +6,26 @@ import 'package:grpc/grpc.dart';
 
 
 
-class rubixService {
+class RubixService {
 
-   RubixServiceClient getConnection(String gateway, String bearerToken){
+   RubixServiceClient getConnection(String gateway, String accessToken){
       ClientChannel channel = ClientChannel(gateway,
           port: Const.PORT,
           options: const ChannelOptions(
               credentials: ChannelCredentials.insecure()));
        return RubixServiceClient(channel, options: CallOptions(metadata: {
-      'Authorization': 'Bearer $bearerToken'
+      'Authorization': 'Bearer $accessToken'
     }));
   
    }
 
-  Future<CreateDIDRes> createDID({required String gateway, required String didImageBase64, required String publicShareImageBase64, required String bearerToken}) async {
-    RubixServiceClient stub = getConnection(gateway,bearerToken);
+  Future<CreateDIDRes> createDID({required String gateway, required String didImagePath, required String publicSharePath, required String accessToken}) async {
+    RubixServiceClient stub = getConnection(gateway,accessToken);
     try {
       var response = await stub.createDID(
         CreateDIDReq(
-          didImage: didImageBase64,
-          publicShare: publicShareImageBase64
+          didImage: await Dependencies().imageToBase64(didImagePath),
+          publicShare: await Dependencies().imageToBase64(publicSharePath)
 
         ));
     return response;
@@ -36,8 +36,8 @@ class rubixService {
 
   }
 
-  Future<InitiateTransactionRes> initiateTransaction ({required String gateway, required String bearerToken, required InitiateTransactionReq initiatePayload, required String imagePath }) async {
-    RubixServiceClient stub = getConnection(gateway,bearerToken);
+  Future<InitiateTransactionRes> initiateTransaction ({required String gateway, required String accessToken, required InitiateTransactionReq initiatePayload, required String imagePath }) async {
+    RubixServiceClient stub = getConnection(gateway,accessToken);
     try {
       var response = await stub.initiateTransaction(
         InitiateTransactionReq(
@@ -71,8 +71,8 @@ class rubixService {
     }
 }
 
-  Future<RequestTransactionPayloadRes> requestTransactionPayload({required String gateway, required String bearerToken, required RequestTransactionPayloadReq payloadReq}) async {
-    RubixServiceClient stub = getConnection(gateway,bearerToken);
+  Future<RequestTransactionPayloadRes> requestTransactionPayload({required String gateway, required String accessToken, required RequestTransactionPayloadReq payloadReq}) async {
+    RubixServiceClient stub = getConnection(gateway,accessToken);
     try {
       var response = await stub.requestTransactionPayload(
         RequestTransactionPayloadReq(
@@ -90,24 +90,5 @@ class rubixService {
 
   }
   
-
-
 }
 
-// Future<void> main() async {
-//     late SkyServiceClient sky;
-//     HostResponse data = await HostService().host("6629","localhost", "wfeguewgfuye", "wgdqwudg"); 
-//     dynamic bearerToken = data.accessToken?.token as dynamic;
-//     print(bearerToken);
-//     final channel = ClientChannel("localhost",
-//         port: Const.PORT,
-//         options: ChannelOptions(credentials: ChannelCredentials.insecure()));
-//     //    sky = SkyServiceClient(channel);
-//         sky = SkyServiceClient(channel, options: CallOptions(
-//         metadata: {
-//           'Authorization': 'Bearer ${bearerToken}'
-//         }
-//       ));
-//       var response = await sky.getUserInfo(Empty());
-//       print(response);
-//   }
