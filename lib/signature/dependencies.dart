@@ -206,4 +206,18 @@ class Dependencies {
     }
     return tempo.toString();
   }
+  Future<String> imageToBase64(String imagePath) async {
+    File file = File(imagePath);
+    List<int> imageBytes = await file.readAsBytes();
+    String base64Image = base64Encode(imageBytes);
+    return base64Image;
+  }
+
+  //function to convert base64 string to image
+  Future<File> base64ToImage(String base64Image, String path) async {
+    File file = File(path);
+    await file.writeAsBytes(base64Decode(base64Image));
+    return file;
+  }
+
 }
