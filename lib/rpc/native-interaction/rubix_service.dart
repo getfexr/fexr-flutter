@@ -6,7 +6,7 @@ import 'package:grpc/grpc.dart';
 
 
 
-class rubixService {
+class RubixService {
 
    RubixServiceClient getConnection(String gateway, String accessToken){
       ClientChannel channel = ClientChannel(gateway,
@@ -90,24 +90,5 @@ class rubixService {
 
   }
   
-
-
 }
 
-// Future<void> main() async {
-//     late SkyServiceClient sky;
-//     HostResponse data = await HostService().host("6629","localhost", "wfeguewgfuye", "wgdqwudg"); 
-//     dynamic accessToken = data.accessToken?.token as dynamic;
-//     print(accessToken);
-//     final channel = ClientChannel("localhost",
-//         port: Const.PORT,
-//         options: ChannelOptions(credentials: ChannelCredentials.insecure()));
-//     //    sky = SkyServiceClient(channel);
-//         sky = SkyServiceClient(channel, options: CallOptions(
-//         metadata: {
-//           'Authorization': 'access ${accessToken}'
-//         }
-//       ));
-//       var response = await sky.getUserInfo(Empty());
-//       print(response);
-//   }
