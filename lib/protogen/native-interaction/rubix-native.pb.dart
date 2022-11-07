@@ -72,17 +72,22 @@ class CreateDIDReq extends $pb.GeneratedMessage {
 
 class CreateDIDRes extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateDIDRes', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'walletId', protoName: 'walletId')
     ..hasRequiredFields = false
   ;
 
   CreateDIDRes._() : super();
   factory CreateDIDRes({
-    $core.bool? success,
+    $core.String? did,
+    $core.String? walletId,
   }) {
     final _result = create();
-    if (success != null) {
-      _result.success = success;
+    if (did != null) {
+      _result.did = did;
+    }
+    if (walletId != null) {
+      _result.walletId = walletId;
     }
     return _result;
   }
@@ -108,13 +113,22 @@ class CreateDIDRes extends $pb.GeneratedMessage {
   static CreateDIDRes? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.bool get success => $_getBF(0);
+  $core.String get did => $_getSZ(0);
   @$pb.TagNumber(1)
-  set success($core.bool v) { $_setBool(0, v); }
+  set did($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasSuccess() => $_has(0);
+  $core.bool hasDid() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSuccess() => clearField(1);
+  void clearDid() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get walletId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set walletId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasWalletId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearWalletId() => clearField(2);
 }
 
 class RequestTransactionPayloadReq extends $pb.GeneratedMessage {
