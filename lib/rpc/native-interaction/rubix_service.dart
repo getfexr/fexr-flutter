@@ -1,28 +1,26 @@
 import 'package:fexr/const.dart';
 import 'package:fexr/fexr.dart';
-import 'package:fexr/protogen/native-interaction/rubix-native.pb.dart';
 import 'package:fexr/protogen/native-interaction/rubix-native.pbgrpc.dart';
-import 'package:fexr/protogen/google/protobuf/empty.pb.dart';
 import 'package:fexr/signature/dependencies.dart';
 import 'package:grpc/grpc.dart';
-import 'package:fexr/protogen/sky.pbgrpc.dart';
-import 'package:fexr/rpc/host.dart';
 
 
 
 class rubixService {
-   late RubixServiceClient stub;
-   late SkyServiceClient sky;
-   late ClientChannel channel;
 
-  Future<CreateDIDRes> createDID(String proxyIP, String didImageBase64, String publicShareImageBase64, dynamic bearerToken) async {
-    final channel = ClientChannel(proxyIP,
-        port: Const.PORT,
-        options: ChannelOptions(credentials: ChannelCredentials.insecure()));
-    stub = RubixServiceClient(channel, options: CallOptions(metadata: {
+   RubixServiceClient getConnection(String proxyIP, String bearerToken){
+      ClientChannel channel = ClientChannel(proxyIP,
+          port: Const.PORT,
+          options: const ChannelOptions(
+              credentials: ChannelCredentials.insecure()));
+       return RubixServiceClient(channel, options: CallOptions(metadata: {
       'Authorization': 'Bearer $bearerToken'
     }));
-    
+  
+   }
+
+  Future<CreateDIDRes> createDID(String proxyIP, String didImageBase64, String publicShareImageBase64, String bearerToken) async {
+    RubixServiceClient stub = getConnection(proxyIP,bearerToken);
     try {
       var response = await stub.createDID(
         CreateDIDReq(
@@ -39,11 +37,7 @@ class rubixService {
   }
 
   Future<InitiateTransactionRes> initiateTransaction (String proxyIP, String bearerToken, InitiateTransactionReq initiatePayload, String imagePath ) async {
-    
-    final channel = ClientChannel(proxyIP,
-        port: Const.PORT,
-        options: ChannelOptions(credentials: ChannelCredentials.insecure()));
-    stub = RubixServiceClient(channel, options: CallOptions(metadata: {'Authorization': 'Bearer $bearerToken'}));
+    RubixServiceClient stub = getConnection(proxyIP,bearerToken);
     try {
       var response = await stub.initiateTransaction(
         InitiateTransactionReq(
@@ -78,6 +72,7 @@ class rubixService {
 }
 
   Future<RequestTransactionPayloadRes> requestTransactionPayload(String proxyIP, String bearerToken, RequestTransactionPayloadReq payloadReq) async {
+    RubixServiceClient stub = getConnection(proxyIP,bearerToken);
     try {
       var response = await stub.requestTransactionPayload(
         RequestTransactionPayloadReq(
