@@ -19,9 +19,9 @@ class HostService {
   late ClientChannel channel;
 
 
-  Future<HostResponse> host(String otp, String proxyIP, String address, String f0) async{
-    print("Connecting to proxy $proxyIP");
-    final channel = ClientChannel(proxyIP,
+  Future<HostResponse> host({required String otp, required String gateway, required String address, required String f0}) async{
+    print("Connecting to proxy $gateway");
+    final channel = ClientChannel(gateway,
         port: Const.PORT,
         options: const ChannelOptions(
             credentials: ChannelCredentials.insecure()));

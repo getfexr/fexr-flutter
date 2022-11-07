@@ -8,8 +8,8 @@ import 'package:grpc/grpc.dart';
 
 class rubixService {
 
-   RubixServiceClient getConnection(String proxyIP, String bearerToken){
-      ClientChannel channel = ClientChannel(proxyIP,
+   RubixServiceClient getConnection(String gateway, String bearerToken){
+      ClientChannel channel = ClientChannel(gateway,
           port: Const.PORT,
           options: const ChannelOptions(
               credentials: ChannelCredentials.insecure()));
@@ -19,8 +19,8 @@ class rubixService {
   
    }
 
-  Future<CreateDIDRes> createDID(String proxyIP, String didImageBase64, String publicShareImageBase64, String bearerToken) async {
-    RubixServiceClient stub = getConnection(proxyIP,bearerToken);
+  Future<CreateDIDRes> createDID({required String gateway, required String didImageBase64, required String publicShareImageBase64, required String bearerToken}) async {
+    RubixServiceClient stub = getConnection(gateway,bearerToken);
     try {
       var response = await stub.createDID(
         CreateDIDReq(
@@ -36,8 +36,8 @@ class rubixService {
 
   }
 
-  Future<InitiateTransactionRes> initiateTransaction (String proxyIP, String bearerToken, InitiateTransactionReq initiatePayload, String imagePath ) async {
-    RubixServiceClient stub = getConnection(proxyIP,bearerToken);
+  Future<InitiateTransactionRes> initiateTransaction ({required String gateway, required String bearerToken, required InitiateTransactionReq initiatePayload, required String imagePath }) async {
+    RubixServiceClient stub = getConnection(gateway,bearerToken);
     try {
       var response = await stub.initiateTransaction(
         InitiateTransactionReq(
@@ -71,8 +71,8 @@ class rubixService {
     }
 }
 
-  Future<RequestTransactionPayloadRes> requestTransactionPayload(String proxyIP, String bearerToken, RequestTransactionPayloadReq payloadReq) async {
-    RubixServiceClient stub = getConnection(proxyIP,bearerToken);
+  Future<RequestTransactionPayloadRes> requestTransactionPayload({required String gateway, required String bearerToken, required RequestTransactionPayloadReq payloadReq}) async {
+    RubixServiceClient stub = getConnection(gateway,bearerToken);
     try {
       var response = await stub.requestTransactionPayload(
         RequestTransactionPayloadReq(
