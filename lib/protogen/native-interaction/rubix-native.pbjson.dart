@@ -23,12 +23,13 @@ final $typed_data.Uint8List createDIDReqDescriptor = $convert.base64Decode('CgxD
 const CreateDIDRes$json = const {
   '1': 'CreateDIDRes',
   '2': const [
-    const {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
+    const {'1': 'did', '3': 1, '4': 1, '5': 9, '10': 'did'},
+    const {'1': 'walletId', '3': 2, '4': 1, '5': 9, '10': 'walletId'},
   ],
 };
 
 /// Descriptor for `CreateDIDRes`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createDIDResDescriptor = $convert.base64Decode('CgxDcmVhdGVESURSZXMSGAoHc3VjY2VzcxgBIAEoCFIHc3VjY2Vzcw==');
+final $typed_data.Uint8List createDIDResDescriptor = $convert.base64Decode('CgxDcmVhdGVESURSZXMSEAoDZGlkGAEgASgJUgNkaWQSGgoId2FsbGV0SWQYAiABKAlSCHdhbGxldElk');
 @$core.Deprecated('Use requestTransactionPayloadReqDescriptor instead')
 const RequestTransactionPayloadReq$json = const {
   '1': 'RequestTransactionPayloadReq',
