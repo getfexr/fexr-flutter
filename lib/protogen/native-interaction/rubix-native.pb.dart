@@ -134,7 +134,7 @@ class CreateDIDRes extends $pb.GeneratedMessage {
 class RequestTransactionPayloadReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RequestTransactionPayloadReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiver')
-    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tokenCount', $pb.PbFieldType.O3, protoName: 'tokenCount')
+    ..a<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tokenCount', $pb.PbFieldType.OD, protoName: 'tokenCount')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'comment')
     ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
@@ -143,7 +143,7 @@ class RequestTransactionPayloadReq extends $pb.GeneratedMessage {
   RequestTransactionPayloadReq._() : super();
   factory RequestTransactionPayloadReq({
     $core.String? receiver,
-    $core.int? tokenCount,
+    $core.double? tokenCount,
     $core.String? comment,
     $core.int? type,
   }) {
@@ -193,9 +193,9 @@ class RequestTransactionPayloadReq extends $pb.GeneratedMessage {
   void clearReceiver() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.int get tokenCount => $_getIZ(1);
+  $core.double get tokenCount => $_getN(1);
   @$pb.TagNumber(2)
-  set tokenCount($core.int v) { $_setSignedInt32(1, v); }
+  set tokenCount($core.double v) { $_setDouble(1, v); }
   @$pb.TagNumber(2)
   $core.bool hasTokenCount() => $_has(1);
   @$pb.TagNumber(2)
