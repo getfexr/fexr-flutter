@@ -2,7 +2,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:fexr/signature/dependencies.dart';
 
 class GenerateSign {
- Future<String> genSignFromShares(String imagePath, String hash) async{
+ Future<String> genSignFromShares(String imagePath, String content) async{
+    String hash = Dependencies().calculateHash(content);  
     Future<String> firstPrivatebin = Dependencies().imageToBinary(imagePath);
     String firstPrivate = await firstPrivatebin;
     List<String> privateIntegerArrayString = List<String>.generate(firstPrivate.length, (index) => firstPrivate[index]);

@@ -491,15 +491,15 @@ class RequestTransactionPayloadRes extends $pb.GeneratedMessage {
   TxnSummary ensureTxnSummary() => $_ensure(3);
 }
 
-class InitiateTransactionReq_SignedTransactionPayload_SignedContent extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitiateTransactionReq.SignedTransactionPayload.SignedContent', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
+class SignedContent extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SignedContent', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'content')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature')
     ..hasRequiredFields = false
   ;
 
-  InitiateTransactionReq_SignedTransactionPayload_SignedContent._() : super();
-  factory InitiateTransactionReq_SignedTransactionPayload_SignedContent({
+  SignedContent._() : super();
+  factory SignedContent({
     $core.String? content,
     $core.String? signature,
   }) {
@@ -512,26 +512,26 @@ class InitiateTransactionReq_SignedTransactionPayload_SignedContent extends $pb.
     }
     return _result;
   }
-  factory InitiateTransactionReq_SignedTransactionPayload_SignedContent.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory InitiateTransactionReq_SignedTransactionPayload_SignedContent.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory SignedContent.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SignedContent.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  InitiateTransactionReq_SignedTransactionPayload_SignedContent clone() => InitiateTransactionReq_SignedTransactionPayload_SignedContent()..mergeFromMessage(this);
+  SignedContent clone() => SignedContent()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  InitiateTransactionReq_SignedTransactionPayload_SignedContent copyWith(void Function(InitiateTransactionReq_SignedTransactionPayload_SignedContent) updates) => super.copyWith((message) => updates(message as InitiateTransactionReq_SignedTransactionPayload_SignedContent)) as InitiateTransactionReq_SignedTransactionPayload_SignedContent; // ignore: deprecated_member_use
+  SignedContent copyWith(void Function(SignedContent) updates) => super.copyWith((message) => updates(message as SignedContent)) as SignedContent; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static InitiateTransactionReq_SignedTransactionPayload_SignedContent create() => InitiateTransactionReq_SignedTransactionPayload_SignedContent._();
-  InitiateTransactionReq_SignedTransactionPayload_SignedContent createEmptyInstance() => create();
-  static $pb.PbList<InitiateTransactionReq_SignedTransactionPayload_SignedContent> createRepeated() => $pb.PbList<InitiateTransactionReq_SignedTransactionPayload_SignedContent>();
+  static SignedContent create() => SignedContent._();
+  SignedContent createEmptyInstance() => create();
+  static $pb.PbList<SignedContent> createRepeated() => $pb.PbList<SignedContent>();
   @$core.pragma('dart2js:noInline')
-  static InitiateTransactionReq_SignedTransactionPayload_SignedContent getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<InitiateTransactionReq_SignedTransactionPayload_SignedContent>(create);
-  static InitiateTransactionReq_SignedTransactionPayload_SignedContent? _defaultInstance;
+  static SignedContent getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SignedContent>(create);
+  static SignedContent? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get content => $_getSZ(0);
@@ -555,8 +555,8 @@ class InitiateTransactionReq_SignedTransactionPayload_SignedContent extends $pb.
 class InitiateTransactionReq_SignedTransactionPayload extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitiateTransactionReq.SignedTransactionPayload', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'positions')
-    ..aOM<InitiateTransactionReq_SignedTransactionPayload_SignedContent>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderSign', protoName: 'senderSign', subBuilder: InitiateTransactionReq_SignedTransactionPayload_SignedContent.create)
-    ..aOM<InitiateTransactionReq_SignedTransactionPayload_SignedContent>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderSignQ', protoName: 'senderSignQ', subBuilder: InitiateTransactionReq_SignedTransactionPayload_SignedContent.create)
+    ..aOM<SignedContent>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderSign', protoName: 'senderSign', subBuilder: SignedContent.create)
+    ..aOM<SignedContent>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderSignQ', protoName: 'senderSignQ', subBuilder: SignedContent.create)
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txnDetails', protoName: 'txnDetails')
     ..hasRequiredFields = false
   ;
@@ -564,8 +564,8 @@ class InitiateTransactionReq_SignedTransactionPayload extends $pb.GeneratedMessa
   InitiateTransactionReq_SignedTransactionPayload._() : super();
   factory InitiateTransactionReq_SignedTransactionPayload({
     $core.String? positions,
-    InitiateTransactionReq_SignedTransactionPayload_SignedContent? senderSign,
-    InitiateTransactionReq_SignedTransactionPayload_SignedContent? senderSignQ,
+    SignedContent? senderSign,
+    SignedContent? senderSignQ,
     $core.String? txnDetails,
   }) {
     final _result = create();
@@ -614,26 +614,26 @@ class InitiateTransactionReq_SignedTransactionPayload extends $pb.GeneratedMessa
   void clearPositions() => clearField(1);
 
   @$pb.TagNumber(2)
-  InitiateTransactionReq_SignedTransactionPayload_SignedContent get senderSign => $_getN(1);
+  SignedContent get senderSign => $_getN(1);
   @$pb.TagNumber(2)
-  set senderSign(InitiateTransactionReq_SignedTransactionPayload_SignedContent v) { setField(2, v); }
+  set senderSign(SignedContent v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasSenderSign() => $_has(1);
   @$pb.TagNumber(2)
   void clearSenderSign() => clearField(2);
   @$pb.TagNumber(2)
-  InitiateTransactionReq_SignedTransactionPayload_SignedContent ensureSenderSign() => $_ensure(1);
+  SignedContent ensureSenderSign() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  InitiateTransactionReq_SignedTransactionPayload_SignedContent get senderSignQ => $_getN(2);
+  SignedContent get senderSignQ => $_getN(2);
   @$pb.TagNumber(3)
-  set senderSignQ(InitiateTransactionReq_SignedTransactionPayload_SignedContent v) { setField(3, v); }
+  set senderSignQ(SignedContent v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasSenderSignQ() => $_has(2);
   @$pb.TagNumber(3)
   void clearSenderSignQ() => clearField(3);
   @$pb.TagNumber(3)
-  InitiateTransactionReq_SignedTransactionPayload_SignedContent ensureSenderSignQ() => $_ensure(2);
+  SignedContent ensureSenderSignQ() => $_ensure(2);
 
   @$pb.TagNumber(4)
   $core.String get txnDetails => $_getSZ(3);
