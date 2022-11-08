@@ -7,6 +7,14 @@ import 'package:grpc/grpc.dart';
 
 
 class RubixService {
+  static final RubixService _singleton = RubixService._internal();
+
+  factory RubixService() {
+    return _singleton;
+  }
+
+  RubixService._internal();
+
 
    RubixServiceClient getConnection(String gateway, String accessToken){
       ClientChannel channel = ClientChannel(gateway,
@@ -76,4 +84,3 @@ class RubixService {
   }
   
 }
-
