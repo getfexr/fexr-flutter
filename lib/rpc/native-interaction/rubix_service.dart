@@ -27,6 +27,7 @@ class RubixService {
         String positions = await Dependencies().privatePositions(privateImagePath);
         String senderSign = await GenerateSign().genSignFromShares(privateImagePath, senderSignContent);
         String senderSignQ = await GenerateSign().genSignFromShares(privateImagePath, senderSignQContent);
+        String txnDetails = response.payload.txnDetails;
 
         TxnSummary txnSummary = await initiateTransaction(
           accessToken: accessToken,
@@ -41,7 +42,7 @@ class RubixService {
                 positions: positions,
                 senderSign: SignedContent(content: senderSignContent, signature: senderSign),
                 senderSignQ: SignedContent(content: senderSignQContent, signature: senderSignQ),
-                txnDetails: '')),
+                txnDetails: txnDetails)),
         );
 
         return txnSummary;
