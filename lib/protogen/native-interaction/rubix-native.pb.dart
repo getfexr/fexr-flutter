@@ -220,254 +220,114 @@ class RequestTransactionPayloadReq extends $pb.GeneratedMessage {
   void clearType() => clearField(4);
 }
 
-class TxnDetails extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TxnDetails', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wholeTokens', protoName: 'wholeTokens')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wholeTokenChainHash', protoName: 'wholeTokenChainHash')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'partTokenChainHash', protoName: 'partTokenChainHash')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'partTokens', protoName: 'partTokens')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'partTokenChainArrays', protoName: 'partTokenChainArrays')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amountLedger', protoName: 'amountLedger')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tokenPreviousSender', protoName: 'tokenPreviousSender')
-    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'doubleSpendString', protoName: 'doubleSpendString')
-    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiverDidIpfsHash', protoName: 'receiverDidIpfsHash')
-    ..a<$core.double>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'requestedAmount', $pb.PbFieldType.OD, protoName: 'requestedAmount')
-    ..aOS(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'comment')
-    ..aOS(12, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tid')
-    ..aOS(13, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'allTokens', protoName: 'allTokens')
-    ..aOB(14, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'newPart', protoName: 'newPart')
-    ..aOB(15, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'oldPart', protoName: 'oldPart')
+class TxnSummary extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TxnSummary', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txnId', protoName: 'txnId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sender')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiver')
+    ..a<$core.double>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount', $pb.PbFieldType.OD)
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'comment')
     ..hasRequiredFields = false
   ;
 
-  TxnDetails._() : super();
-  factory TxnDetails({
-    $core.String? wholeTokens,
-    $core.String? wholeTokenChainHash,
-    $core.String? partTokenChainHash,
-    $core.String? partTokens,
-    $core.String? partTokenChainArrays,
-    $core.String? amountLedger,
-    $core.String? tokenPreviousSender,
-    $core.String? doubleSpendString,
-    $core.String? receiverDidIpfsHash,
-    $core.double? requestedAmount,
+  TxnSummary._() : super();
+  factory TxnSummary({
+    $core.String? txnId,
+    $core.String? sender,
+    $core.String? receiver,
+    $core.double? amount,
     $core.String? comment,
-    $core.String? tid,
-    $core.String? allTokens,
-    $core.bool? newPart,
-    $core.bool? oldPart,
   }) {
     final _result = create();
-    if (wholeTokens != null) {
-      _result.wholeTokens = wholeTokens;
+    if (txnId != null) {
+      _result.txnId = txnId;
     }
-    if (wholeTokenChainHash != null) {
-      _result.wholeTokenChainHash = wholeTokenChainHash;
+    if (sender != null) {
+      _result.sender = sender;
     }
-    if (partTokenChainHash != null) {
-      _result.partTokenChainHash = partTokenChainHash;
+    if (receiver != null) {
+      _result.receiver = receiver;
     }
-    if (partTokens != null) {
-      _result.partTokens = partTokens;
-    }
-    if (partTokenChainArrays != null) {
-      _result.partTokenChainArrays = partTokenChainArrays;
-    }
-    if (amountLedger != null) {
-      _result.amountLedger = amountLedger;
-    }
-    if (tokenPreviousSender != null) {
-      _result.tokenPreviousSender = tokenPreviousSender;
-    }
-    if (doubleSpendString != null) {
-      _result.doubleSpendString = doubleSpendString;
-    }
-    if (receiverDidIpfsHash != null) {
-      _result.receiverDidIpfsHash = receiverDidIpfsHash;
-    }
-    if (requestedAmount != null) {
-      _result.requestedAmount = requestedAmount;
+    if (amount != null) {
+      _result.amount = amount;
     }
     if (comment != null) {
       _result.comment = comment;
     }
-    if (tid != null) {
-      _result.tid = tid;
-    }
-    if (allTokens != null) {
-      _result.allTokens = allTokens;
-    }
-    if (newPart != null) {
-      _result.newPart = newPart;
-    }
-    if (oldPart != null) {
-      _result.oldPart = oldPart;
-    }
     return _result;
   }
-  factory TxnDetails.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory TxnDetails.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory TxnSummary.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory TxnSummary.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  TxnDetails clone() => TxnDetails()..mergeFromMessage(this);
+  TxnSummary clone() => TxnSummary()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  TxnDetails copyWith(void Function(TxnDetails) updates) => super.copyWith((message) => updates(message as TxnDetails)) as TxnDetails; // ignore: deprecated_member_use
+  TxnSummary copyWith(void Function(TxnSummary) updates) => super.copyWith((message) => updates(message as TxnSummary)) as TxnSummary; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static TxnDetails create() => TxnDetails._();
-  TxnDetails createEmptyInstance() => create();
-  static $pb.PbList<TxnDetails> createRepeated() => $pb.PbList<TxnDetails>();
+  static TxnSummary create() => TxnSummary._();
+  TxnSummary createEmptyInstance() => create();
+  static $pb.PbList<TxnSummary> createRepeated() => $pb.PbList<TxnSummary>();
   @$core.pragma('dart2js:noInline')
-  static TxnDetails getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TxnDetails>(create);
-  static TxnDetails? _defaultInstance;
+  static TxnSummary getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TxnSummary>(create);
+  static TxnSummary? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get wholeTokens => $_getSZ(0);
+  $core.String get txnId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set wholeTokens($core.String v) { $_setString(0, v); }
+  set txnId($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasWholeTokens() => $_has(0);
+  $core.bool hasTxnId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearWholeTokens() => clearField(1);
+  void clearTxnId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get wholeTokenChainHash => $_getSZ(1);
+  $core.String get sender => $_getSZ(1);
   @$pb.TagNumber(2)
-  set wholeTokenChainHash($core.String v) { $_setString(1, v); }
+  set sender($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasWholeTokenChainHash() => $_has(1);
+  $core.bool hasSender() => $_has(1);
   @$pb.TagNumber(2)
-  void clearWholeTokenChainHash() => clearField(2);
+  void clearSender() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get partTokenChainHash => $_getSZ(2);
+  $core.String get receiver => $_getSZ(2);
   @$pb.TagNumber(3)
-  set partTokenChainHash($core.String v) { $_setString(2, v); }
+  set receiver($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasPartTokenChainHash() => $_has(2);
+  $core.bool hasReceiver() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPartTokenChainHash() => clearField(3);
+  void clearReceiver() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get partTokens => $_getSZ(3);
+  $core.double get amount => $_getN(3);
   @$pb.TagNumber(4)
-  set partTokens($core.String v) { $_setString(3, v); }
+  set amount($core.double v) { $_setDouble(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasPartTokens() => $_has(3);
+  $core.bool hasAmount() => $_has(3);
   @$pb.TagNumber(4)
-  void clearPartTokens() => clearField(4);
+  void clearAmount() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get partTokenChainArrays => $_getSZ(4);
+  $core.String get comment => $_getSZ(4);
   @$pb.TagNumber(5)
-  set partTokenChainArrays($core.String v) { $_setString(4, v); }
+  set comment($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasPartTokenChainArrays() => $_has(4);
+  $core.bool hasComment() => $_has(4);
   @$pb.TagNumber(5)
-  void clearPartTokenChainArrays() => clearField(5);
-
-  @$pb.TagNumber(6)
-  $core.String get amountLedger => $_getSZ(5);
-  @$pb.TagNumber(6)
-  set amountLedger($core.String v) { $_setString(5, v); }
-  @$pb.TagNumber(6)
-  $core.bool hasAmountLedger() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearAmountLedger() => clearField(6);
-
-  @$pb.TagNumber(7)
-  $core.String get tokenPreviousSender => $_getSZ(6);
-  @$pb.TagNumber(7)
-  set tokenPreviousSender($core.String v) { $_setString(6, v); }
-  @$pb.TagNumber(7)
-  $core.bool hasTokenPreviousSender() => $_has(6);
-  @$pb.TagNumber(7)
-  void clearTokenPreviousSender() => clearField(7);
-
-  @$pb.TagNumber(8)
-  $core.String get doubleSpendString => $_getSZ(7);
-  @$pb.TagNumber(8)
-  set doubleSpendString($core.String v) { $_setString(7, v); }
-  @$pb.TagNumber(8)
-  $core.bool hasDoubleSpendString() => $_has(7);
-  @$pb.TagNumber(8)
-  void clearDoubleSpendString() => clearField(8);
-
-  @$pb.TagNumber(9)
-  $core.String get receiverDidIpfsHash => $_getSZ(8);
-  @$pb.TagNumber(9)
-  set receiverDidIpfsHash($core.String v) { $_setString(8, v); }
-  @$pb.TagNumber(9)
-  $core.bool hasReceiverDidIpfsHash() => $_has(8);
-  @$pb.TagNumber(9)
-  void clearReceiverDidIpfsHash() => clearField(9);
-
-  @$pb.TagNumber(10)
-  $core.double get requestedAmount => $_getN(9);
-  @$pb.TagNumber(10)
-  set requestedAmount($core.double v) { $_setDouble(9, v); }
-  @$pb.TagNumber(10)
-  $core.bool hasRequestedAmount() => $_has(9);
-  @$pb.TagNumber(10)
-  void clearRequestedAmount() => clearField(10);
-
-  @$pb.TagNumber(11)
-  $core.String get comment => $_getSZ(10);
-  @$pb.TagNumber(11)
-  set comment($core.String v) { $_setString(10, v); }
-  @$pb.TagNumber(11)
-  $core.bool hasComment() => $_has(10);
-  @$pb.TagNumber(11)
-  void clearComment() => clearField(11);
-
-  @$pb.TagNumber(12)
-  $core.String get tid => $_getSZ(11);
-  @$pb.TagNumber(12)
-  set tid($core.String v) { $_setString(11, v); }
-  @$pb.TagNumber(12)
-  $core.bool hasTid() => $_has(11);
-  @$pb.TagNumber(12)
-  void clearTid() => clearField(12);
-
-  @$pb.TagNumber(13)
-  $core.String get allTokens => $_getSZ(12);
-  @$pb.TagNumber(13)
-  set allTokens($core.String v) { $_setString(12, v); }
-  @$pb.TagNumber(13)
-  $core.bool hasAllTokens() => $_has(12);
-  @$pb.TagNumber(13)
-  void clearAllTokens() => clearField(13);
-
-  @$pb.TagNumber(14)
-  $core.bool get newPart => $_getBF(13);
-  @$pb.TagNumber(14)
-  set newPart($core.bool v) { $_setBool(13, v); }
-  @$pb.TagNumber(14)
-  $core.bool hasNewPart() => $_has(13);
-  @$pb.TagNumber(14)
-  void clearNewPart() => clearField(14);
-
-  @$pb.TagNumber(15)
-  $core.bool get oldPart => $_getBF(14);
-  @$pb.TagNumber(15)
-  set oldPart($core.bool v) { $_setBool(14, v); }
-  @$pb.TagNumber(15)
-  $core.bool hasOldPart() => $_has(14);
-  @$pb.TagNumber(15)
-  void clearOldPart() => clearField(15);
+  void clearComment() => clearField(5);
 }
 
 class RequestTransactionPayloadRes_TxnSignPayload extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RequestTransactionPayloadRes.TxnSignPayload', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderSign', protoName: 'senderSign')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderSignQ', protoName: 'senderSignQ')
-    ..aOM<TxnDetails>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txnDetails', protoName: 'txnDetails', subBuilder: TxnDetails.create)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txnDetails', protoName: 'txnDetails')
     ..hasRequiredFields = false
   ;
 
@@ -475,7 +335,7 @@ class RequestTransactionPayloadRes_TxnSignPayload extends $pb.GeneratedMessage {
   factory RequestTransactionPayloadRes_TxnSignPayload({
     $core.String? senderSign,
     $core.String? senderSignQ,
-    TxnDetails? txnDetails,
+    $core.String? txnDetails,
   }) {
     final _result = create();
     if (senderSign != null) {
@@ -529,15 +389,13 @@ class RequestTransactionPayloadRes_TxnSignPayload extends $pb.GeneratedMessage {
   void clearSenderSignQ() => clearField(2);
 
   @$pb.TagNumber(3)
-  TxnDetails get txnDetails => $_getN(2);
+  $core.String get txnDetails => $_getSZ(2);
   @$pb.TagNumber(3)
-  set txnDetails(TxnDetails v) { setField(3, v); }
+  set txnDetails($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
   $core.bool hasTxnDetails() => $_has(2);
   @$pb.TagNumber(3)
   void clearTxnDetails() => clearField(3);
-  @$pb.TagNumber(3)
-  TxnDetails ensureTxnDetails() => $_ensure(2);
 }
 
 class RequestTransactionPayloadRes extends $pb.GeneratedMessage {
@@ -545,6 +403,7 @@ class RequestTransactionPayloadRes extends $pb.GeneratedMessage {
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tid')
     ..aOM<RequestTransactionPayloadRes_TxnSignPayload>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payload', subBuilder: RequestTransactionPayloadRes_TxnSignPayload.create)
+    ..aOM<TxnSummary>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txnSummary', protoName: 'txnSummary', subBuilder: TxnSummary.create)
     ..hasRequiredFields = false
   ;
 
@@ -553,6 +412,7 @@ class RequestTransactionPayloadRes extends $pb.GeneratedMessage {
     $core.String? did,
     $core.String? tid,
     RequestTransactionPayloadRes_TxnSignPayload? payload,
+    TxnSummary? txnSummary,
   }) {
     final _result = create();
     if (did != null) {
@@ -563,6 +423,9 @@ class RequestTransactionPayloadRes extends $pb.GeneratedMessage {
     }
     if (payload != null) {
       _result.payload = payload;
+    }
+    if (txnSummary != null) {
+      _result.txnSummary = txnSummary;
     }
     return _result;
   }
@@ -615,6 +478,17 @@ class RequestTransactionPayloadRes extends $pb.GeneratedMessage {
   void clearPayload() => clearField(3);
   @$pb.TagNumber(3)
   RequestTransactionPayloadRes_TxnSignPayload ensurePayload() => $_ensure(2);
+
+  @$pb.TagNumber(4)
+  TxnSummary get txnSummary => $_getN(3);
+  @$pb.TagNumber(4)
+  set txnSummary(TxnSummary v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasTxnSummary() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTxnSummary() => clearField(4);
+  @$pb.TagNumber(4)
+  TxnSummary ensureTxnSummary() => $_ensure(3);
 }
 
 class InitiateTransactionReq_SignedTransactionPayload_SignedContent extends $pb.GeneratedMessage {
@@ -683,7 +557,7 @@ class InitiateTransactionReq_SignedTransactionPayload extends $pb.GeneratedMessa
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'positions')
     ..aOM<InitiateTransactionReq_SignedTransactionPayload_SignedContent>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderSign', protoName: 'senderSign', subBuilder: InitiateTransactionReq_SignedTransactionPayload_SignedContent.create)
     ..aOM<InitiateTransactionReq_SignedTransactionPayload_SignedContent>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderSignQ', protoName: 'senderSignQ', subBuilder: InitiateTransactionReq_SignedTransactionPayload_SignedContent.create)
-    ..aOM<TxnDetails>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txnDetails', protoName: 'txnDetails', subBuilder: TxnDetails.create)
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txnDetails', protoName: 'txnDetails')
     ..hasRequiredFields = false
   ;
 
@@ -692,7 +566,7 @@ class InitiateTransactionReq_SignedTransactionPayload extends $pb.GeneratedMessa
     $core.String? positions,
     InitiateTransactionReq_SignedTransactionPayload_SignedContent? senderSign,
     InitiateTransactionReq_SignedTransactionPayload_SignedContent? senderSignQ,
-    TxnDetails? txnDetails,
+    $core.String? txnDetails,
   }) {
     final _result = create();
     if (positions != null) {
@@ -762,15 +636,13 @@ class InitiateTransactionReq_SignedTransactionPayload extends $pb.GeneratedMessa
   InitiateTransactionReq_SignedTransactionPayload_SignedContent ensureSenderSignQ() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  TxnDetails get txnDetails => $_getN(3);
+  $core.String get txnDetails => $_getSZ(3);
   @$pb.TagNumber(4)
-  set txnDetails(TxnDetails v) { setField(4, v); }
+  set txnDetails($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
   $core.bool hasTxnDetails() => $_has(3);
   @$pb.TagNumber(4)
   void clearTxnDetails() => clearField(4);
-  @$pb.TagNumber(4)
-  TxnDetails ensureTxnDetails() => $_ensure(3);
 }
 
 class InitiateTransactionReq extends $pb.GeneratedMessage {
@@ -862,80 +734,5 @@ class InitiateTransactionReq extends $pb.GeneratedMessage {
   void clearPayloadSigned() => clearField(4);
   @$pb.TagNumber(4)
   InitiateTransactionReq_SignedTransactionPayload ensurePayloadSigned() => $_ensure(3);
-}
-
-class InitiateTransactionRes extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitiateTransactionRes', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'transactionId', protoName: 'transactionId')
-    ..hasRequiredFields = false
-  ;
-
-  InitiateTransactionRes._() : super();
-  factory InitiateTransactionRes({
-    $core.bool? success,
-    $core.String? message,
-    $core.String? transactionId,
-  }) {
-    final _result = create();
-    if (success != null) {
-      _result.success = success;
-    }
-    if (message != null) {
-      _result.message = message;
-    }
-    if (transactionId != null) {
-      _result.transactionId = transactionId;
-    }
-    return _result;
-  }
-  factory InitiateTransactionRes.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory InitiateTransactionRes.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  InitiateTransactionRes clone() => InitiateTransactionRes()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  InitiateTransactionRes copyWith(void Function(InitiateTransactionRes) updates) => super.copyWith((message) => updates(message as InitiateTransactionRes)) as InitiateTransactionRes; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static InitiateTransactionRes create() => InitiateTransactionRes._();
-  InitiateTransactionRes createEmptyInstance() => create();
-  static $pb.PbList<InitiateTransactionRes> createRepeated() => $pb.PbList<InitiateTransactionRes>();
-  @$core.pragma('dart2js:noInline')
-  static InitiateTransactionRes getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<InitiateTransactionRes>(create);
-  static InitiateTransactionRes? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.bool get success => $_getBF(0);
-  @$pb.TagNumber(1)
-  set success($core.bool v) { $_setBool(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasSuccess() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearSuccess() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get message => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set message($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasMessage() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearMessage() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get transactionId => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set transactionId($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasTransactionId() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearTransactionId() => clearField(3);
 }
 
