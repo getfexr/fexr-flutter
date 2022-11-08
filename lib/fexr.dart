@@ -16,3 +16,7 @@ export 'package:fexr/signature/sign_model.dart';
 export 'package:fexr/rpc/host.dart';
 export 'package:fexr/components/buttons.dart';
 export 'package:fexr/rpc/native-interaction/rubix_service.dart';
+export 'package:fexr/protogen/native-interaction/rubix-native.pb.dart';
+export 'package:fexr/protogen/native-interaction/rubix-native.pbenum.dart';
+export 'package:fexr/protogen/native-interaction/rubix-native.pbgrpc.dart';
+export 'package:fexr/protogen/native-interaction/rubix-native.pbjson.dart';
