@@ -26,11 +26,10 @@ class RubixServiceClient extends $grpc.Client {
       ($core.List<$core.int> value) =>
           $2.RequestTransactionPayloadRes.fromBuffer(value));
   static final _$initiateTransaction =
-      $grpc.ClientMethod<$2.InitiateTransactionReq, $2.InitiateTransactionRes>(
+      $grpc.ClientMethod<$2.InitiateTransactionReq, $2.TxnSummary>(
           '/protos.RubixService/InitiateTransaction',
           ($2.InitiateTransactionReq value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $2.InitiateTransactionRes.fromBuffer(value));
+          ($core.List<$core.int> value) => $2.TxnSummary.fromBuffer(value));
 
   RubixServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -49,7 +48,7 @@ class RubixServiceClient extends $grpc.Client {
         options: options);
   }
 
-  $grpc.ResponseFuture<$2.InitiateTransactionRes> initiateTransaction(
+  $grpc.ResponseFuture<$2.TxnSummary> initiateTransaction(
       $2.InitiateTransactionReq request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$initiateTransaction, request, options: options);
@@ -76,15 +75,14 @@ abstract class RubixServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) =>
             $2.RequestTransactionPayloadReq.fromBuffer(value),
         ($2.RequestTransactionPayloadRes value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$2.InitiateTransactionReq,
-            $2.InitiateTransactionRes>(
+    $addMethod($grpc.ServiceMethod<$2.InitiateTransactionReq, $2.TxnSummary>(
         'InitiateTransaction',
         initiateTransaction_Pre,
         false,
         false,
         ($core.List<$core.int> value) =>
             $2.InitiateTransactionReq.fromBuffer(value),
-        ($2.InitiateTransactionRes value) => value.writeToBuffer()));
+        ($2.TxnSummary value) => value.writeToBuffer()));
   }
 
   $async.Future<$2.CreateDIDRes> createDID_Pre(
@@ -98,8 +96,7 @@ abstract class RubixServiceBase extends $grpc.Service {
     return requestTransactionPayload(call, await request);
   }
 
-  $async.Future<$2.InitiateTransactionRes> initiateTransaction_Pre(
-      $grpc.ServiceCall call,
+  $async.Future<$2.TxnSummary> initiateTransaction_Pre($grpc.ServiceCall call,
       $async.Future<$2.InitiateTransactionReq> request) async {
     return initiateTransaction(call, await request);
   }
@@ -108,6 +105,6 @@ abstract class RubixServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $2.CreateDIDReq request);
   $async.Future<$2.RequestTransactionPayloadRes> requestTransactionPayload(
       $grpc.ServiceCall call, $2.RequestTransactionPayloadReq request);
-  $async.Future<$2.InitiateTransactionRes> initiateTransaction(
+  $async.Future<$2.TxnSummary> initiateTransaction(
       $grpc.ServiceCall call, $2.InitiateTransactionReq request);
 }

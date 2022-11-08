@@ -116,15 +116,3 @@ const InitiateTransactionReq_SignedTransactionPayload_SignedContent$json = const
 
 /// Descriptor for `InitiateTransactionReq`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List initiateTransactionReqDescriptor = $convert.base64Decode('ChZJbml0aWF0ZVRyYW5zYWN0aW9uUmVxEhoKCHJlY2VpdmVyGAEgASgJUghyZWNlaXZlchIeCgp0b2tlbkNvdW50GAIgASgBUgp0b2tlbkNvdW50EhIKBHR5cGUYAyABKAVSBHR5cGUSXQoNcGF5bG9hZFNpZ25lZBgEIAEoCzI3LnByb3Rvcy5Jbml0aWF0ZVRyYW5zYWN0aW9uUmVxLlNpZ25lZFRyYW5zYWN0aW9uUGF5bG9hZFINcGF5bG9hZFNpZ25lZBrxAgoYU2lnbmVkVHJhbnNhY3Rpb25QYXlsb2FkEhwKCXBvc2l0aW9ucxgBIAEoCVIJcG9zaXRpb25zEmUKCnNlbmRlclNpZ24YAiABKAsyRS5wcm90b3MuSW5pdGlhdGVUcmFuc2FjdGlvblJlcS5TaWduZWRUcmFuc2FjdGlvblBheWxvYWQuU2lnbmVkQ29udGVudFIKc2VuZGVyU2lnbhJnCgtzZW5kZXJTaWduURgDIAEoCzJFLnByb3Rvcy5Jbml0aWF0ZVRyYW5zYWN0aW9uUmVxLlNpZ25lZFRyYW5zYWN0aW9uUGF5bG9hZC5TaWduZWRDb250ZW50UgtzZW5kZXJTaWduURIeCgp0eG5EZXRhaWxzGAQgASgJUgp0eG5EZXRhaWxzGkcKDVNpZ25lZENvbnRlbnQSGAoHY29udGVudBgBIAEoCVIHY29udGVudBIcCglzaWduYXR1cmUYAiABKAlSCXNpZ25hdHVyZQ==');
-@$core.Deprecated('Use initiateTransactionResDescriptor instead')
-const InitiateTransactionRes$json = const {
-  '1': 'InitiateTransactionRes',
-  '2': const [
-    const {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
-    const {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
-    const {'1': 'transactionId', '3': 3, '4': 1, '5': 9, '10': 'transactionId'},
-  ],
-};
-
-/// Descriptor for `InitiateTransactionRes`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List initiateTransactionResDescriptor = $convert.base64Decode('ChZJbml0aWF0ZVRyYW5zYWN0aW9uUmVzEhgKB3N1Y2Nlc3MYASABKAhSB3N1Y2Nlc3MSGAoHbWVzc2FnZRgCIAEoCVIHbWVzc2FnZRIkCg10cmFuc2FjdGlvbklkGAMgASgJUg10cmFuc2FjdGlvbklk');

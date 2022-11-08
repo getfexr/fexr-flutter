@@ -36,7 +36,7 @@ class RubixService {
 
   }
 
-  Future<InitiateTransactionRes> initiateTransaction ({required String gateway, required String accessToken, required InitiateTransactionReq initiatePayload, required String imagePath }) async {
+  Future<TxnSummary> initiateTransaction ({required String gateway, required String accessToken, required InitiateTransactionReq initiatePayload, required String imagePath }) async {
     RubixServiceClient stub = getConnection(gateway,accessToken);
     try {
       var response = await stub.initiateTransaction(
@@ -52,7 +52,7 @@ class RubixService {
       return response;
     } catch (e) {
       print(e);
-      return InitiateTransactionRes();
+      return TxnSummary();
     }
 }
 
