@@ -220,4 +220,27 @@ class Dependencies {
     return file;
   }
 
+  List<int> binaryToDecimal(String s) {
+    List<int> binaryList = List.empty();
+    binaryList = binaryList.toList();
+    for (int i = 0; i < s.length; i += 8) {
+      String bin = s.substring(i, i + 8);
+      int code = int.parse(bin, radix: 2);
+      binaryList.add(code);
+    }
+    return binaryList;
+  }
+
+  Future<String> privatePositions(String imagePath) async {
+    Future<String> firstPrivate = Dependencies().imageToBinary(imagePath);
+    String firstPrivateStr = await firstPrivate;
+    List<int> privateIntegerArray = Dependencies().binaryToDecimal(firstPrivateStr);
+  //  List<String> position = List.empty();
+    String positions = "";
+    for (int j = 0; j < privateIntegerArray.length; j += 49152){
+      positions += firstPrivateStr.substring(j,j+1);
+    }
+    return positions;
+    }
+
 }

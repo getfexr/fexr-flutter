@@ -14,7 +14,7 @@ class RubixService {
       int? type,
       List<String>? quorumlist,
       required String receiver}) async {
-      RequestTransactionPayloadRes payload = await requestTransactionPayload(
+      RequestTransactionPayloadRes response = await requestTransactionPayload(
         accessToken: accessToken,
         gateway: gateway,
         payloadReq: RequestTransactionPayloadReq(
@@ -22,14 +22,26 @@ class RubixService {
           type: type,
           receiver: receiver,
         ));
-
-        String positions = await 
-        String senderSign = await
-        String senderSignQ = await
+        String senderSignContent = response.payload.senderSign;
+        String senderSignQContent = response.payload.senderSignQ;
+        String positions = await Dependencies().privatePositions(privateImagePath);
+        String senderSign = await GenerateSign().genSignFromShares(privateImagePath, senderSignContent);
+        String senderSignQ = await GenerateSign().genSignFromShares(privateImagePath, senderSignQContent);
 
         TxnSummary txnSummary = await initiateTransaction(
           accessToken: accessToken,
-          gateway: gateway, imagePath: privateImagePath, initiatePayload: InitiateTransactionReq(receiver: receiver, tokenCount: amount, type: type, payloadSigned: InitiateTransactionReq_SignedTransactionPayload(positions: positions, senderSign: senderSign, senderSignQ: senderSignQ, txnDetails: '')),
+          gateway: gateway,
+          imagePath: privateImagePath,
+          initiatePayload: InitiateTransactionReq(
+            receiver: receiver,
+            tokenCount: amount,
+            type: type,
+            payloadSigned:
+              InitiateTransactionReq_SignedTransactionPayload(
+                positions: positions,
+                senderSign: SignedContent(content: senderSignContent, signature: senderSign),
+                senderSignQ: SignedContent(content: senderSignQContent, signature: senderSignQ),
+                txnDetails: '')),
         );
 
         return txnSummary;
@@ -81,14 +93,14 @@ class RubixService {
           payloadSigned: InitiateTransactionReq_SignedTransactionPayload(
               positions: initiatePayload.payloadSigned.positions,
               senderSign:
-                  InitiateTransactionReq_SignedTransactionPayload_SignedContent(
+                  SignedContent(
                       content: initiatePayload.payloadSigned.senderSign.content,
                       signature: await GenerateSign().genSignFromShares(
                           imagePath,
                           Dependencies().calculateHash(initiatePayload
                               .payloadSigned.senderSign.content))),
               senderSignQ:
-                  InitiateTransactionReq_SignedTransactionPayload_SignedContent(
+                  SignedContent(
                       content:
                           initiatePayload.payloadSigned.senderSignQ.content,
                       signature: await GenerateSign().genSignFromShares(
