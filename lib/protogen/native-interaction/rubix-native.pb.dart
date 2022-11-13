@@ -137,6 +137,7 @@ class RequestTransactionPayloadReq extends $pb.GeneratedMessage {
     ..a<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tokenCount', $pb.PbFieldType.OD, protoName: 'tokenCount')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'comment')
     ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.O3)
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'privateKeyPass', protoName: 'privateKeyPass')
     ..hasRequiredFields = false
   ;
 
@@ -146,6 +147,7 @@ class RequestTransactionPayloadReq extends $pb.GeneratedMessage {
     $core.double? tokenCount,
     $core.String? comment,
     $core.int? type,
+    $core.String? privateKeyPass,
   }) {
     final _result = create();
     if (receiver != null) {
@@ -159,6 +161,9 @@ class RequestTransactionPayloadReq extends $pb.GeneratedMessage {
     }
     if (type != null) {
       _result.type = type;
+    }
+    if (privateKeyPass != null) {
+      _result.privateKeyPass = privateKeyPass;
     }
     return _result;
   }
@@ -218,6 +223,15 @@ class RequestTransactionPayloadReq extends $pb.GeneratedMessage {
   $core.bool hasType() => $_has(3);
   @$pb.TagNumber(4)
   void clearType() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get privateKeyPass => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set privateKeyPass($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasPrivateKeyPass() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearPrivateKeyPass() => clearField(5);
 }
 
 class TxnSummary extends $pb.GeneratedMessage {
@@ -323,109 +337,165 @@ class TxnSummary extends $pb.GeneratedMessage {
   void clearComment() => clearField(5);
 }
 
-class RequestTransactionPayloadRes_TxnSignPayload extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RequestTransactionPayloadRes.TxnSignPayload', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderSign', protoName: 'senderSign')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderSignQ', protoName: 'senderSignQ')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txnDetails', protoName: 'txnDetails')
+class TransactionLastObject extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TransactionLastObject', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hash')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token')
     ..hasRequiredFields = false
   ;
 
-  RequestTransactionPayloadRes_TxnSignPayload._() : super();
-  factory RequestTransactionPayloadRes_TxnSignPayload({
-    $core.String? senderSign,
-    $core.String? senderSignQ,
-    $core.String? txnDetails,
+  TransactionLastObject._() : super();
+  factory TransactionLastObject({
+    $core.String? hash,
+    $core.String? token,
   }) {
     final _result = create();
-    if (senderSign != null) {
-      _result.senderSign = senderSign;
+    if (hash != null) {
+      _result.hash = hash;
     }
-    if (senderSignQ != null) {
-      _result.senderSignQ = senderSignQ;
-    }
-    if (txnDetails != null) {
-      _result.txnDetails = txnDetails;
+    if (token != null) {
+      _result.token = token;
     }
     return _result;
   }
-  factory RequestTransactionPayloadRes_TxnSignPayload.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory RequestTransactionPayloadRes_TxnSignPayload.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory TransactionLastObject.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory TransactionLastObject.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  RequestTransactionPayloadRes_TxnSignPayload clone() => RequestTransactionPayloadRes_TxnSignPayload()..mergeFromMessage(this);
+  TransactionLastObject clone() => TransactionLastObject()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  RequestTransactionPayloadRes_TxnSignPayload copyWith(void Function(RequestTransactionPayloadRes_TxnSignPayload) updates) => super.copyWith((message) => updates(message as RequestTransactionPayloadRes_TxnSignPayload)) as RequestTransactionPayloadRes_TxnSignPayload; // ignore: deprecated_member_use
+  TransactionLastObject copyWith(void Function(TransactionLastObject) updates) => super.copyWith((message) => updates(message as TransactionLastObject)) as TransactionLastObject; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static RequestTransactionPayloadRes_TxnSignPayload create() => RequestTransactionPayloadRes_TxnSignPayload._();
-  RequestTransactionPayloadRes_TxnSignPayload createEmptyInstance() => create();
-  static $pb.PbList<RequestTransactionPayloadRes_TxnSignPayload> createRepeated() => $pb.PbList<RequestTransactionPayloadRes_TxnSignPayload>();
+  static TransactionLastObject create() => TransactionLastObject._();
+  TransactionLastObject createEmptyInstance() => create();
+  static $pb.PbList<TransactionLastObject> createRepeated() => $pb.PbList<TransactionLastObject>();
   @$core.pragma('dart2js:noInline')
-  static RequestTransactionPayloadRes_TxnSignPayload getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RequestTransactionPayloadRes_TxnSignPayload>(create);
-  static RequestTransactionPayloadRes_TxnSignPayload? _defaultInstance;
+  static TransactionLastObject getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TransactionLastObject>(create);
+  static TransactionLastObject? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get senderSign => $_getSZ(0);
+  $core.String get hash => $_getSZ(0);
   @$pb.TagNumber(1)
-  set senderSign($core.String v) { $_setString(0, v); }
+  set hash($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasSenderSign() => $_has(0);
+  $core.bool hasHash() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSenderSign() => clearField(1);
+  void clearHash() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get senderSignQ => $_getSZ(1);
+  $core.String get token => $_getSZ(1);
   @$pb.TagNumber(2)
-  set senderSignQ($core.String v) { $_setString(1, v); }
+  set token($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasSenderSignQ() => $_has(1);
+  $core.bool hasToken() => $_has(1);
   @$pb.TagNumber(2)
-  void clearSenderSignQ() => clearField(2);
+  void clearToken() => clearField(2);
+}
+
+class TransactionLastObjectSigned extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TransactionLastObjectSigned', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'chainSign', protoName: 'chainSign')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hash')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token')
+    ..hasRequiredFields = false
+  ;
+
+  TransactionLastObjectSigned._() : super();
+  factory TransactionLastObjectSigned({
+    $core.String? chainSign,
+    $core.String? hash,
+    $core.String? token,
+  }) {
+    final _result = create();
+    if (chainSign != null) {
+      _result.chainSign = chainSign;
+    }
+    if (hash != null) {
+      _result.hash = hash;
+    }
+    if (token != null) {
+      _result.token = token;
+    }
+    return _result;
+  }
+  factory TransactionLastObjectSigned.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory TransactionLastObjectSigned.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  TransactionLastObjectSigned clone() => TransactionLastObjectSigned()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  TransactionLastObjectSigned copyWith(void Function(TransactionLastObjectSigned) updates) => super.copyWith((message) => updates(message as TransactionLastObjectSigned)) as TransactionLastObjectSigned; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static TransactionLastObjectSigned create() => TransactionLastObjectSigned._();
+  TransactionLastObjectSigned createEmptyInstance() => create();
+  static $pb.PbList<TransactionLastObjectSigned> createRepeated() => $pb.PbList<TransactionLastObjectSigned>();
+  @$core.pragma('dart2js:noInline')
+  static TransactionLastObjectSigned getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TransactionLastObjectSigned>(create);
+  static TransactionLastObjectSigned? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get chainSign => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set chainSign($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasChainSign() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearChainSign() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get hash => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set hash($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasHash() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearHash() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get txnDetails => $_getSZ(2);
+  $core.String get token => $_getSZ(2);
   @$pb.TagNumber(3)
-  set txnDetails($core.String v) { $_setString(2, v); }
+  set token($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasTxnDetails() => $_has(2);
+  $core.bool hasToken() => $_has(2);
   @$pb.TagNumber(3)
-  void clearTxnDetails() => clearField(3);
+  void clearToken() => clearField(3);
 }
 
 class RequestTransactionPayloadRes extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RequestTransactionPayloadRes', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'did')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tid')
-    ..aOM<RequestTransactionPayloadRes_TxnSignPayload>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payload', subBuilder: RequestTransactionPayloadRes_TxnSignPayload.create)
-    ..aOM<TxnSummary>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txnSummary', protoName: 'txnSummary', subBuilder: TxnSummary.create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'authSenderByRecHash', protoName: 'authSenderByRecHash')
+    ..pc<TransactionLastObject>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastObject', $pb.PbFieldType.PM, protoName: 'lastObject', subBuilder: TransactionLastObject.create)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderPayloadSign', protoName: 'senderPayloadSign')
     ..hasRequiredFields = false
   ;
 
   RequestTransactionPayloadRes._() : super();
   factory RequestTransactionPayloadRes({
-    $core.String? did,
-    $core.String? tid,
-    RequestTransactionPayloadRes_TxnSignPayload? payload,
-    TxnSummary? txnSummary,
+    $core.String? authSenderByRecHash,
+    $core.Iterable<TransactionLastObject>? lastObject,
+    $core.String? senderPayloadSign,
   }) {
     final _result = create();
-    if (did != null) {
-      _result.did = did;
+    if (authSenderByRecHash != null) {
+      _result.authSenderByRecHash = authSenderByRecHash;
     }
-    if (tid != null) {
-      _result.tid = tid;
+    if (lastObject != null) {
+      _result.lastObject.addAll(lastObject);
     }
-    if (payload != null) {
-      _result.payload = payload;
-    }
-    if (txnSummary != null) {
-      _result.txnSummary = txnSummary;
+    if (senderPayloadSign != null) {
+      _result.senderPayloadSign = senderPayloadSign;
     }
     return _result;
   }
@@ -451,44 +521,108 @@ class RequestTransactionPayloadRes extends $pb.GeneratedMessage {
   static RequestTransactionPayloadRes? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get did => $_getSZ(0);
+  $core.String get authSenderByRecHash => $_getSZ(0);
   @$pb.TagNumber(1)
-  set did($core.String v) { $_setString(0, v); }
+  set authSenderByRecHash($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasDid() => $_has(0);
+  $core.bool hasAuthSenderByRecHash() => $_has(0);
   @$pb.TagNumber(1)
-  void clearDid() => clearField(1);
+  void clearAuthSenderByRecHash() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get tid => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set tid($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasTid() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearTid() => clearField(2);
+  $core.List<TransactionLastObject> get lastObject => $_getList(1);
 
   @$pb.TagNumber(3)
-  RequestTransactionPayloadRes_TxnSignPayload get payload => $_getN(2);
+  $core.String get senderPayloadSign => $_getSZ(2);
   @$pb.TagNumber(3)
-  set payload(RequestTransactionPayloadRes_TxnSignPayload v) { setField(3, v); }
+  set senderPayloadSign($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasPayload() => $_has(2);
+  $core.bool hasSenderPayloadSign() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPayload() => clearField(3);
+  void clearSenderPayloadSign() => clearField(3);
+}
+
+class FinaliseTransactionPayload extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FinaliseTransactionPayload', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'authSenderByRecHash', protoName: 'authSenderByRecHash')
+    ..pc<TransactionLastObjectSigned>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastObject', $pb.PbFieldType.PM, protoName: 'lastObject', subBuilder: TransactionLastObjectSigned.create)
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'senderPayloadSign', protoName: 'senderPayloadSign')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'privateKeyPass', protoName: 'privateKeyPass')
+    ..hasRequiredFields = false
+  ;
+
+  FinaliseTransactionPayload._() : super();
+  factory FinaliseTransactionPayload({
+    $core.String? authSenderByRecHash,
+    $core.Iterable<TransactionLastObjectSigned>? lastObject,
+    $core.String? senderPayloadSign,
+    $core.String? privateKeyPass,
+  }) {
+    final _result = create();
+    if (authSenderByRecHash != null) {
+      _result.authSenderByRecHash = authSenderByRecHash;
+    }
+    if (lastObject != null) {
+      _result.lastObject.addAll(lastObject);
+    }
+    if (senderPayloadSign != null) {
+      _result.senderPayloadSign = senderPayloadSign;
+    }
+    if (privateKeyPass != null) {
+      _result.privateKeyPass = privateKeyPass;
+    }
+    return _result;
+  }
+  factory FinaliseTransactionPayload.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FinaliseTransactionPayload.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  FinaliseTransactionPayload clone() => FinaliseTransactionPayload()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  FinaliseTransactionPayload copyWith(void Function(FinaliseTransactionPayload) updates) => super.copyWith((message) => updates(message as FinaliseTransactionPayload)) as FinaliseTransactionPayload; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FinaliseTransactionPayload create() => FinaliseTransactionPayload._();
+  FinaliseTransactionPayload createEmptyInstance() => create();
+  static $pb.PbList<FinaliseTransactionPayload> createRepeated() => $pb.PbList<FinaliseTransactionPayload>();
+  @$core.pragma('dart2js:noInline')
+  static FinaliseTransactionPayload getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FinaliseTransactionPayload>(create);
+  static FinaliseTransactionPayload? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get authSenderByRecHash => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set authSenderByRecHash($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasAuthSenderByRecHash() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearAuthSenderByRecHash() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<TransactionLastObjectSigned> get lastObject => $_getList(1);
+
   @$pb.TagNumber(3)
-  RequestTransactionPayloadRes_TxnSignPayload ensurePayload() => $_ensure(2);
+  $core.String get senderPayloadSign => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set senderPayloadSign($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasSenderPayloadSign() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearSenderPayloadSign() => clearField(3);
 
   @$pb.TagNumber(4)
-  TxnSummary get txnSummary => $_getN(3);
+  $core.String get privateKeyPass => $_getSZ(3);
   @$pb.TagNumber(4)
-  set txnSummary(TxnSummary v) { setField(4, v); }
+  set privateKeyPass($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasTxnSummary() => $_has(3);
+  $core.bool hasPrivateKeyPass() => $_has(3);
   @$pb.TagNumber(4)
-  void clearTxnSummary() => clearField(4);
-  @$pb.TagNumber(4)
-  TxnSummary ensureTxnSummary() => $_ensure(3);
+  void clearPrivateKeyPass() => clearField(4);
 }
 
 class SignedContent extends $pb.GeneratedMessage {
@@ -734,5 +868,140 @@ class InitiateTransactionReq extends $pb.GeneratedMessage {
   void clearPayloadSigned() => clearField(4);
   @$pb.TagNumber(4)
   InitiateTransactionReq_SignedTransactionPayload ensurePayloadSigned() => $_ensure(3);
+}
+
+class GetTransactionLogReq extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetTransactionLogReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'count', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false
+  ;
+
+  GetTransactionLogReq._() : super();
+  factory GetTransactionLogReq({
+    $core.int? count,
+  }) {
+    final _result = create();
+    if (count != null) {
+      _result.count = count;
+    }
+    return _result;
+  }
+  factory GetTransactionLogReq.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetTransactionLogReq.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetTransactionLogReq clone() => GetTransactionLogReq()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetTransactionLogReq copyWith(void Function(GetTransactionLogReq) updates) => super.copyWith((message) => updates(message as GetTransactionLogReq)) as GetTransactionLogReq; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetTransactionLogReq create() => GetTransactionLogReq._();
+  GetTransactionLogReq createEmptyInstance() => create();
+  static $pb.PbList<GetTransactionLogReq> createRepeated() => $pb.PbList<GetTransactionLogReq>();
+  @$core.pragma('dart2js:noInline')
+  static GetTransactionLogReq getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetTransactionLogReq>(create);
+  static GetTransactionLogReq? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get count => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set count($core.int v) { $_setUnsignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasCount() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearCount() => clearField(1);
+}
+
+class GetTransactionLogRes extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetTransactionLogRes', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
+    ..pc<TxnSummary>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'txnLog', $pb.PbFieldType.PM, protoName: 'txnLog', subBuilder: TxnSummary.create)
+    ..hasRequiredFields = false
+  ;
+
+  GetTransactionLogRes._() : super();
+  factory GetTransactionLogRes({
+    $core.Iterable<TxnSummary>? txnLog,
+  }) {
+    final _result = create();
+    if (txnLog != null) {
+      _result.txnLog.addAll(txnLog);
+    }
+    return _result;
+  }
+  factory GetTransactionLogRes.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetTransactionLogRes.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetTransactionLogRes clone() => GetTransactionLogRes()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetTransactionLogRes copyWith(void Function(GetTransactionLogRes) updates) => super.copyWith((message) => updates(message as GetTransactionLogRes)) as GetTransactionLogRes; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetTransactionLogRes create() => GetTransactionLogRes._();
+  GetTransactionLogRes createEmptyInstance() => create();
+  static $pb.PbList<GetTransactionLogRes> createRepeated() => $pb.PbList<GetTransactionLogRes>();
+  @$core.pragma('dart2js:noInline')
+  static GetTransactionLogRes getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetTransactionLogRes>(create);
+  static GetTransactionLogRes? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<TxnSummary> get txnLog => $_getList(0);
+}
+
+class GetBalanceRes extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'GetBalanceRes', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
+    ..a<$core.double>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'balance', $pb.PbFieldType.OD)
+    ..hasRequiredFields = false
+  ;
+
+  GetBalanceRes._() : super();
+  factory GetBalanceRes({
+    $core.double? balance,
+  }) {
+    final _result = create();
+    if (balance != null) {
+      _result.balance = balance;
+    }
+    return _result;
+  }
+  factory GetBalanceRes.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory GetBalanceRes.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  GetBalanceRes clone() => GetBalanceRes()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  GetBalanceRes copyWith(void Function(GetBalanceRes) updates) => super.copyWith((message) => updates(message as GetBalanceRes)) as GetBalanceRes; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static GetBalanceRes create() => GetBalanceRes._();
+  GetBalanceRes createEmptyInstance() => create();
+  static $pb.PbList<GetBalanceRes> createRepeated() => $pb.PbList<GetBalanceRes>();
+  @$core.pragma('dart2js:noInline')
+  static GetBalanceRes getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<GetBalanceRes>(create);
+  static GetBalanceRes? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.double get balance => $_getN(0);
+  @$pb.TagNumber(1)
+  set balance($core.double v) { $_setDouble(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasBalance() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearBalance() => clearField(1);
 }
 

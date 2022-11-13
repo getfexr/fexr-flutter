@@ -4,50 +4,8 @@ import 'package:fexr/signature/dependencies.dart';
 import 'package:grpc/grpc.dart';
 
 class RubixService {
-  Future<TxnSummary> signTransaction(
-      {required String gateway,
-      required double amount,
-      required String accessToken,
-      required String privateImagePath,
-      String? comment,
-      int? type,
-      List<String>? quorumlist,
-      required String receiver}) async {
-      RequestTransactionPayloadRes response = await requestTransactionPayload(
-        accessToken: accessToken,
-        gateway: gateway,
-        payloadReq: RequestTransactionPayloadReq(
-          comment: comment,
-          type: type,
-          receiver: receiver,
-        ));
-        String senderSignContent = response.payload.senderSign;
-        String senderSignQContent = response.payload.senderSignQ;
-        String positions = await Dependencies().privatePositions(privateImagePath);
-        String senderSign = await GenerateSign().genSignFromShares(privateImagePath, senderSignContent);
-        String senderSignQ = await GenerateSign().genSignFromShares(privateImagePath, senderSignQContent);
-        String txnDetails = response.payload.txnDetails;
-
-        TxnSummary txnSummary = await initiateTransaction(
-          accessToken: accessToken,
-          gateway: gateway,
-          imagePath: privateImagePath,
-          initiatePayload: InitiateTransactionReq(
-            receiver: receiver,
-            tokenCount: amount,
-            type: type,
-            payloadSigned:
-              InitiateTransactionReq_SignedTransactionPayload(
-                positions: positions,
-                senderSign: SignedContent(content: senderSignContent, signature: senderSign),
-                senderSignQ: SignedContent(content: senderSignQContent, signature: senderSignQ),
-                txnDetails: txnDetails)),
-        );
-
-        return txnSummary;
-  }
-
-  static final RubixService _singleton = RubixService._internal();
+  
+static final RubixService _singleton = RubixService._internal();
 
   factory RubixService() {
     return _singleton;
@@ -85,52 +43,62 @@ class RubixService {
   Future<TxnSummary> initiateTransaction(
       {required String gateway,
       required String accessToken,
-      required InitiateTransactionReq initiatePayload,
+      required RequestTransactionPayloadReq initiatePayload,
       required String imagePath}) async {
     RubixServiceClient stub = getConnection(gateway, accessToken);
     try {
-      var response = await stub.initiateTransaction(InitiateTransactionReq(
-          payloadSigned: InitiateTransactionReq_SignedTransactionPayload(
-              positions: initiatePayload.payloadSigned.positions,
-              senderSign:
-                  SignedContent(
-                      content: initiatePayload.payloadSigned.senderSign.content,
-                      signature: await GenerateSign().genSignFromShares(
-                          imagePath,
-                          Dependencies().calculateHash(initiatePayload
-                              .payloadSigned.senderSign.content))),
-              senderSignQ:
-                  SignedContent(
-                      content:
-                          initiatePayload.payloadSigned.senderSignQ.content,
-                      signature: await GenerateSign().genSignFromShares(
-                          imagePath,
-                          Dependencies().calculateHash(
-                              initiatePayload.payloadSigned.senderSignQ.content))),
-              txnDetails: initiatePayload.payloadSigned.txnDetails)));
-      return response;
+      var response = await stub.initiateTransaction(RequestTransactionPayloadReq(
+          receiver: initiatePayload.receiver,
+          tokenCount: initiatePayload.tokenCount,
+          comment: initiatePayload.comment,
+          type: initiatePayload.type,
+          privateKeyPass: initiatePayload.privateKeyPass));
+      var unsignedLastObjectArr = response.lastObject;
+      Iterable<TransactionLastObjectSigned> signedLastObjectArr = await Future.wait(unsignedLastObjectArr.map(
+        (e) async => 
+       TransactionLastObjectSigned(
+        chainSign:  await GenerateSign().genSignFromShares(imagePath, e.hash),
+        hash: e.hash,
+        token: e.token
+       )
+      ));
+
+      var finaliseTransactionResult = await stub.finaliseTransaction(FinaliseTransactionPayload(
+        authSenderByRecHash: await GenerateSign().genSignFromShares(imagePath, response.authSenderByRecHash),
+        lastObject: signedLastObjectArr,
+        senderPayloadSign: await GenerateSign().genSignFromShares(imagePath, response.senderPayloadSign)
+      ));
+      return finaliseTransactionResult;
     } catch (e) {
       print(e);
       return TxnSummary();
     }
   }
 
-  Future<RequestTransactionPayloadRes> requestTransactionPayload(
-      {required String gateway,
-      required String accessToken,
-      required RequestTransactionPayloadReq payloadReq}) async {
+  Future<GetTransactionLogRes> getTransactionLog({required String gateway, required String accessToken, required GetTransactionLogReq transactionLogReq}) async {
+
     RubixServiceClient stub = getConnection(gateway, accessToken);
     try {
-      var response = await stub.requestTransactionPayload(
-          RequestTransactionPayloadReq(
-              receiver: payloadReq.receiver,
-              tokenCount: payloadReq.tokenCount,
-              comment: payloadReq.comment,
-              type: payloadReq.type));
+      var response = await stub.getTransactionLog(transactionLogReq);
       return response;
     } catch (e) {
       print(e);
-      return RequestTransactionPayloadRes();
+      return GetTransactionLogRes();
     }
+
   }
+
+  Future<GetBalanceRes> getBalance({required String gateway, required String accessToken}) async {
+    RubixServiceClient stub = getConnection(gateway, accessToken);
+    try {
+      var response = await stub.getBalance(Empty());
+      return response;
+    } catch (e) {
+      print(e);
+      return GetBalanceRes();
+    }
+
+  }
+
+  
 }
