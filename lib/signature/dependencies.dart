@@ -1,10 +1,7 @@
 import 'package:sha3/sha3.dart';
 import 'dart:convert';
 import 'package:convert/convert.dart';
-
-//import 'dart:js_util';
 import 'package:image/image.dart' as image_lib;
-import 'dart:typed_data';
 import 'dart:io';
 import 'package:flutter/services.dart' show rootBundle;
 
@@ -28,30 +25,19 @@ class Dependencies {
 
     int? width = image?.width;
     int? height = image?.height;
-    int xChunk = width!;
-    int yChunk = height!;
 
-    for (int i = 0; i < height; i++) {
-      for (int j = 0; j < width; j++) {
+    for (int i = 0; i < height!; i++) {
+      for (int j = 0; j < width!; j++) {
         int? pixel = image?.getPixel(j, i);
-
         var color = pixel?.toInt() ?? 0;
-
         int red = image_lib.getRed(color);
-
         int green = image_lib.getGreen(color);
-
         int blue = image_lib.getBlue(color);
-
         // int alpha = image_lib.getAlpha(color); //Alpha part has been commented out, because of the conclusion that in Java Alpha part is not used.
-
         colors.add(intToBinary(red));
-
         colors.add(intToBinary(green));
-
         colors.add(intToBinary(blue));
-
-        // colors.add(alpha.toRadixString(2));
+     // colors.add(alpha.toRadixString(2));
       }
     }
 
@@ -70,46 +56,30 @@ class Dependencies {
     int u = 0, l = 0, m = 0;
     var hashCharacters =
         new List<int>.generate(32, (index) => 0, growable: false);
-
     var randomPositions =
         new List<int>.generate(32, (index) => 0, growable: false);
-
     var randPos = new List<int>.generate(256, (index) => 0, growable: false);
-
     var originalPos = new List<int>.generate(32, (index) => 0, growable: false);
     List<int> posForSign = new List<int>.generate(32 * 8, (index) => 0);
     for (int k = 0; k < numberOfPositions; k++) {
       String hashVar = hash.substring(k, k + 1);
-
       hashCharacters[k] = int.parse(hashVar, radix: 16);
-
       randomPositions[k] = (((2402 + hashCharacters[k]) * 2709) +
               ((k + 2709) + hashCharacters[(k)])) %
           2048;
-
       originalPos[k] = ((randomPositions[k] ~/ 8) * 8);
-
       var pos = new List<int>.generate(32, (index) => 0, growable: false);
-
       pos[k] = originalPos[k];
-
       randPos[k] = pos[k];
-
       var finalPositions =
           new List<int>.generate(8, (index) => 0, growable: false);
       for (int p = 0; p < 8; p++) {
         posForSign[u] = randPos[k];
-
         randPos[k]++;
-
         u++;
-
         finalPositions[l] = pos[k];
-
         pos[k]++;
-
         l++;
-
         if (l == 8) {
           l = 0;
         }
@@ -162,7 +132,8 @@ class Dependencies {
   }
 
   String calculateHash(String hashValues) {
-    var hashList, hash;
+    String hash;
+    List<int> hashList;
     var k = SHA3(256, SHA3_PADDING, 256);
     k.update(utf8.encode(hashValues));
     hashList = k.digest();
@@ -188,7 +159,7 @@ class Dependencies {
   String getPos(String s1, String s2) {
     int i, j, temp, temp1, sum;
     String sub1, sub2;
-    if (s1.length != s2.length || s1.length < 1) {
+    if (s1.length != s2.length || s1.isEmpty) {
       return "";
     }
     StringBuffer tempo = new StringBuffer();
