@@ -14,11 +14,12 @@ const CreateDIDReq$json = const {
   '2': const [
     const {'1': 'didImage', '3': 1, '4': 1, '5': 9, '10': 'didImage'},
     const {'1': 'publicShare', '3': 2, '4': 1, '5': 9, '10': 'publicShare'},
+    const {'1': 'privateKeyPass', '3': 3, '4': 1, '5': 9, '10': 'privateKeyPass'},
   ],
 };
 
 /// Descriptor for `CreateDIDReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createDIDReqDescriptor = $convert.base64Decode('CgxDcmVhdGVESURSZXESGgoIZGlkSW1hZ2UYASABKAlSCGRpZEltYWdlEiAKC3B1YmxpY1NoYXJlGAIgASgJUgtwdWJsaWNTaGFyZQ==');
+final $typed_data.Uint8List createDIDReqDescriptor = $convert.base64Decode('CgxDcmVhdGVESURSZXESGgoIZGlkSW1hZ2UYASABKAlSCGRpZEltYWdlEiAKC3B1YmxpY1NoYXJlGAIgASgJUgtwdWJsaWNTaGFyZRImCg5wcml2YXRlS2V5UGFzcxgDIAEoCVIOcHJpdmF0ZUtleVBhc3M=');
 @$core.Deprecated('Use createDIDResDescriptor instead')
 const CreateDIDRes$json = const {
   '1': 'CreateDIDRes',
