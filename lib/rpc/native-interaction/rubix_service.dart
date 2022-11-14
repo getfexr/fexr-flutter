@@ -40,13 +40,12 @@ static final RubixService _singleton = RubixService._internal();
     }
   }
 
-  Future<TxnSummary> initiateTransaction(
+  Future<Object> initiateTransaction(
       {required String gateway,
       required String accessToken,
       required RequestTransactionPayloadReq initiatePayload,
       required String imagePath}) async {
     RubixServiceClient stub = getConnection(gateway, accessToken);
-    try {
       var response = await stub.initiateTransaction(RequestTransactionPayloadReq(
           receiver: initiatePayload.receiver,
           tokenCount: initiatePayload.tokenCount,
@@ -68,11 +67,17 @@ static final RubixService _singleton = RubixService._internal();
         lastObject: signedLastObjectArr,
         senderPayloadSign: await GenerateSign().genSignFromShares(imagePath, response.senderPayloadSign)
       ));
+ //     return finaliseTransactionResult;
+ //   } catch (e) {
+    
+      // return error 
+      // ;
+     // return TxnSummary();
+
+
+      //return error
       return finaliseTransactionResult;
-    } catch (e) {
-      print(e);
-      return TxnSummary();
-    }
+  //  }
   }
 
   Future<GetTransactionLogRes> getTransactionLog({required String gateway, required String accessToken, required GetTransactionLogReq transactionLogReq}) async {
