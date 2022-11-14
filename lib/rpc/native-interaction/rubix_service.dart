@@ -27,12 +27,14 @@ static final RubixService _singleton = RubixService._internal();
       {required String gateway,
       required String didImagePath,
       required String publicSharePath,
+      required String privateKeyPass,
       required String accessToken}) async {
     RubixServiceClient stub = getConnection(gateway, accessToken);
     try {
       var response = await stub.createDID(CreateDIDReq(
           didImage: await Dependencies().imageToBase64(didImagePath),
-          publicShare: await Dependencies().imageToBase64(publicSharePath)));
+          publicShare: await Dependencies().imageToBase64(publicSharePath),
+          privateKeyPass: privateKeyPass));
       return response;
     } catch (e) {
       print(e);
@@ -40,7 +42,7 @@ static final RubixService _singleton = RubixService._internal();
     }
   }
 
-  Future<Object> initiateTransaction(
+  Future<TxnSummary> initiateTransaction(
       {required String gateway,
       required String accessToken,
       required RequestTransactionPayloadReq initiatePayload,
@@ -67,17 +69,7 @@ static final RubixService _singleton = RubixService._internal();
         lastObject: signedLastObjectArr,
         senderPayloadSign: await GenerateSign().genSignFromShares(imagePath, response.senderPayloadSign)
       ));
- //     return finaliseTransactionResult;
- //   } catch (e) {
-    
-      // return error 
-      // ;
-     // return TxnSummary();
-
-
-      //return error
       return finaliseTransactionResult;
-  //  }
   }
 
   Future<GetTransactionLogRes> getTransactionLog({required String gateway, required String accessToken, required GetTransactionLogReq transactionLogReq}) async {

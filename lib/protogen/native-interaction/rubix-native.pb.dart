@@ -13,6 +13,7 @@ class CreateDIDReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateDIDReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'didImage', protoName: 'didImage')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicShare', protoName: 'publicShare')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'privateKeyPass', protoName: 'privateKeyPass')
     ..hasRequiredFields = false
   ;
 
@@ -20,6 +21,7 @@ class CreateDIDReq extends $pb.GeneratedMessage {
   factory CreateDIDReq({
     $core.String? didImage,
     $core.String? publicShare,
+    $core.String? privateKeyPass,
   }) {
     final _result = create();
     if (didImage != null) {
@@ -27,6 +29,9 @@ class CreateDIDReq extends $pb.GeneratedMessage {
     }
     if (publicShare != null) {
       _result.publicShare = publicShare;
+    }
+    if (privateKeyPass != null) {
+      _result.privateKeyPass = privateKeyPass;
     }
     return _result;
   }
@@ -68,6 +73,15 @@ class CreateDIDReq extends $pb.GeneratedMessage {
   $core.bool hasPublicShare() => $_has(1);
   @$pb.TagNumber(2)
   void clearPublicShare() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get privateKeyPass => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set privateKeyPass($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasPrivateKeyPass() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearPrivateKeyPass() => clearField(3);
 }
 
 class CreateDIDRes extends $pb.GeneratedMessage {
