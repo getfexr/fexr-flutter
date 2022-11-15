@@ -85,6 +85,37 @@ const TransactionLastObjectSigned$json = const {
 
 /// Descriptor for `TransactionLastObjectSigned`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List transactionLastObjectSignedDescriptor = $convert.base64Decode('ChtUcmFuc2FjdGlvbkxhc3RPYmplY3RTaWduZWQSHAoJY2hhaW5TaWduGAEgASgJUgljaGFpblNpZ24SEgoEaGFzaBgCIAEoCVIEaGFzaBIUCgV0b2tlbhgDIAEoCVIFdG9rZW4=');
+@$core.Deprecated('Use signedHashDescriptor instead')
+const SignedHash$json = const {
+  '1': 'SignedHash',
+  '2': const [
+    const {'1': 'hash', '3': 1, '4': 1, '5': 9, '10': 'hash'},
+    const {'1': 'sign', '3': 2, '4': 1, '5': 9, '10': 'sign'},
+  ],
+};
+
+/// Descriptor for `SignedHash`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List signedHashDescriptor = $convert.base64Decode('CgpTaWduZWRIYXNoEhIKBGhhc2gYASABKAlSBGhhc2gSEgoEc2lnbhgCIAEoCVIEc2lnbg==');
+@$core.Deprecated('Use pledgeDetailDescriptor instead')
+const PledgeDetail$json = const {
+  '1': 'PledgeDetail',
+  '2': const [
+    const {'1': 'valueArr', '3': 1, '4': 3, '5': 9, '10': 'valueArr'},
+  ],
+};
+
+/// Descriptor for `PledgeDetail`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List pledgeDetailDescriptor = $convert.base64Decode('CgxQbGVkZ2VEZXRhaWwSGgoIdmFsdWVBcnIYASADKAlSCHZhbHVlQXJy');
+@$core.Deprecated('Use pledgeDetailSignedDescriptor instead')
+const PledgeDetailSigned$json = const {
+  '1': 'PledgeDetailSigned',
+  '2': const [
+    const {'1': 'valueArr', '3': 2, '4': 3, '5': 11, '6': '.protos.SignedHash', '10': 'valueArr'},
+  ],
+};
+
+/// Descriptor for `PledgeDetailSigned`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List pledgeDetailSignedDescriptor = $convert.base64Decode('ChJQbGVkZ2VEZXRhaWxTaWduZWQSLgoIdmFsdWVBcnIYAiADKAsyEi5wcm90b3MuU2lnbmVkSGFzaFIIdmFsdWVBcnI=');
 @$core.Deprecated('Use requestTransactionPayloadResDescriptor instead')
 const RequestTransactionPayloadRes$json = const {
   '1': 'RequestTransactionPayloadRes',
@@ -92,63 +123,51 @@ const RequestTransactionPayloadRes$json = const {
     const {'1': 'authSenderByRecHash', '3': 1, '4': 1, '5': 9, '10': 'authSenderByRecHash'},
     const {'1': 'lastObject', '3': 2, '4': 3, '5': 11, '6': '.protos.TransactionLastObject', '10': 'lastObject'},
     const {'1': 'senderPayloadSign', '3': 3, '4': 1, '5': 9, '10': 'senderPayloadSign'},
+    const {'1': 'pledgeDetails', '3': 4, '4': 3, '5': 11, '6': '.protos.RequestTransactionPayloadRes.PledgeDetailsEntry', '10': 'pledgeDetails'},
   ],
+  '3': const [RequestTransactionPayloadRes_PledgeDetailsEntry$json],
+};
+
+@$core.Deprecated('Use requestTransactionPayloadResDescriptor instead')
+const RequestTransactionPayloadRes_PledgeDetailsEntry$json = const {
+  '1': 'PledgeDetailsEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.protos.PledgeDetail', '10': 'value'},
+  ],
+  '7': const {'7': true},
 };
 
 /// Descriptor for `RequestTransactionPayloadRes`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List requestTransactionPayloadResDescriptor = $convert.base64Decode('ChxSZXF1ZXN0VHJhbnNhY3Rpb25QYXlsb2FkUmVzEjAKE2F1dGhTZW5kZXJCeVJlY0hhc2gYASABKAlSE2F1dGhTZW5kZXJCeVJlY0hhc2gSPQoKbGFzdE9iamVjdBgCIAMoCzIdLnByb3Rvcy5UcmFuc2FjdGlvbkxhc3RPYmplY3RSCmxhc3RPYmplY3QSLAoRc2VuZGVyUGF5bG9hZFNpZ24YAyABKAlSEXNlbmRlclBheWxvYWRTaWdu');
+final $typed_data.Uint8List requestTransactionPayloadResDescriptor = $convert.base64Decode('ChxSZXF1ZXN0VHJhbnNhY3Rpb25QYXlsb2FkUmVzEjAKE2F1dGhTZW5kZXJCeVJlY0hhc2gYASABKAlSE2F1dGhTZW5kZXJCeVJlY0hhc2gSPQoKbGFzdE9iamVjdBgCIAMoCzIdLnByb3Rvcy5UcmFuc2FjdGlvbkxhc3RPYmplY3RSCmxhc3RPYmplY3QSLAoRc2VuZGVyUGF5bG9hZFNpZ24YAyABKAlSEXNlbmRlclBheWxvYWRTaWduEl0KDXBsZWRnZURldGFpbHMYBCADKAsyNy5wcm90b3MuUmVxdWVzdFRyYW5zYWN0aW9uUGF5bG9hZFJlcy5QbGVkZ2VEZXRhaWxzRW50cnlSDXBsZWRnZURldGFpbHMaVgoSUGxlZGdlRGV0YWlsc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EioKBXZhbHVlGAIgASgLMhQucHJvdG9zLlBsZWRnZURldGFpbFIFdmFsdWU6AjgB');
 @$core.Deprecated('Use finaliseTransactionPayloadDescriptor instead')
 const FinaliseTransactionPayload$json = const {
   '1': 'FinaliseTransactionPayload',
   '2': const [
-    const {'1': 'authSenderByRecHash', '3': 1, '4': 1, '5': 9, '10': 'authSenderByRecHash'},
+    const {'1': 'authSenderByRecHash', '3': 1, '4': 1, '5': 11, '6': '.protos.SignedHash', '10': 'authSenderByRecHash'},
     const {'1': 'lastObject', '3': 2, '4': 3, '5': 11, '6': '.protos.TransactionLastObjectSigned', '10': 'lastObject'},
-    const {'1': 'senderPayloadSign', '3': 3, '4': 1, '5': 9, '10': 'senderPayloadSign'},
+    const {'1': 'senderPayloadSign', '3': 3, '4': 1, '5': 11, '6': '.protos.SignedHash', '10': 'senderPayloadSign'},
     const {'1': 'privateKeyPass', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'privateKeyPass', '17': true},
+    const {'1': 'pledgeDetails', '3': 5, '4': 3, '5': 11, '6': '.protos.FinaliseTransactionPayload.PledgeDetailsEntry', '10': 'pledgeDetails'},
   ],
+  '3': const [FinaliseTransactionPayload_PledgeDetailsEntry$json],
   '8': const [
     const {'1': '_privateKeyPass'},
   ],
 };
 
+@$core.Deprecated('Use finaliseTransactionPayloadDescriptor instead')
+const FinaliseTransactionPayload_PledgeDetailsEntry$json = const {
+  '1': 'PledgeDetailsEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.protos.PledgeDetailSigned', '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
 /// Descriptor for `FinaliseTransactionPayload`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List finaliseTransactionPayloadDescriptor = $convert.base64Decode('ChpGaW5hbGlzZVRyYW5zYWN0aW9uUGF5bG9hZBIwChNhdXRoU2VuZGVyQnlSZWNIYXNoGAEgASgJUhNhdXRoU2VuZGVyQnlSZWNIYXNoEkMKCmxhc3RPYmplY3QYAiADKAsyIy5wcm90b3MuVHJhbnNhY3Rpb25MYXN0T2JqZWN0U2lnbmVkUgpsYXN0T2JqZWN0EiwKEXNlbmRlclBheWxvYWRTaWduGAMgASgJUhFzZW5kZXJQYXlsb2FkU2lnbhIrCg5wcml2YXRlS2V5UGFzcxgEIAEoCUgAUg5wcml2YXRlS2V5UGFzc4gBAUIRCg9fcHJpdmF0ZUtleVBhc3M=');
-@$core.Deprecated('Use signedContentDescriptor instead')
-const SignedContent$json = const {
-  '1': 'SignedContent',
-  '2': const [
-    const {'1': 'content', '3': 1, '4': 1, '5': 9, '10': 'content'},
-    const {'1': 'signature', '3': 2, '4': 1, '5': 9, '10': 'signature'},
-  ],
-};
-
-/// Descriptor for `SignedContent`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List signedContentDescriptor = $convert.base64Decode('Cg1TaWduZWRDb250ZW50EhgKB2NvbnRlbnQYASABKAlSB2NvbnRlbnQSHAoJc2lnbmF0dXJlGAIgASgJUglzaWduYXR1cmU=');
-@$core.Deprecated('Use initiateTransactionReqDescriptor instead')
-const InitiateTransactionReq$json = const {
-  '1': 'InitiateTransactionReq',
-  '2': const [
-    const {'1': 'receiver', '3': 1, '4': 1, '5': 9, '10': 'receiver'},
-    const {'1': 'tokenCount', '3': 2, '4': 1, '5': 1, '10': 'tokenCount'},
-    const {'1': 'type', '3': 3, '4': 1, '5': 5, '10': 'type'},
-    const {'1': 'payloadSigned', '3': 4, '4': 1, '5': 11, '6': '.protos.InitiateTransactionReq.SignedTransactionPayload', '10': 'payloadSigned'},
-  ],
-  '3': const [InitiateTransactionReq_SignedTransactionPayload$json],
-};
-
-@$core.Deprecated('Use initiateTransactionReqDescriptor instead')
-const InitiateTransactionReq_SignedTransactionPayload$json = const {
-  '1': 'SignedTransactionPayload',
-  '2': const [
-    const {'1': 'positions', '3': 1, '4': 1, '5': 9, '10': 'positions'},
-    const {'1': 'senderSign', '3': 2, '4': 1, '5': 11, '6': '.protos.SignedContent', '10': 'senderSign'},
-    const {'1': 'senderSignQ', '3': 3, '4': 1, '5': 11, '6': '.protos.SignedContent', '10': 'senderSignQ'},
-    const {'1': 'txnDetails', '3': 4, '4': 1, '5': 9, '10': 'txnDetails'},
-  ],
-};
-
-/// Descriptor for `InitiateTransactionReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List initiateTransactionReqDescriptor = $convert.base64Decode('ChZJbml0aWF0ZVRyYW5zYWN0aW9uUmVxEhoKCHJlY2VpdmVyGAEgASgJUghyZWNlaXZlchIeCgp0b2tlbkNvdW50GAIgASgBUgp0b2tlbkNvdW50EhIKBHR5cGUYAyABKAVSBHR5cGUSXQoNcGF5bG9hZFNpZ25lZBgEIAEoCzI3LnByb3Rvcy5Jbml0aWF0ZVRyYW5zYWN0aW9uUmVxLlNpZ25lZFRyYW5zYWN0aW9uUGF5bG9hZFINcGF5bG9hZFNpZ25lZBrIAQoYU2lnbmVkVHJhbnNhY3Rpb25QYXlsb2FkEhwKCXBvc2l0aW9ucxgBIAEoCVIJcG9zaXRpb25zEjUKCnNlbmRlclNpZ24YAiABKAsyFS5wcm90b3MuU2lnbmVkQ29udGVudFIKc2VuZGVyU2lnbhI3CgtzZW5kZXJTaWduURgDIAEoCzIVLnByb3Rvcy5TaWduZWRDb250ZW50UgtzZW5kZXJTaWduURIeCgp0eG5EZXRhaWxzGAQgASgJUgp0eG5EZXRhaWxz');
+final $typed_data.Uint8List finaliseTransactionPayloadDescriptor = $convert.base64Decode('ChpGaW5hbGlzZVRyYW5zYWN0aW9uUGF5bG9hZBJEChNhdXRoU2VuZGVyQnlSZWNIYXNoGAEgASgLMhIucHJvdG9zLlNpZ25lZEhhc2hSE2F1dGhTZW5kZXJCeVJlY0hhc2gSQwoKbGFzdE9iamVjdBgCIAMoCzIjLnByb3Rvcy5UcmFuc2FjdGlvbkxhc3RPYmplY3RTaWduZWRSCmxhc3RPYmplY3QSQAoRc2VuZGVyUGF5bG9hZFNpZ24YAyABKAsyEi5wcm90b3MuU2lnbmVkSGFzaFIRc2VuZGVyUGF5bG9hZFNpZ24SKwoOcHJpdmF0ZUtleVBhc3MYBCABKAlIAFIOcHJpdmF0ZUtleVBhc3OIAQESWwoNcGxlZGdlRGV0YWlscxgFIAMoCzI1LnByb3Rvcy5GaW5hbGlzZVRyYW5zYWN0aW9uUGF5bG9hZC5QbGVkZ2VEZXRhaWxzRW50cnlSDXBsZWRnZURldGFpbHMaXAoSUGxlZGdlRGV0YWlsc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EjAKBXZhbHVlGAIgASgLMhoucHJvdG9zLlBsZWRnZURldGFpbFNpZ25lZFIFdmFsdWU6AjgBQhEKD19wcml2YXRlS2V5UGFzcw==');
 @$core.Deprecated('Use getTransactionLogReqDescriptor instead')
 const GetTransactionLogReq$json = const {
   '1': 'GetTransactionLogReq',
