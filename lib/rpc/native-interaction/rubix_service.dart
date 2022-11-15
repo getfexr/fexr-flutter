@@ -48,13 +48,16 @@ static final RubixService _singleton = RubixService._internal();
       required RequestTransactionPayloadReq initiatePayload,
       required String imagePath}) async {
     RubixServiceClient stub = getConnection(gateway, accessToken);
-      var response = await stub.initiateTransaction(RequestTransactionPayloadReq(
+    RequestTransactionPayloadRes response = await stub.initiateTransaction(RequestTransactionPayloadReq(
           receiver: initiatePayload.receiver,
           tokenCount: initiatePayload.tokenCount,
           comment: initiatePayload.comment,
           type: initiatePayload.type,
           privateKeyPass: initiatePayload.privateKeyPass));
+
       var unsignedLastObjectArr = response.lastObject;
+      var unsignedPledgeDetails = response.pledgeDetails;
+
       Iterable<TransactionLastObjectSigned> signedLastObjectArr = await Future.wait(unsignedLastObjectArr.map(
         (e) async => 
        TransactionLastObjectSigned(
@@ -63,11 +66,24 @@ static final RubixService _singleton = RubixService._internal();
         token: e.token
        )
       ));
+      Map<String,PledgeDetailSigned> pledgeDetails = {};
+      unsignedPledgeDetails.forEach((key, value) async {
+        var hashes = value.valueArr;
+        pledgeDetails[key] = PledgeDetailSigned(
+         valueArr: await Future.wait(hashes.map((e) async => SignedHash(hash: e, sign: await GenerateSign().genSignFromShares(imagePath, e)))
+        ));
+      });
+      print('pledgedetail is $pledgeDetails');
+      
+
 
       var finaliseTransactionResult = await stub.finaliseTransaction(FinaliseTransactionPayload(
-        authSenderByRecHash: await GenerateSign().genSignFromShares(imagePath, response.authSenderByRecHash),
+        authSenderByRecHash:  SignedHash(hash: response.authSenderByRecHash, sign: await GenerateSign().genSignFromShares(imagePath, response.authSenderByRecHash)),
         lastObject: signedLastObjectArr,
-        senderPayloadSign: await GenerateSign().genSignFromShares(imagePath, response.senderPayloadSign)
+        senderPayloadSign: SignedHash(hash: response.senderPayloadSign,
+        sign: await GenerateSign().genSignFromShares(imagePath, response.senderPayloadSign)),
+        privateKeyPass: initiatePayload.privateKeyPass,
+        pledgeDetails: pledgeDetails 
       ));
       return finaliseTransactionResult;
   }
