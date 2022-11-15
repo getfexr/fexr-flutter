@@ -54,7 +54,6 @@ static final RubixService _singleton = RubixService._internal();
           comment: initiatePayload.comment,
           type: initiatePayload.type,
           privateKeyPass: initiatePayload.privateKeyPass));
-
       var unsignedLastObjectArr = response.lastObject;
       var unsignedPledgeDetails = response.pledgeDetails;
 
@@ -66,17 +65,21 @@ static final RubixService _singleton = RubixService._internal();
         token: e.token
        )
       ));
+
       Map<String,PledgeDetailSigned> pledgeDetails = {};
-      unsignedPledgeDetails.forEach((key, value) async {
-        var hashes = value.valueArr;
-        pledgeDetails[key] = PledgeDetailSigned(
-         valueArr: await Future.wait(hashes.map((e) async => SignedHash(hash: e, sign: await GenerateSign().genSignFromShares(imagePath, e)))
-        ));
-      });
-      print('pledgedetail is $pledgeDetails');
+
+      for (final keyValue in unsignedPledgeDetails.entries) {
+        var hashes = keyValue.value.valueArr;
+        var signedHashes = await Future.wait(hashes.map((e) async => SignedHash(
+          hash: e,
+          sign: await GenerateSign().genSignFromShares(imagePath, e)
+        )));
+
+        pledgeDetails[keyValue.key] = PledgeDetailSigned(
+          valueArr: signedHashes
+        );
+      }
       
-
-
       var finaliseTransactionResult = await stub.finaliseTransaction(FinaliseTransactionPayload(
         authSenderByRecHash:  SignedHash(hash: response.authSenderByRecHash, sign: await GenerateSign().genSignFromShares(imagePath, response.authSenderByRecHash)),
         lastObject: signedLastObjectArr,
