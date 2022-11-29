@@ -13,11 +13,12 @@ static final RubixService _singleton = RubixService._internal();
 
   RubixService._internal();
 
-  RubixServiceClient getConnection(String gateway, String accessToken) {
+  RubixServiceClient getConnection({ required String gateway, required String accessToken, Duration idleTimeout = const Duration(minutes: 5)}) {
     ClientChannel channel = ClientChannel(gateway,
         port: Const.PORT,
         options:
-            const ChannelOptions(credentials: ChannelCredentials.insecure()));
+            const ChannelOptions(credentials: ChannelCredentials.insecure(),
+            idleTimeout: Duration()));
     return RubixServiceClient(channel,
         options:
             CallOptions(metadata: {'Authorization': 'Bearer $accessToken'}));
@@ -29,7 +30,7 @@ static final RubixService _singleton = RubixService._internal();
       required String publicSharePath,
       required String privateKeyPass,
       required String accessToken}) async {
-    RubixServiceClient stub = getConnection(gateway, accessToken);
+    RubixServiceClient stub = getConnection(gateway: gateway, accessToken: accessToken);
     try {
       var response = await stub.createDID(CreateDIDReq(
           didImage: await Dependencies().imageToBase64(didImagePath),
@@ -46,8 +47,9 @@ static final RubixService _singleton = RubixService._internal();
       {required String gateway,
       required String accessToken,
       required RequestTransactionPayloadReq initiatePayload,
-      required String imagePath}) async {
-    RubixServiceClient stub = getConnection(gateway, accessToken);
+      required String imagePath,
+      required Duration idleTimeout}) async {
+    RubixServiceClient stub = getConnection(gateway: gateway, accessToken: accessToken, idleTimeout: idleTimeout);
     RequestTransactionPayloadRes response = await stub.initiateTransaction(RequestTransactionPayloadReq(
           receiver: initiatePayload.receiver,
           tokenCount: initiatePayload.tokenCount,
@@ -93,7 +95,7 @@ static final RubixService _singleton = RubixService._internal();
 
   Future<GetTransactionLogRes> getTransactionLog({required String gateway, required String accessToken, required GetTransactionLogReq transactionLogReq}) async {
 
-    RubixServiceClient stub = getConnection(gateway, accessToken);
+    RubixServiceClient stub = getConnection(gateway: gateway, accessToken: accessToken);
     try {
       var response = await stub.getTransactionLog(transactionLogReq);
       return response;
@@ -105,7 +107,7 @@ static final RubixService _singleton = RubixService._internal();
   }
 
   Future<GetBalanceRes> getBalance({required String gateway, required String accessToken}) async {
-    RubixServiceClient stub = getConnection(gateway, accessToken);
+    RubixServiceClient stub = getConnection(gateway: gateway, accessToken: accessToken);
     try {
       var response = await stub.getBalance(Empty());
       return response;
