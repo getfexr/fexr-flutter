@@ -17,8 +17,8 @@ static final RubixService _singleton = RubixService._internal();
     ClientChannel channel = ClientChannel(gateway,
         port: Const.PORT,
         options:
-            const ChannelOptions(credentials: ChannelCredentials.insecure(),
-            idleTimeout: Duration()));
+            ChannelOptions(credentials: ChannelCredentials.insecure(),
+            idleTimeout: idleTimeout));
     return RubixServiceClient(channel,
         options:
             CallOptions(metadata: {'Authorization': 'Bearer $accessToken'}));
@@ -48,7 +48,7 @@ static final RubixService _singleton = RubixService._internal();
       required String accessToken,
       required RequestTransactionPayloadReq initiatePayload,
       required String imagePath,
-      required Duration idleTimeout}) async {
+      Duration idleTimeout = const Duration(minutes: 15) }) async {
     RubixServiceClient stub = getConnection(gateway: gateway, accessToken: accessToken, idleTimeout: idleTimeout);
     RequestTransactionPayloadRes response = await stub.initiateTransaction(RequestTransactionPayloadReq(
           receiver: initiatePayload.receiver,
