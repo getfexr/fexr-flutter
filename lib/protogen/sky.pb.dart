@@ -9,7 +9,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/timestamp.pb.dart' as $3;
+import 'google/protobuf/timestamp.pb.dart' as $2;
 
 import 'sky.pbenum.dart';
 
@@ -154,14 +154,14 @@ class RefreshReq extends $pb.GeneratedMessage {
 class HostRes_AccessToken extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'HostRes.AccessToken', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token')
-    ..aOM<$3.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'expiry', subBuilder: $3.Timestamp.create)
+    ..aOM<$2.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'expiry', subBuilder: $2.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
   HostRes_AccessToken._() : super();
   factory HostRes_AccessToken({
     $core.String? token,
-    $3.Timestamp? expiry,
+    $2.Timestamp? expiry,
   }) {
     final _result = create();
     if (token != null) {
@@ -203,28 +203,28 @@ class HostRes_AccessToken extends $pb.GeneratedMessage {
   void clearToken() => clearField(1);
 
   @$pb.TagNumber(2)
-  $3.Timestamp get expiry => $_getN(1);
+  $2.Timestamp get expiry => $_getN(1);
   @$pb.TagNumber(2)
-  set expiry($3.Timestamp v) { setField(2, v); }
+  set expiry($2.Timestamp v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasExpiry() => $_has(1);
   @$pb.TagNumber(2)
   void clearExpiry() => clearField(2);
   @$pb.TagNumber(2)
-  $3.Timestamp ensureExpiry() => $_ensure(1);
+  $2.Timestamp ensureExpiry() => $_ensure(1);
 }
 
 class HostRes_RefreshToken extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'HostRes.RefreshToken', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token')
-    ..aOM<$3.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'expiry', subBuilder: $3.Timestamp.create)
+    ..aOM<$2.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'expiry', subBuilder: $2.Timestamp.create)
     ..hasRequiredFields = false
   ;
 
   HostRes_RefreshToken._() : super();
   factory HostRes_RefreshToken({
     $core.String? token,
-    $3.Timestamp? expiry,
+    $2.Timestamp? expiry,
   }) {
     final _result = create();
     if (token != null) {
@@ -266,15 +266,15 @@ class HostRes_RefreshToken extends $pb.GeneratedMessage {
   void clearToken() => clearField(1);
 
   @$pb.TagNumber(2)
-  $3.Timestamp get expiry => $_getN(1);
+  $2.Timestamp get expiry => $_getN(1);
   @$pb.TagNumber(2)
-  set expiry($3.Timestamp v) { setField(2, v); }
+  set expiry($2.Timestamp v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasExpiry() => $_has(1);
   @$pb.TagNumber(2)
   void clearExpiry() => clearField(2);
   @$pb.TagNumber(2)
-  $3.Timestamp ensureExpiry() => $_ensure(1);
+  $2.Timestamp ensureExpiry() => $_ensure(1);
 }
 
 class HostRes extends $pb.GeneratedMessage {
@@ -345,7 +345,7 @@ class HostRes extends $pb.GeneratedMessage {
 class NotificationRes extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'NotificationRes', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
     ..e<NotificationRes_type>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data', $pb.PbFieldType.OE, defaultOrMaker: NotificationRes_type.transaction, valueOf: NotificationRes_type.valueOf, enumValues: NotificationRes_type.values)
-    ..aOM<$3.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'time', subBuilder: $3.Timestamp.create)
+    ..aOM<$2.Timestamp>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'time', subBuilder: $2.Timestamp.create)
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to')
@@ -360,7 +360,7 @@ class NotificationRes extends $pb.GeneratedMessage {
   NotificationRes._() : super();
   factory NotificationRes({
     NotificationRes_type? data,
-    $3.Timestamp? time,
+    $2.Timestamp? time,
     $core.String? id,
     $core.String? from,
     $core.String? to,
@@ -434,15 +434,15 @@ class NotificationRes extends $pb.GeneratedMessage {
   void clearData() => clearField(1);
 
   @$pb.TagNumber(2)
-  $3.Timestamp get time => $_getN(1);
+  $2.Timestamp get time => $_getN(1);
   @$pb.TagNumber(2)
-  set time($3.Timestamp v) { setField(2, v); }
+  set time($2.Timestamp v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasTime() => $_has(1);
   @$pb.TagNumber(2)
   void clearTime() => clearField(2);
   @$pb.TagNumber(2)
-  $3.Timestamp ensureTime() => $_ensure(1);
+  $2.Timestamp ensureTime() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.String get id => $_getSZ(2);
@@ -524,7 +524,7 @@ class ChallengeReq extends $pb.GeneratedMessage {
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'purposeMessage', protoName: 'purposeMessage')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'permission')
     ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'expiryIn', $pb.PbFieldType.O3, protoName: 'expiryIn')
-    ..aOM<$3.Timestamp>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'expiryAt', protoName: 'expiryAt', subBuilder: $3.Timestamp.create)
+    ..aOM<$2.Timestamp>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'expiryAt', protoName: 'expiryAt', subBuilder: $2.Timestamp.create)
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'authLink', protoName: 'authLink')
     ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'bannerImage', protoName: 'bannerImage')
     ..hasRequiredFields = false
@@ -537,7 +537,7 @@ class ChallengeReq extends $pb.GeneratedMessage {
     $core.String? purposeMessage,
     $core.String? permission,
     $core.int? expiryIn,
-    $3.Timestamp? expiryAt,
+    $2.Timestamp? expiryAt,
     $core.String? authLink,
     $core.String? bannerImage,
   }) {
@@ -635,15 +635,15 @@ class ChallengeReq extends $pb.GeneratedMessage {
   void clearExpiryIn() => clearField(5);
 
   @$pb.TagNumber(6)
-  $3.Timestamp get expiryAt => $_getN(5);
+  $2.Timestamp get expiryAt => $_getN(5);
   @$pb.TagNumber(6)
-  set expiryAt($3.Timestamp v) { setField(6, v); }
+  set expiryAt($2.Timestamp v) { setField(6, v); }
   @$pb.TagNumber(6)
   $core.bool hasExpiryAt() => $_has(5);
   @$pb.TagNumber(6)
   void clearExpiryAt() => clearField(6);
   @$pb.TagNumber(6)
-  $3.Timestamp ensureExpiryAt() => $_ensure(5);
+  $2.Timestamp ensureExpiryAt() => $_ensure(5);
 
   @$pb.TagNumber(7)
   $core.String get authLink => $_getSZ(6);
