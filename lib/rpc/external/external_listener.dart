@@ -20,4 +20,14 @@ class ExternalListenerService {
     return stub.streamTransactionRequest(Empty());
 
   }
+
+  Future<ApproveBrowserRes> approveBrowser ({required String gateway, required String browserId}) async {
+    ClientChannel channel = ClientChannel(gateway,
+        port: 6942,
+        options: const ChannelOptions(credentials: ChannelCredentials.insecure()));
+    ExternalListenerServiceClient stub = ExternalListenerServiceClient(channel);
+    return stub.approveBrowser(Authenticate(browserId: browserId));
+  }
+
+
 }
