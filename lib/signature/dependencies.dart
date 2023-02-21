@@ -181,6 +181,10 @@ class Dependencies {
     File file = File(imagePath);
     List<int> imageBytes = await file.readAsBytes();
     String base64Image = base64Encode(imageBytes);
+    int paddingLength = 4 - base64Image.length % 4;
+    if (paddingLength < 4) {
+      base64Image += '=' * paddingLength;
+    }
     return base64Image;
   }
 
