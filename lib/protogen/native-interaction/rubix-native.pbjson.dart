@@ -36,14 +36,15 @@ const RequestTransactionPayloadReq$json = const {
   '1': 'RequestTransactionPayloadReq',
   '2': const [
     const {'1': 'receiver', '3': 1, '4': 1, '5': 9, '10': 'receiver'},
-    const {'1': 'tokenCount', '3': 2, '4': 1, '5': 1, '10': 'tokenCount'},
-    const {'1': 'comment', '3': 3, '4': 1, '5': 9, '10': 'comment'},
-    const {'1': 'type', '3': 4, '4': 1, '5': 5, '10': 'type'},
+    const {'1': 'sender', '3': 2, '4': 1, '5': 9, '10': 'sender'},
+    const {'1': 'tokenCount', '3': 3, '4': 1, '5': 1, '10': 'tokenCount'},
+    const {'1': 'comment', '3': 4, '4': 1, '5': 9, '10': 'comment'},
+    const {'1': 'type', '3': 5, '4': 1, '5': 5, '10': 'type'},
   ],
 };
 
 /// Descriptor for `RequestTransactionPayloadReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List requestTransactionPayloadReqDescriptor = $convert.base64Decode('ChxSZXF1ZXN0VHJhbnNhY3Rpb25QYXlsb2FkUmVxEhoKCHJlY2VpdmVyGAEgASgJUghyZWNlaXZlchIeCgp0b2tlbkNvdW50GAIgASgBUgp0b2tlbkNvdW50EhgKB2NvbW1lbnQYAyABKAlSB2NvbW1lbnQSEgoEdHlwZRgEIAEoBVIEdHlwZQ==');
+final $typed_data.Uint8List requestTransactionPayloadReqDescriptor = $convert.base64Decode('ChxSZXF1ZXN0VHJhbnNhY3Rpb25QYXlsb2FkUmVxEhoKCHJlY2VpdmVyGAEgASgJUghyZWNlaXZlchIWCgZzZW5kZXIYAiABKAlSBnNlbmRlchIeCgp0b2tlbkNvdW50GAMgASgBUgp0b2tlbkNvdW50EhgKB2NvbW1lbnQYBCABKAlSB2NvbW1lbnQSEgoEdHlwZRgFIAEoBVIEdHlwZQ==');
 @$core.Deprecated('Use txnSummaryDescriptor instead')
 const TxnSummary$json = const {
   '1': 'TxnSummary',

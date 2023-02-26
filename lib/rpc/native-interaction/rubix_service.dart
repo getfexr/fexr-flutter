@@ -59,6 +59,7 @@ class RubixService {
     RequestTransactionPayloadRes response =
         await stub.initiateTransaction(RequestTransactionPayloadReq(
       receiver: initiatePayload.receiver,
+      sender: initiatePayload.sender,
       tokenCount: initiatePayload.tokenCount,
       comment: initiatePayload.comment,
       type: initiatePayload.type,

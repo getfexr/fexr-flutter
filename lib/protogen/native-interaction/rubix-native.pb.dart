@@ -148,15 +148,17 @@ class CreateDIDRes extends $pb.GeneratedMessage {
 class RequestTransactionPayloadReq extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RequestTransactionPayloadReq', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiver')
-    ..a<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tokenCount', $pb.PbFieldType.OD, protoName: 'tokenCount')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'comment')
-    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.O3)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sender')
+    ..a<$core.double>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tokenCount', $pb.PbFieldType.OD, protoName: 'tokenCount')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'comment')
+    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
   RequestTransactionPayloadReq._() : super();
   factory RequestTransactionPayloadReq({
     $core.String? receiver,
+    $core.String? sender,
     $core.double? tokenCount,
     $core.String? comment,
     $core.int? type,
@@ -164,6 +166,9 @@ class RequestTransactionPayloadReq extends $pb.GeneratedMessage {
     final _result = create();
     if (receiver != null) {
       _result.receiver = receiver;
+    }
+    if (sender != null) {
+      _result.sender = sender;
     }
     if (tokenCount != null) {
       _result.tokenCount = tokenCount;
@@ -207,31 +212,40 @@ class RequestTransactionPayloadReq extends $pb.GeneratedMessage {
   void clearReceiver() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.double get tokenCount => $_getN(1);
+  $core.String get sender => $_getSZ(1);
   @$pb.TagNumber(2)
-  set tokenCount($core.double v) { $_setDouble(1, v); }
+  set sender($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasTokenCount() => $_has(1);
+  $core.bool hasSender() => $_has(1);
   @$pb.TagNumber(2)
-  void clearTokenCount() => clearField(2);
+  void clearSender() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get comment => $_getSZ(2);
+  $core.double get tokenCount => $_getN(2);
   @$pb.TagNumber(3)
-  set comment($core.String v) { $_setString(2, v); }
+  set tokenCount($core.double v) { $_setDouble(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasComment() => $_has(2);
+  $core.bool hasTokenCount() => $_has(2);
   @$pb.TagNumber(3)
-  void clearComment() => clearField(3);
+  void clearTokenCount() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.int get type => $_getIZ(3);
+  $core.String get comment => $_getSZ(3);
   @$pb.TagNumber(4)
-  set type($core.int v) { $_setSignedInt32(3, v); }
+  set comment($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasType() => $_has(3);
+  $core.bool hasComment() => $_has(3);
   @$pb.TagNumber(4)
-  void clearType() => clearField(4);
+  void clearComment() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.int get type => $_getIZ(4);
+  @$pb.TagNumber(5)
+  set type($core.int v) { $_setSignedInt32(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasType() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearType() => clearField(5);
 }
 
 class TxnSummary extends $pb.GeneratedMessage {
