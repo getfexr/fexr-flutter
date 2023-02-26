@@ -39,6 +39,8 @@ class RubixService {
           didImage: await Dependencies().imageToBase64(didImagePath),
           publicShare: await Dependencies().imageToBase64(publicSharePath),
           publicKey: publicKey));
+      print("Did is ${response.did}");
+      print("Status is ${response.status}");
       return response;
     } catch (e) {
       print(e);
@@ -46,7 +48,7 @@ class RubixService {
     }
   }
 
-  Future<TxnSummary> initiateTransaction(
+  Future<RequestTransactionPayloadRes> initiateTransaction(
       {required String gateway,
       required String accessToken,
       required RequestTransactionPayloadReq initiatePayload,
@@ -54,49 +56,41 @@ class RubixService {
       Duration idleTimeout = const Duration(minutes: 15)}) async {
     RubixServiceClient stub = getConnection(
         gateway: gateway, accessToken: accessToken, idleTimeout: idleTimeout);
-    RequestTransactionPayloadRes response = await stub.initiateTransaction(
-        RequestTransactionPayloadReq(
-            receiver: initiatePayload.receiver,
-            tokenCount: initiatePayload.tokenCount,
-            comment: initiatePayload.comment,
-            type: initiatePayload.type,
-            privateKeyPass: initiatePayload.privateKeyPass));
-    var unsignedLastObjectArr = response.lastObject;
-    var unsignedPledgeDetails = response.pledgeDetails;
+    RequestTransactionPayloadRes response =
+        await stub.initiateTransaction(RequestTransactionPayloadReq(
+      receiver: initiatePayload.receiver,
+      tokenCount: initiatePayload.tokenCount,
+      comment: initiatePayload.comment,
+      type: initiatePayload.type,
+    ));
 
-    Iterable<TransactionLastObjectSigned> signedLastObjectArr =
-        await Future.wait(unsignedLastObjectArr.map((e) async =>
-            TransactionLastObjectSigned(
-                chainSign:
-                    await GenerateSign().genSignFromShares(imagePath, e.hash),
-                hash: e.hash,
-                token: e.token)));
+    return RequestTransactionPayloadRes(
+        hash: response.hash, requestId: response.requestId);
+  }
 
-    Map<String, PledgeDetailSigned> pledgeDetails = {};
-
-    for (final keyValue in unsignedPledgeDetails.entries) {
-      var hashes = keyValue.value.valueArr;
-      var signedHashes = await Future.wait(hashes.map((e) async => SignedHash(
-          hash: e,
-          sign: await GenerateSign().genSignFromShares(imagePath, e))));
-
-      pledgeDetails[keyValue.key] = PledgeDetailSigned(valueArr: signedHashes);
+  Future<Status> signResponse(
+      {required String requestId,
+      required List<int> pvtSign,
+      required String imagePath,
+      required String hash,
+      required String gateway,
+      required String accessToken}) async {
+    RubixServiceClient stub =
+        getConnection(gateway: gateway, accessToken: accessToken);
+    try {
+      var response = await stub.signResponse(HashSigned(
+          id: requestId,
+          pvtSign: pvtSign,
+          imgSign: await GenerateSign()
+                    .genSignFromShares(imagePath, hash)));
+                    print(
+                        "Sign Response: ${response.status} ${response}");
+                    
+      return response;
+    } catch (e) {
+      print(e);
+      return Status();
     }
-
-    var finaliseTransactionResult = await stub.finaliseTransaction(
-        FinaliseTransactionPayload(
-            authSenderByRecHash: SignedHash(
-                hash: response.authSenderByRecHash,
-                sign: await GenerateSign().genSignFromShares(
-                    imagePath, response.authSenderByRecHash)),
-            lastObject: signedLastObjectArr,
-            senderPayloadSign: SignedHash(
-                hash: response.senderPayloadSign,
-                sign: await GenerateSign()
-                    .genSignFromShares(imagePath, response.senderPayloadSign)),
-            privateKeyPass: initiatePayload.privateKeyPass,
-            pledgeDetails: pledgeDetails));
-    return finaliseTransactionResult;
   }
 
   Future<GetTransactionLogRes> getTransactionLog(

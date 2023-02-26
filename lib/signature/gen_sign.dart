@@ -21,11 +21,11 @@ Future<void> genSignFromSharesIsolate(List<dynamic> args) async{
     Map P = Dependencies().randomPositions("signer", hash, 32, privateIntegerArray);
     var finalPos = P["posForSign"];
     List<int> p1Sign = Dependencies().getPrivatePosition(finalPos, privateIntegerArray);
-    sendPort.send(p1Sign.join(""));
+    sendPort.send(p1Sign);
 }
 
 class GenerateSign {
-    Future<String> genSignFromShares(String imagePath, String hash) async {
+    Future<List<int>> genSignFromShares(String imagePath, String hash) async {
     final response = ReceivePort();
     await Isolate.spawn(genSignFromSharesIsolate,[response.sendPort,SignInput(imagePath: imagePath, hash: hash)]);
     final result = await response.first;
