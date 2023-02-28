@@ -14,9 +14,12 @@ class KeyPair {
     privateKey = keyPair.privateKey as ECPrivateKey;
   }
 
-  KeyPair.fromPem(String publicKeyPem, String privateKeyPem) {
-    publicKey = basic_utils.CryptoUtils.ecPublicKeyFromPem(publicKeyPem);
-    privateKey = basic_utils.CryptoUtils.ecPrivateKeyFromPem(privateKeyPem);
+  ECPrivateKey privateKeyFromPem(String privateKeyPem) {
+    return basic_utils.CryptoUtils.ecPrivateKeyFromPem(privateKeyPem);
+  }
+
+  ECPublicKey publicKeyFromPem(String publicKeyPem) {
+    return basic_utils.CryptoUtils.ecPublicKeyFromPem(publicKeyPem);
   }
 
   String getPemEncodedPublicKey() {

@@ -55,7 +55,7 @@ class RubixService {
       required String accessToken,
       required RequestTransactionPayloadReq initiatePayload,
       required String imagePath,
-      required ECPrivateKey privateKey,
+      required String privateKeyString,
       Duration idleTimeout = const Duration(minutes: 15)}) async {
     RubixServiceClient stub = getConnection(
         gateway: gateway, accessToken: accessToken, idleTimeout: idleTimeout);
@@ -67,7 +67,7 @@ class RubixService {
       comment: initiatePayload.comment,
       type: initiatePayload.type,
     ));
-
+    var privateKey = KeyPair().privateKeyFromPem(privateKeyString);
     print("Initiate Transaction Response: ${response}");
     var signResp = signResponse(
         initiateTransactionResponse: response,
