@@ -69,6 +69,17 @@ class RubixService {
         hash: response.hash, requestId: response.requestId);
   }
 
+  Future<RequestTransactionPayloadRes> generateRbt(
+      {required String did,
+      required double tokenCount,
+      required String accessToken,
+      required String gateway}) {
+    RubixServiceClient stub =
+        getConnection(gateway: gateway, accessToken: accessToken);
+    return stub.generateRbt(GenerateReq(
+        did: did, tokenCount: tokenCount));
+  }
+
   Future<Status> signResponse(
       {required String requestId,
       required List<int> pvtSign,
@@ -82,11 +93,9 @@ class RubixService {
       var response = await stub.signResponse(HashSigned(
           id: requestId,
           pvtSign: pvtSign,
-          imgSign: await GenerateSign()
-                    .genSignFromShares(imagePath, hash)));
-                    print(
-                        "Sign Response: ${response.status} ${response}");
-                    
+          imgSign: await GenerateSign().genSignFromShares(imagePath, hash)));
+      print("Sign Response: ${response.status} ${response}");
+
       return response;
     } catch (e) {
       print(e);
