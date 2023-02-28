@@ -1,7 +1,9 @@
 import 'package:fexr/const.dart';
 import 'package:fexr/fexr.dart';
 import 'package:fexr/signature/dependencies.dart';
+import 'package:flutter/foundation.dart';
 import 'package:grpc/grpc.dart';
+import 'package:pointycastle/pointycastle.dart';
 
 class RubixService {
   static final RubixService _singleton = RubixService._internal();
@@ -48,11 +50,12 @@ class RubixService {
     }
   }
 
-  Future<RequestTransactionPayloadRes> initiateTransaction(
+  Future<Status> initiateTransaction(
       {required String gateway,
       required String accessToken,
       required RequestTransactionPayloadReq initiatePayload,
       required String imagePath,
+      required ECPrivateKey privateKey,
       Duration idleTimeout = const Duration(minutes: 15)}) async {
     RubixServiceClient stub = getConnection(
         gateway: gateway, accessToken: accessToken, idleTimeout: idleTimeout);
@@ -65,34 +68,46 @@ class RubixService {
       type: initiatePayload.type,
     ));
 
-    return RequestTransactionPayloadRes(
-        hash: response.hash, requestId: response.requestId);
+    print("Initiate Transaction Response: ${response}");
+    var signResp = signResponse(
+        initiateTransactionResponse: response,
+        imagePath: imagePath,
+        privateKey: privateKey,
+        stub: stub);
+    return signResp;
   }
 
-  Future<RequestTransactionPayloadRes> generateRbt(
+  Future<Status> generateRbt(
       {required String did,
       required double tokenCount,
       required String accessToken,
-      required String gateway}) {
+      required String gateway,
+      required String imagePath,
+      required ECPrivateKey privateKey}) async {
     RubixServiceClient stub =
         getConnection(gateway: gateway, accessToken: accessToken);
-    return stub.generateRbt(GenerateReq(
-        did: did, tokenCount: tokenCount));
+    var response =
+        await stub.generateRbt(GenerateReq(did: did, tokenCount: tokenCount));
+    var signResp = signResponse(
+        initiateTransactionResponse: response,
+        imagePath: imagePath,
+        privateKey: privateKey,
+        stub: stub);
+    return signResp;
   }
 
   Future<Status> signResponse(
-      {required String requestId,
-      required List<int> pvtSign,
+      {required RequestTransactionPayloadRes initiateTransactionResponse,
       required String imagePath,
-      required String hash,
-      required String gateway,
-      required String accessToken}) async {
-    RubixServiceClient stub =
-        getConnection(gateway: gateway, accessToken: accessToken);
+      required ECPrivateKey privateKey,
+      required RubixServiceClient stub}) async {
     try {
+      var requestId = initiateTransactionResponse.requestId;
+      var hash = initiateTransactionResponse.hash;
+      var signContent = Uint8List.fromList(hash.codeUnits);
       var response = await stub.signResponse(HashSigned(
           id: requestId,
-          pvtSign: pvtSign,
+          pvtSign: KeyPair().keySignature(signContent, privateKey),
           imgSign: await GenerateSign().genSignFromShares(imagePath, hash)));
       print("Sign Response: ${response.status} ${response}");
 

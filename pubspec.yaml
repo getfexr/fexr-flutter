@@ -18,6 +18,8 @@ dependencies:
   sha3: ^0.2.0
   convert: ^3.0.2
   fixnum: ^1.0.1
+  pointycastle: ^3.6.2
+  basic_utils: ^5.5.1
   
   # run on terminal before generating proto: dart pub global activate protoc_plugin
 
