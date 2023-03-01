@@ -83,11 +83,14 @@ class RubixService {
       required String accessToken,
       required String gateway,
       required String imagePath,
-      required ECPrivateKey privateKey}) async {
+      required String privateKeyString}) async {
     RubixServiceClient stub =
         getConnection(gateway: gateway, accessToken: accessToken);
+        var privateKey = KeyPair().privateKeyFromPem(privateKeyString);
     var response =
         await stub.generateRbt(GenerateReq(did: did, tokenCount: tokenCount));
+
+        print(response);
     var signResp = signResponse(
         initiateTransactionResponse: response,
         imagePath: imagePath,
@@ -103,7 +106,7 @@ class RubixService {
       required RubixServiceClient stub}) async {
     try {
       var requestId = initiateTransactionResponse.requestId;
-      var hash = initiateTransactionResponse.hash;
+      var hash = Dependencies().calculateHash(initiateTransactionResponse.hash);
       var signContent = Uint8List.fromList(hash.codeUnits);
       var response = await stub.signResponse(HashSigned(
           id: requestId,
