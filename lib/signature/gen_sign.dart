@@ -2,6 +2,7 @@ import 'dart:isolate';
 
 import 'package:path_provider/path_provider.dart';
 import 'package:fexr/signature/dependencies.dart';
+import 'dart:typed_data';
 
 class SignInput {
   String imagePath;
@@ -21,11 +22,36 @@ Future<void> genSignFromSharesIsolate(List<dynamic> args) async{
     Map P = Dependencies().randomPositions("signer", hash, 32, privateIntegerArray);
     var finalPos = P["posForSign"];
     List<int> p1Sign = Dependencies().getPrivatePosition(finalPos, privateIntegerArray);
-    sendPort.send(p1Sign);
+    String signString = p1Sign.join("");
+    Uint8List p1SignBytes = bitstreamToBytes(signString);
+    sendPort.send(p1SignBytes);
 }
 
+Uint8List bitstreamToBytes(String stream) {
+  var result = <int>[];
+  var str = stream;
+
+  while (str.isNotEmpty) {
+    var l = 0;
+    if (str.length > 8) {
+      l = str.length - 8;
+    }
+    var temp = int.parse(str.substring(l), radix: 2);
+    result.insert(0, temp);
+    if (l == 0) {
+      break;
+    } else {
+      str = str.substring(0, l);
+    }
+  }
+
+  return Uint8List.fromList(result);
+}
+
+
+
 class GenerateSign {
-    Future<List<int>> genSignFromShares(String imagePath, String hash) async {
+    Future<Uint8List> genSignFromShares(String imagePath, String hash) async {
     final response = ReceivePort();
     await Isolate.spawn(genSignFromSharesIsolate,[response.sendPort,SignInput(imagePath: imagePath, hash: hash)]);
     final result = await response.first;

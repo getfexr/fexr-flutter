@@ -104,7 +104,6 @@ class RubixService {
       required String imagePath,
       required ECPrivateKey privateKey,
       required RubixServiceClient stub}) async {
-    try {
       var requestId = initiateTransactionResponse.requestId;
       var hash = Dependencies().calculateHash(initiateTransactionResponse.hash);
       var signContent = Uint8List.fromList(hash.codeUnits);
@@ -115,10 +114,6 @@ class RubixService {
       print("Sign Response: ${response.status} ${response}");
 
       return response;
-    } catch (e) {
-      print(e);
-      return Status();
-    }
   }
 
   Future<GetTransactionLogRes> getTransactionLog(
