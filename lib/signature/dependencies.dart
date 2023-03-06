@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:sha3/sha3.dart';
 import 'dart:convert';
 import 'package:convert/convert.dart';
@@ -90,7 +92,7 @@ class Dependencies {
         p1 = getPrivatePosition(finalPositions, pvt1);
 
         hash = Dependencies()
-            .calculateHash((hash) + intArrayToStr(originalPos) + p1.join());
+            .calculateHash((hash) + intArrayToStr(originalPos) + intArrayToStr(p1));
       } else {
         List<int> p1 = new List<int>.generate(8, (index) => 0, growable: false);
         for (int i = 0; i < 8; i++) {
@@ -130,6 +132,32 @@ class Dependencies {
     }
     return outputString.toString();
   }
+
+  String hexToStr(List<int> d) {
+  var encoded = hex.encode(d);
+  return encoded;
+}
+
+Uint8List bitstreamToBytes(String stream) {
+  var result = <int>[];
+  var str = stream;
+
+  while (str.isNotEmpty) {
+    var l = 0;
+    if (str.length > 8) {
+      l = str.length - 8;
+    }
+    var temp = int.parse(str.substring(l), radix: 2);
+    result.insert(0, temp);
+    if (l == 0) {
+      break;
+    } else {
+      str = str.substring(0, l);
+    }
+  }
+
+  return Uint8List.fromList(result);
+}
 
   String calculateHash(String hashValues) {
     String hash;

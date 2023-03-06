@@ -106,11 +106,14 @@ class RubixService {
       required RubixServiceClient stub}) async {
       var requestId = initiateTransactionResponse.requestId;
       var hash = Dependencies().calculateHash(initiateTransactionResponse.hash);
-      var signContent = Uint8List.fromList(hash.codeUnits);
+      var imgSign =  await GenerateSign().genSignFromShares(imagePath, hash);
+      var imgSignBytes = Dependencies().bitstreamToBytes(imgSign);
+      var imgSignHash = Dependencies().calculateHash(imgSign);
+      var signContent = Uint8List.fromList(imgSignHash.codeUnits);
       var response = await stub.signResponse(HashSigned(
           id: requestId,
           pvtSign: KeyPair().keySignature(signContent, privateKey),
-          imgSign: await GenerateSign().genSignFromShares(imagePath, hash)));
+          imgSign: imgSignBytes));
       print("Sign Response: ${response.status} ${response}");
 
       return response;
