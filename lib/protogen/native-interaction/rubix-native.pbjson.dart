@@ -8,6 +8,38 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+@$core.Deprecated('Use signedPayloadDescriptor instead')
+const SignedPayload$json = const {
+  '1': 'SignedPayload',
+  '2': const [
+    const {'1': 'payload', '3': 1, '4': 1, '5': 9, '10': 'payload'},
+    const {'1': 'signature', '3': 2, '4': 1, '5': 12, '10': 'signature'},
+  ],
+};
+
+/// Descriptor for `SignedPayload`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List signedPayloadDescriptor = $convert.base64Decode('Cg1TaWduZWRQYXlsb2FkEhgKB3BheWxvYWQYASABKAlSB3BheWxvYWQSHAoJc2lnbmF0dXJlGAIgASgMUglzaWduYXR1cmU=');
+@$core.Deprecated('Use challengeStringDescriptor instead')
+const ChallengeString$json = const {
+  '1': 'ChallengeString',
+  '2': const [
+    const {'1': 'challenge', '3': 1, '4': 1, '5': 9, '10': 'challenge'},
+  ],
+};
+
+/// Descriptor for `ChallengeString`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List challengeStringDescriptor = $convert.base64Decode('Cg9DaGFsbGVuZ2VTdHJpbmcSHAoJY2hhbGxlbmdlGAEgASgJUgljaGFsbGVuZ2U=');
+@$core.Deprecated('Use tokenDescriptor instead')
+const Token$json = const {
+  '1': 'Token',
+  '2': const [
+    const {'1': 'accessToken', '3': 1, '4': 1, '5': 9, '10': 'accessToken'},
+    const {'1': 'expiry', '3': 2, '4': 1, '5': 11, '6': '.google.protobuf.Timestamp', '10': 'expiry'},
+  ],
+};
+
+/// Descriptor for `Token`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List tokenDescriptor = $convert.base64Decode('CgVUb2tlbhIgCgthY2Nlc3NUb2tlbhgBIAEoCVILYWNjZXNzVG9rZW4SMgoGZXhwaXJ5GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIGZXhwaXJ5');
 @$core.Deprecated('Use createDIDReqDescriptor instead')
 const CreateDIDReq$json = const {
   '1': 'CreateDIDReq',
@@ -15,28 +47,29 @@ const CreateDIDReq$json = const {
     const {'1': 'didImage', '3': 1, '4': 1, '5': 9, '10': 'didImage'},
     const {'1': 'publicShare', '3': 2, '4': 1, '5': 9, '10': 'publicShare'},
     const {'1': 'publicKey', '3': 3, '4': 1, '5': 9, '10': 'publicKey'},
+    const {'1': 'ecdsaChallengeResponse', '3': 4, '4': 1, '5': 11, '6': '.protos.SignedPayload', '10': 'ecdsaChallengeResponse'},
   ],
 };
 
 /// Descriptor for `CreateDIDReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createDIDReqDescriptor = $convert.base64Decode('CgxDcmVhdGVESURSZXESGgoIZGlkSW1hZ2UYASABKAlSCGRpZEltYWdlEiAKC3B1YmxpY1NoYXJlGAIgASgJUgtwdWJsaWNTaGFyZRIcCglwdWJsaWNLZXkYAyABKAlSCXB1YmxpY0tleQ==');
+final $typed_data.Uint8List createDIDReqDescriptor = $convert.base64Decode('CgxDcmVhdGVESURSZXESGgoIZGlkSW1hZ2UYASABKAlSCGRpZEltYWdlEiAKC3B1YmxpY1NoYXJlGAIgASgJUgtwdWJsaWNTaGFyZRIcCglwdWJsaWNLZXkYAyABKAlSCXB1YmxpY0tleRJNChZlY2RzYUNoYWxsZW5nZVJlc3BvbnNlGAQgASgLMhUucHJvdG9zLlNpZ25lZFBheWxvYWRSFmVjZHNhQ2hhbGxlbmdlUmVzcG9uc2U=');
 @$core.Deprecated('Use createDIDResDescriptor instead')
 const CreateDIDRes$json = const {
   '1': 'CreateDIDRes',
   '2': const [
     const {'1': 'did', '3': 1, '4': 1, '5': 9, '10': 'did'},
     const {'1': 'status', '3': 2, '4': 1, '5': 8, '10': 'status'},
+    const {'1': 'accessToken', '3': 3, '4': 1, '5': 11, '6': '.protos.Token', '10': 'accessToken'},
   ],
 };
 
 /// Descriptor for `CreateDIDRes`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createDIDResDescriptor = $convert.base64Decode('CgxDcmVhdGVESURSZXMSEAoDZGlkGAEgASgJUgNkaWQSFgoGc3RhdHVzGAIgASgIUgZzdGF0dXM=');
+final $typed_data.Uint8List createDIDResDescriptor = $convert.base64Decode('CgxDcmVhdGVESURSZXMSEAoDZGlkGAEgASgJUgNkaWQSFgoGc3RhdHVzGAIgASgIUgZzdGF0dXMSLwoLYWNjZXNzVG9rZW4YAyABKAsyDS5wcm90b3MuVG9rZW5SC2FjY2Vzc1Rva2Vu');
 @$core.Deprecated('Use requestTransactionPayloadReqDescriptor instead')
 const RequestTransactionPayloadReq$json = const {
   '1': 'RequestTransactionPayloadReq',
   '2': const [
     const {'1': 'receiver', '3': 1, '4': 1, '5': 9, '10': 'receiver'},
-    const {'1': 'sender', '3': 2, '4': 1, '5': 9, '10': 'sender'},
     const {'1': 'tokenCount', '3': 3, '4': 1, '5': 1, '10': 'tokenCount'},
     const {'1': 'comment', '3': 4, '4': 1, '5': 9, '10': 'comment'},
     const {'1': 'type', '3': 5, '4': 1, '5': 5, '10': 'type'},
@@ -44,75 +77,7 @@ const RequestTransactionPayloadReq$json = const {
 };
 
 /// Descriptor for `RequestTransactionPayloadReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List requestTransactionPayloadReqDescriptor = $convert.base64Decode('ChxSZXF1ZXN0VHJhbnNhY3Rpb25QYXlsb2FkUmVxEhoKCHJlY2VpdmVyGAEgASgJUghyZWNlaXZlchIWCgZzZW5kZXIYAiABKAlSBnNlbmRlchIeCgp0b2tlbkNvdW50GAMgASgBUgp0b2tlbkNvdW50EhgKB2NvbW1lbnQYBCABKAlSB2NvbW1lbnQSEgoEdHlwZRgFIAEoBVIEdHlwZQ==');
-@$core.Deprecated('Use txnSummaryDescriptor instead')
-const TxnSummary$json = const {
-  '1': 'TxnSummary',
-  '2': const [
-    const {'1': 'txnId', '3': 1, '4': 1, '5': 9, '10': 'txnId'},
-    const {'1': 'sender', '3': 2, '4': 1, '5': 9, '10': 'sender'},
-    const {'1': 'receiver', '3': 3, '4': 1, '5': 9, '10': 'receiver'},
-    const {'1': 'amount', '3': 4, '4': 1, '5': 1, '10': 'amount'},
-    const {'1': 'comment', '3': 5, '4': 1, '5': 9, '10': 'comment'},
-  ],
-};
-
-/// Descriptor for `TxnSummary`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List txnSummaryDescriptor = $convert.base64Decode('CgpUeG5TdW1tYXJ5EhQKBXR4bklkGAEgASgJUgV0eG5JZBIWCgZzZW5kZXIYAiABKAlSBnNlbmRlchIaCghyZWNlaXZlchgDIAEoCVIIcmVjZWl2ZXISFgoGYW1vdW50GAQgASgBUgZhbW91bnQSGAoHY29tbWVudBgFIAEoCVIHY29tbWVudA==');
-@$core.Deprecated('Use transactionLastObjectDescriptor instead')
-const TransactionLastObject$json = const {
-  '1': 'TransactionLastObject',
-  '2': const [
-    const {'1': 'hash', '3': 1, '4': 1, '5': 9, '10': 'hash'},
-    const {'1': 'token', '3': 2, '4': 1, '5': 9, '10': 'token'},
-  ],
-};
-
-/// Descriptor for `TransactionLastObject`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List transactionLastObjectDescriptor = $convert.base64Decode('ChVUcmFuc2FjdGlvbkxhc3RPYmplY3QSEgoEaGFzaBgBIAEoCVIEaGFzaBIUCgV0b2tlbhgCIAEoCVIFdG9rZW4=');
-@$core.Deprecated('Use transactionLastObjectSignedDescriptor instead')
-const TransactionLastObjectSigned$json = const {
-  '1': 'TransactionLastObjectSigned',
-  '2': const [
-    const {'1': 'chainSign', '3': 1, '4': 1, '5': 9, '10': 'chainSign'},
-    const {'1': 'hash', '3': 2, '4': 1, '5': 9, '10': 'hash'},
-    const {'1': 'token', '3': 3, '4': 1, '5': 9, '10': 'token'},
-  ],
-};
-
-/// Descriptor for `TransactionLastObjectSigned`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List transactionLastObjectSignedDescriptor = $convert.base64Decode('ChtUcmFuc2FjdGlvbkxhc3RPYmplY3RTaWduZWQSHAoJY2hhaW5TaWduGAEgASgJUgljaGFpblNpZ24SEgoEaGFzaBgCIAEoCVIEaGFzaBIUCgV0b2tlbhgDIAEoCVIFdG9rZW4=');
-@$core.Deprecated('Use signedHashDescriptor instead')
-const SignedHash$json = const {
-  '1': 'SignedHash',
-  '2': const [
-    const {'1': 'hash', '3': 1, '4': 1, '5': 9, '10': 'hash'},
-    const {'1': 'sign', '3': 2, '4': 1, '5': 9, '10': 'sign'},
-  ],
-};
-
-/// Descriptor for `SignedHash`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List signedHashDescriptor = $convert.base64Decode('CgpTaWduZWRIYXNoEhIKBGhhc2gYASABKAlSBGhhc2gSEgoEc2lnbhgCIAEoCVIEc2lnbg==');
-@$core.Deprecated('Use pledgeDetailDescriptor instead')
-const PledgeDetail$json = const {
-  '1': 'PledgeDetail',
-  '2': const [
-    const {'1': 'valueArr', '3': 1, '4': 3, '5': 9, '10': 'valueArr'},
-  ],
-};
-
-/// Descriptor for `PledgeDetail`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List pledgeDetailDescriptor = $convert.base64Decode('CgxQbGVkZ2VEZXRhaWwSGgoIdmFsdWVBcnIYASADKAlSCHZhbHVlQXJy');
-@$core.Deprecated('Use pledgeDetailSignedDescriptor instead')
-const PledgeDetailSigned$json = const {
-  '1': 'PledgeDetailSigned',
-  '2': const [
-    const {'1': 'valueArr', '3': 2, '4': 3, '5': 11, '6': '.protos.SignedHash', '10': 'valueArr'},
-  ],
-};
-
-/// Descriptor for `PledgeDetailSigned`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List pledgeDetailSignedDescriptor = $convert.base64Decode('ChJQbGVkZ2VEZXRhaWxTaWduZWQSLgoIdmFsdWVBcnIYAiADKAsyEi5wcm90b3MuU2lnbmVkSGFzaFIIdmFsdWVBcnI=');
+final $typed_data.Uint8List requestTransactionPayloadReqDescriptor = $convert.base64Decode('ChxSZXF1ZXN0VHJhbnNhY3Rpb25QYXlsb2FkUmVxEhoKCHJlY2VpdmVyGAEgASgJUghyZWNlaXZlchIeCgp0b2tlbkNvdW50GAMgASgBUgp0b2tlbkNvdW50EhgKB2NvbW1lbnQYBCABKAlSB2NvbW1lbnQSEgoEdHlwZRgFIAEoBVIEdHlwZQ==');
 @$core.Deprecated('Use requestTransactionPayloadResDescriptor instead')
 const RequestTransactionPayloadRes$json = const {
   '1': 'RequestTransactionPayloadRes',
@@ -157,54 +122,6 @@ const GenerateReq$json = const {
 
 /// Descriptor for `GenerateReq`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List generateReqDescriptor = $convert.base64Decode('CgtHZW5lcmF0ZVJlcRIeCgp0b2tlbkNvdW50GAEgASgBUgp0b2tlbkNvdW50EhAKA2RpZBgCIAEoCVIDZGlk');
-@$core.Deprecated('Use finaliseTransactionPayloadDescriptor instead')
-const FinaliseTransactionPayload$json = const {
-  '1': 'FinaliseTransactionPayload',
-  '2': const [
-    const {'1': 'authSenderByRecHash', '3': 1, '4': 1, '5': 11, '6': '.protos.SignedHash', '10': 'authSenderByRecHash'},
-    const {'1': 'lastObject', '3': 2, '4': 3, '5': 11, '6': '.protos.TransactionLastObjectSigned', '10': 'lastObject'},
-    const {'1': 'senderPayloadSign', '3': 3, '4': 1, '5': 11, '6': '.protos.SignedHash', '10': 'senderPayloadSign'},
-    const {'1': 'privateKeyPass', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'privateKeyPass', '17': true},
-    const {'1': 'pledgeDetails', '3': 5, '4': 3, '5': 11, '6': '.protos.FinaliseTransactionPayload.PledgeDetailsEntry', '10': 'pledgeDetails'},
-  ],
-  '3': const [FinaliseTransactionPayload_PledgeDetailsEntry$json],
-  '8': const [
-    const {'1': '_privateKeyPass'},
-  ],
-};
-
-@$core.Deprecated('Use finaliseTransactionPayloadDescriptor instead')
-const FinaliseTransactionPayload_PledgeDetailsEntry$json = const {
-  '1': 'PledgeDetailsEntry',
-  '2': const [
-    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.protos.PledgeDetailSigned', '10': 'value'},
-  ],
-  '7': const {'7': true},
-};
-
-/// Descriptor for `FinaliseTransactionPayload`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List finaliseTransactionPayloadDescriptor = $convert.base64Decode('ChpGaW5hbGlzZVRyYW5zYWN0aW9uUGF5bG9hZBJEChNhdXRoU2VuZGVyQnlSZWNIYXNoGAEgASgLMhIucHJvdG9zLlNpZ25lZEhhc2hSE2F1dGhTZW5kZXJCeVJlY0hhc2gSQwoKbGFzdE9iamVjdBgCIAMoCzIjLnByb3Rvcy5UcmFuc2FjdGlvbkxhc3RPYmplY3RTaWduZWRSCmxhc3RPYmplY3QSQAoRc2VuZGVyUGF5bG9hZFNpZ24YAyABKAsyEi5wcm90b3MuU2lnbmVkSGFzaFIRc2VuZGVyUGF5bG9hZFNpZ24SKwoOcHJpdmF0ZUtleVBhc3MYBCABKAlIAFIOcHJpdmF0ZUtleVBhc3OIAQESWwoNcGxlZGdlRGV0YWlscxgFIAMoCzI1LnByb3Rvcy5GaW5hbGlzZVRyYW5zYWN0aW9uUGF5bG9hZC5QbGVkZ2VEZXRhaWxzRW50cnlSDXBsZWRnZURldGFpbHMaXAoSUGxlZGdlRGV0YWlsc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EjAKBXZhbHVlGAIgASgLMhoucHJvdG9zLlBsZWRnZURldGFpbFNpZ25lZFIFdmFsdWU6AjgBQhEKD19wcml2YXRlS2V5UGFzcw==');
-@$core.Deprecated('Use getTransactionLogReqDescriptor instead')
-const GetTransactionLogReq$json = const {
-  '1': 'GetTransactionLogReq',
-  '2': const [
-    const {'1': 'count', '3': 1, '4': 1, '5': 13, '10': 'count'},
-  ],
-};
-
-/// Descriptor for `GetTransactionLogReq`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getTransactionLogReqDescriptor = $convert.base64Decode('ChRHZXRUcmFuc2FjdGlvbkxvZ1JlcRIUCgVjb3VudBgBIAEoDVIFY291bnQ=');
-@$core.Deprecated('Use getTransactionLogResDescriptor instead')
-const GetTransactionLogRes$json = const {
-  '1': 'GetTransactionLogRes',
-  '2': const [
-    const {'1': 'txnLog', '3': 1, '4': 3, '5': 11, '6': '.protos.TxnSummary', '10': 'txnLog'},
-  ],
-};
-
-/// Descriptor for `GetTransactionLogRes`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List getTransactionLogResDescriptor = $convert.base64Decode('ChRHZXRUcmFuc2FjdGlvbkxvZ1JlcxIqCgZ0eG5Mb2cYASADKAsyEi5wcm90b3MuVHhuU3VtbWFyeVIGdHhuTG9n');
 @$core.Deprecated('Use getBalanceResDescriptor instead')
 const GetBalanceRes$json = const {
   '1': 'GetBalanceRes',

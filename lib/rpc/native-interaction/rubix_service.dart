@@ -34,10 +34,9 @@ class RubixService {
       {required String gateway,
       required String didImagePath,
       required String publicSharePath,
-      required String publicKey,
-      required String accessToken}) async {
+      required String publicKey}) async {
     RubixServiceClient stub =
-        getConnection(gateway: gateway, accessToken: accessToken);
+        getConnection(gateway: gateway, accessToken: "");
     try {
       var response = await stub.createDID(CreateDIDReq(
           didImage: await Dependencies().imageToBase64(didImagePath),
@@ -64,7 +63,6 @@ class RubixService {
     RequestTransactionPayloadRes response =
         await stub.initiateTransaction(RequestTransactionPayloadReq(
       receiver: initiatePayload.receiver,
-      sender: initiatePayload.sender,
       tokenCount: initiatePayload.tokenCount,
       comment: initiatePayload.comment,
       type: initiatePayload.type,
@@ -125,31 +123,14 @@ class RubixService {
     return response;
   }
 
-  Future<GetTransactionLogRes> getTransactionLog(
+  Future<GetBalanceRes> getBalance(
       {required String gateway,
       required String accessToken,
-      required GetTransactionLogReq transactionLogReq}) async {
+      required String did}) async {
     RubixServiceClient stub =
         getConnection(gateway: gateway, accessToken: accessToken);
-    try {
-      var response = await stub.getTransactionLog(transactionLogReq);
-      return response;
-    } catch (e) {
-      print(e);
-      return GetTransactionLogRes();
-    }
-  }
-
-  Future<GetBalanceRes> getBalance(
-      {required String gateway, required String accessToken}) async {
-    RubixServiceClient stub =
-        getConnection(gateway: gateway, accessToken: accessToken);
-    try {
-      var response = await stub.getBalance(Empty());
-      return response;
-    } catch (e) {
-      print(e);
-      return GetBalanceRes();
-    }
+    var response = await stub.getBalance(Empty());
+    print("Get Balance Response:${response}");
+    return response;
   }
 }
