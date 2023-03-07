@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:fexr/const.dart';
 import 'package:fexr/fexr.dart';
 import 'package:fexr/signature/dependencies.dart';
+import 'package:flutter/foundation.dart';
 import 'package:grpc/grpc.dart';
+import 'package:pointycastle/pointycastle.dart';
 
 class RubixService {
   static final RubixService _singleton = RubixService._internal();
@@ -39,6 +43,8 @@ class RubixService {
           didImage: await Dependencies().imageToBase64(didImagePath),
           publicShare: await Dependencies().imageToBase64(publicSharePath),
           publicKey: publicKey));
+      print("Did is ${response.did}");
+      print("Status is ${response.status}");
       return response;
     } catch (e) {
       print(e);
@@ -46,57 +52,77 @@ class RubixService {
     }
   }
 
-  Future<TxnSummary> initiateTransaction(
+  Future<Status> initiateTransaction(
       {required String gateway,
       required String accessToken,
       required RequestTransactionPayloadReq initiatePayload,
       required String imagePath,
+      required String privateKeyString,
       Duration idleTimeout = const Duration(minutes: 15)}) async {
     RubixServiceClient stub = getConnection(
         gateway: gateway, accessToken: accessToken, idleTimeout: idleTimeout);
-    RequestTransactionPayloadRes response = await stub.initiateTransaction(
-        RequestTransactionPayloadReq(
-            receiver: initiatePayload.receiver,
-            tokenCount: initiatePayload.tokenCount,
-            comment: initiatePayload.comment,
-            type: initiatePayload.type,
-            privateKeyPass: initiatePayload.privateKeyPass));
-    var unsignedLastObjectArr = response.lastObject;
-    var unsignedPledgeDetails = response.pledgeDetails;
+    RequestTransactionPayloadRes response =
+        await stub.initiateTransaction(RequestTransactionPayloadReq(
+      receiver: initiatePayload.receiver,
+      sender: initiatePayload.sender,
+      tokenCount: initiatePayload.tokenCount,
+      comment: initiatePayload.comment,
+      type: initiatePayload.type,
+    ));
+    var privateKey = KeyPair().privateKeyFromPem(privateKeyString);
+    print("Initiate Transaction Response: ${response}");
+    var signResp = signResponse(
+        initiateTransactionResponse: response,
+        imagePath: imagePath,
+        privateKey: privateKey,
+        stub: stub);
+    return signResp;
+  }
 
-    Iterable<TransactionLastObjectSigned> signedLastObjectArr =
-        await Future.wait(unsignedLastObjectArr.map((e) async =>
-            TransactionLastObjectSigned(
-                chainSign:
-                    await GenerateSign().genSignFromShares(imagePath, e.hash),
-                hash: e.hash,
-                token: e.token)));
+  Future<Status> generateRbt(
+      {required String did,
+      required double tokenCount,
+      required String accessToken,
+      required String gateway,
+      required String imagePath,
+      required String privateKeyString}) async {
+    RubixServiceClient stub =
+        getConnection(gateway: gateway, accessToken: accessToken);
+    var privateKey = KeyPair().privateKeyFromPem(privateKeyString);
+    var response =
+        await stub.generateRbt(GenerateReq(did: did, tokenCount: tokenCount));
 
-    Map<String, PledgeDetailSigned> pledgeDetails = {};
+    print(response);
+    var signResp = signResponse(
+        initiateTransactionResponse: response,
+        imagePath: imagePath,
+        privateKey: privateKey,
+        stub: stub);
+    return signResp;
+  }
 
-    for (final keyValue in unsignedPledgeDetails.entries) {
-      var hashes = keyValue.value.valueArr;
-      var signedHashes = await Future.wait(hashes.map((e) async => SignedHash(
-          hash: e,
-          sign: await GenerateSign().genSignFromShares(imagePath, e))));
+  Future<Status> signResponse(
+      {required RequestTransactionPayloadRes initiateTransactionResponse,
+      required String imagePath,
+      required ECPrivateKey privateKey,
+      required RubixServiceClient stub}) async {
+    var requestId = initiateTransactionResponse.requestId;
+    var hashbase64 = initiateTransactionResponse.hash;
+    var base64decode = base64.decode(hashbase64);
+    var hash = utf8.decode(base64decode);
 
-      pledgeDetails[keyValue.key] = PledgeDetailSigned(valueArr: signedHashes);
-    }
+    var imgSign = await GenerateSign().genSignFromShares(imagePath, hash);
+    var imgSignBytes = Dependencies().bitstreamToBytes(imgSign);
+    var imgSignHash = Dependencies().calculateHash(imgSign);
+    var signContent = Uint8List.fromList(imgSignHash.codeUnits);
 
-    var finaliseTransactionResult = await stub.finaliseTransaction(
-        FinaliseTransactionPayload(
-            authSenderByRecHash: SignedHash(
-                hash: response.authSenderByRecHash,
-                sign: await GenerateSign().genSignFromShares(
-                    imagePath, response.authSenderByRecHash)),
-            lastObject: signedLastObjectArr,
-            senderPayloadSign: SignedHash(
-                hash: response.senderPayloadSign,
-                sign: await GenerateSign()
-                    .genSignFromShares(imagePath, response.senderPayloadSign)),
-            privateKeyPass: initiatePayload.privateKeyPass,
-            pledgeDetails: pledgeDetails));
-    return finaliseTransactionResult;
+    var response = await stub.signResponse(HashSigned(
+        id: requestId,
+        pvtSign: KeyPair().keySignature(signContent, privateKey),
+        imgSign: imgSignBytes));
+    print("Sign Response:${response}");
+
+    return response;
   }
 
   Future<GetTransactionLogRes> getTransactionLog(

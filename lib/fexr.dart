@@ -20,3 +20,4 @@ export 'package:fexr/protogen/native-interaction/rubix-native.pbenum.dart';
 export 'package:fexr/protogen/native-interaction/rubix-native.pbgrpc.dart';
 export 'package:fexr/protogen/native-interaction/rubix-native.pbjson.dart';
 export 'package:fexr/rpc/sky.dart';
+export 'package:fexr/signature/key_gen.dart';
