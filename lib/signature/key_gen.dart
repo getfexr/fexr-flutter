@@ -59,4 +59,20 @@ class KeyPair {
     return secureRandom;
   }
 
+  bool verifySignature(
+    ECPublicKey publicKey, Uint8List messageBytes, Uint8List signaturebytes) {
+  var verifier = ECDSASigner()
+    ..init(
+      false,
+      PublicKeyParameter(publicKey),
+    );
+  var sequence = ASN1Sequence.fromBytes(signaturebytes);
+  var r = (sequence.elements![0] as ASN1Integer).integer;
+  var s = (sequence.elements![1] as ASN1Integer).integer;
+  var signature = ECSignature(r!, s!);
+
+  var verified = verifier.verifySignature(messageBytes, signature);
+  return verified;
+}
+
 }

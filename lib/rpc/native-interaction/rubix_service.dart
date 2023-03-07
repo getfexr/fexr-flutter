@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:fexr/const.dart';
 import 'package:fexr/fexr.dart';
 import 'package:fexr/signature/dependencies.dart';
@@ -86,11 +88,11 @@ class RubixService {
       required String privateKeyString}) async {
     RubixServiceClient stub =
         getConnection(gateway: gateway, accessToken: accessToken);
-        var privateKey = KeyPair().privateKeyFromPem(privateKeyString);
+    var privateKey = KeyPair().privateKeyFromPem(privateKeyString);
     var response =
         await stub.generateRbt(GenerateReq(did: did, tokenCount: tokenCount));
 
-        print(response);
+    print(response);
     var signResp = signResponse(
         initiateTransactionResponse: response,
         imagePath: imagePath,
@@ -104,19 +106,23 @@ class RubixService {
       required String imagePath,
       required ECPrivateKey privateKey,
       required RubixServiceClient stub}) async {
-      var requestId = initiateTransactionResponse.requestId;
-      var hash = Dependencies().calculateHash(initiateTransactionResponse.hash);
-      var imgSign =  await GenerateSign().genSignFromShares(imagePath, hash);
-      var imgSignBytes = Dependencies().bitstreamToBytes(imgSign);
-      var imgSignHash = Dependencies().calculateHash(imgSign);
-      var signContent = Uint8List.fromList(imgSignHash.codeUnits);
-      var response = await stub.signResponse(HashSigned(
-          id: requestId,
-          pvtSign: KeyPair().keySignature(signContent, privateKey),
-          imgSign: imgSignBytes));
-      print("Sign Response: ${response.status} ${response}");
+    var requestId = initiateTransactionResponse.requestId;
+    var hashbase64 = initiateTransactionResponse.hash;
+    var base64decode = base64.decode(hashbase64);
+    var hash = utf8.decode(base64decode);
 
-      return response;
+    var imgSign = await GenerateSign().genSignFromShares(imagePath, hash);
+    var imgSignBytes = Dependencies().bitstreamToBytes(imgSign);
+    var imgSignHash = Dependencies().calculateHash(imgSign);
+    var signContent = Uint8List.fromList(imgSignHash.codeUnits);
+
+    var response = await stub.signResponse(HashSigned(
+        id: requestId,
+        pvtSign: KeyPair().keySignature(signContent, privateKey),
+        imgSign: imgSignBytes));
+    print("Sign Response:${response}");
+
+    return response;
   }
 
   Future<GetTransactionLogRes> getTransactionLog(
