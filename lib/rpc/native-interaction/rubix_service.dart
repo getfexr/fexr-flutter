@@ -30,13 +30,41 @@ class RubixService {
             CallOptions(metadata: {'Authorization': 'Bearer $accessToken'}));
   }
 
-  Future<CreateDIDRes> createDID(
+  void createDIDChallenge(String publicKey) {
+    RubixServiceClient stub = getConnection(gateway: "", accessToken: "");
+
+    var response = stub.createDIDChallenge(ChallengeReq(publicKey: publicKey));
+    print("Challenge is $response");
+  }
+
+  void createDID(
       {required String gateway,
       required String didImagePath,
       required String publicSharePath,
-      required String publicKey}) async {
-    RubixServiceClient stub =
-        getConnection(gateway: gateway, accessToken: "");
+      required String publicKey,
+      required String privateKeyString}) async {
+    RubixServiceClient stub = getConnection(gateway: gateway, accessToken: "");
+    var response =
+        await stub.createDIDChallenge(ChallengeReq(publicKey: publicKey));
+    var challengeString = response.challenge;
+    var privateKey = KeyPair().privateKeyFromPem(privateKeyString);
+    var signContent = Uint8List.fromList(challengeString.codeUnits);
+    var pvtSign = KeyPair().keySignature(signContent, privateKey);
+    _createDID(
+        gateway: gateway,
+        didImagePath: didImagePath,
+        publicSharePath: publicSharePath,
+        publicKey: publicKey,
+        signature: pvtSign);
+  }
+
+  Future<CreateDIDRes> _createDID(
+      {required String gateway,
+      required String didImagePath,
+      required String publicSharePath,
+      required String publicKey,
+      required Uint8List signature}) async {
+    RubixServiceClient stub = getConnection(gateway: gateway, accessToken: "");
     try {
       var response = await stub.createDID(CreateDIDReq(
           didImage: await Dependencies().imageToBase64(didImagePath),

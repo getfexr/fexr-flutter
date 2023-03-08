@@ -19,6 +19,16 @@ const SignedPayload$json = const {
 
 /// Descriptor for `SignedPayload`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List signedPayloadDescriptor = $convert.base64Decode('Cg1TaWduZWRQYXlsb2FkEhgKB3BheWxvYWQYASABKAlSB3BheWxvYWQSHAoJc2lnbmF0dXJlGAIgASgMUglzaWduYXR1cmU=');
+@$core.Deprecated('Use challengeReqDescriptor instead')
+const ChallengeReq$json = const {
+  '1': 'ChallengeReq',
+  '2': const [
+    const {'1': 'publicKey', '3': 1, '4': 1, '5': 9, '10': 'publicKey'},
+  ],
+};
+
+/// Descriptor for `ChallengeReq`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List challengeReqDescriptor = $convert.base64Decode('CgxDaGFsbGVuZ2VSZXESHAoJcHVibGljS2V5GAEgASgJUglwdWJsaWNLZXk=');
 @$core.Deprecated('Use challengeStringDescriptor instead')
 const ChallengeString$json = const {
   '1': 'ChallengeString',
