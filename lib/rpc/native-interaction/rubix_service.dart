@@ -55,7 +55,8 @@ class RubixService {
         didImagePath: didImagePath,
         publicSharePath: publicSharePath,
         publicKey: publicKey,
-        signature: pvtSign);
+        signature: pvtSign,
+        payload: challengeString);
   }
 
   Future<CreateDIDRes> _createDID(
@@ -63,11 +64,13 @@ class RubixService {
       required String didImagePath,
       required String publicSharePath,
       required String publicKey,
-      required Uint8List signature}) async {
+      required Uint8List signature,
+      required String payload}) async {
     RubixServiceClient stub = getConnection(gateway: gateway, accessToken: "");
     try {
       var response = await stub.createDID(CreateDIDReq(
           didImage: await Dependencies().imageToBase64(didImagePath),
+          ecdsaChallengeResponse: SignedPayload(payload:payload, signature: signature ),
           publicShare: await Dependencies().imageToBase64(publicSharePath),
           publicKey: publicKey));
       print("Did is ${response.did}");
