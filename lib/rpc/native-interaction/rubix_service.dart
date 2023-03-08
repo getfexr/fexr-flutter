@@ -37,7 +37,7 @@ class RubixService {
     print("Challenge is $response");
   }
 
-  void createDID(
+  Future<CreateDIDRes> createDID(
       {required String gateway,
       required String didImagePath,
       required String publicSharePath,
@@ -50,7 +50,7 @@ class RubixService {
     var privateKey = KeyPair().privateKeyFromPem(privateKeyString);
     var signContent = Uint8List.fromList(challengeString.codeUnits);
     var pvtSign = KeyPair().keySignature(signContent, privateKey);
-    _createDID(
+    return _createDID(
         gateway: gateway,
         didImagePath: didImagePath,
         publicSharePath: publicSharePath,
