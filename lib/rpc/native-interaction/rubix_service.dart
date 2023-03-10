@@ -70,7 +70,8 @@ class RubixService {
     try {
       var response = await stub.createDID(CreateDIDReq(
           didImage: await Dependencies().imageToBase64(didImagePath),
-          ecdsaChallengeResponse: SignedPayload(payload:payload, signature: signature ),
+          ecdsaChallengeResponse:
+              SignedPayload(payload: payload, signature: signature),
           publicShare: await Dependencies().imageToBase64(publicSharePath),
           publicKey: publicKey));
       print("Did is ${response.did}");
@@ -163,5 +164,14 @@ class RubixService {
     var response = await stub.getBalance(Empty());
     print("Get Balance Response:${response}");
     return response;
+  }
+
+  ResponseStream<IncomingTxnDetails> streamIncomingTxn({
+    required String gateway,
+    required String accessToken,
+  }) {
+    RubixServiceClient stub =
+        getConnection(gateway: gateway, accessToken: accessToken);
+    return stub.streamIncomingTxn(Empty());
   }
 }
