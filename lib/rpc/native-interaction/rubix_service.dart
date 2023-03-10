@@ -30,17 +30,47 @@ class RubixService {
             CallOptions(metadata: {'Authorization': 'Bearer $accessToken'}));
   }
 
+  void createDIDChallenge(String publicKey) {
+    RubixServiceClient stub = getConnection(gateway: "", accessToken: "");
+
+    var response = stub.createDIDChallenge(ChallengeReq(publicKey: publicKey));
+    print("Challenge is $response");
+  }
+
   Future<CreateDIDRes> createDID(
       {required String gateway,
       required String didImagePath,
       required String publicSharePath,
       required String publicKey,
-      required String accessToken}) async {
-    RubixServiceClient stub =
-        getConnection(gateway: gateway, accessToken: accessToken);
+      required String privateKeyString}) async {
+    RubixServiceClient stub = getConnection(gateway: gateway, accessToken: "");
+    var response =
+        await stub.createDIDChallenge(ChallengeReq(publicKey: publicKey));
+    var challengeString = response.challenge;
+    var privateKey = KeyPair().privateKeyFromPem(privateKeyString);
+    var signContent = Uint8List.fromList(challengeString.codeUnits);
+    var pvtSign = KeyPair().keySignature(signContent, privateKey);
+    return _createDID(
+        gateway: gateway,
+        didImagePath: didImagePath,
+        publicSharePath: publicSharePath,
+        publicKey: publicKey,
+        signature: pvtSign,
+        payload: challengeString);
+  }
+
+  Future<CreateDIDRes> _createDID(
+      {required String gateway,
+      required String didImagePath,
+      required String publicSharePath,
+      required String publicKey,
+      required Uint8List signature,
+      required String payload}) async {
+    RubixServiceClient stub = getConnection(gateway: gateway, accessToken: "");
     try {
       var response = await stub.createDID(CreateDIDReq(
           didImage: await Dependencies().imageToBase64(didImagePath),
+          ecdsaChallengeResponse: SignedPayload(payload:payload, signature: signature ),
           publicShare: await Dependencies().imageToBase64(publicSharePath),
           publicKey: publicKey));
       print("Did is ${response.did}");
@@ -64,7 +94,6 @@ class RubixService {
     RequestTransactionPayloadRes response =
         await stub.initiateTransaction(RequestTransactionPayloadReq(
       receiver: initiatePayload.receiver,
-      sender: initiatePayload.sender,
       tokenCount: initiatePayload.tokenCount,
       comment: initiatePayload.comment,
       type: initiatePayload.type,
@@ -125,31 +154,14 @@ class RubixService {
     return response;
   }
 
-  Future<GetTransactionLogRes> getTransactionLog(
+  Future<GetBalanceRes> getBalance(
       {required String gateway,
       required String accessToken,
-      required GetTransactionLogReq transactionLogReq}) async {
+      required String did}) async {
     RubixServiceClient stub =
         getConnection(gateway: gateway, accessToken: accessToken);
-    try {
-      var response = await stub.getTransactionLog(transactionLogReq);
-      return response;
-    } catch (e) {
-      print(e);
-      return GetTransactionLogRes();
-    }
-  }
-
-  Future<GetBalanceRes> getBalance(
-      {required String gateway, required String accessToken}) async {
-    RubixServiceClient stub =
-        getConnection(gateway: gateway, accessToken: accessToken);
-    try {
-      var response = await stub.getBalance(Empty());
-      return response;
-    } catch (e) {
-      print(e);
-      return GetBalanceRes();
-    }
+    var response = await stub.getBalance(Empty());
+    print("Get Balance Response:${response}");
+    return response;
   }
 }

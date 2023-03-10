@@ -1,9 +1,5 @@
 library fexr;
 
-export 'package:fexr/protogen/sky.pb.dart';
-export 'package:fexr/protogen/sky.pbenum.dart';
-export 'package:fexr/protogen/sky.pbgrpc.dart';
-export 'package:fexr/protogen/sky.pbjson.dart';
 export 'package:fexr/protogen/google/protobuf/empty.pb.dart';
 export 'package:fexr/protogen/google/protobuf/empty.pbenum.dart';
 export 'package:fexr/protogen/google/protobuf/empty.pbjson.dart';
@@ -19,5 +15,5 @@ export 'package:fexr/protogen/native-interaction/rubix-native.pb.dart';
 export 'package:fexr/protogen/native-interaction/rubix-native.pbenum.dart';
 export 'package:fexr/protogen/native-interaction/rubix-native.pbgrpc.dart';
 export 'package:fexr/protogen/native-interaction/rubix-native.pbjson.dart';
-export 'package:fexr/rpc/sky.dart';
 export 'package:fexr/signature/key_gen.dart';
+
