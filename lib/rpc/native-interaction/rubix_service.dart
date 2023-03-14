@@ -174,4 +174,20 @@ class RubixService {
         getConnection(gateway: gateway, accessToken: accessToken);
     return stub.streamIncomingTxn(Empty());
   }
+
+  Future<Token> generateAccessToken(
+      {required String gateway,
+      required String accessToken,
+      required String privateKeyString}) async {
+    RubixServiceClient stub =
+        getConnection(gateway: gateway, accessToken: accessToken);
+    var resp = await stub.getAccessTokenChallenge(Empty());
+    var challengeString = resp.challenge;
+    var privateKey = KeyPair().privateKeyFromPem(privateKeyString);
+    var signContent = Uint8List.fromList(challengeString.codeUnits);
+    var pvtSign = KeyPair().keySignature(signContent, privateKey);
+    var response = await stub.generateAccessToken(
+        SignedPayload(payload: challengeString, signature: pvtSign));
+    return response;
+  }
 }
