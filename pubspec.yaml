@@ -8,6 +8,9 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
   flutter: ">1.20.0"
 
+lint_staged:
+  .dart: dart format --fix && dart fix --apply
+
 dependencies:
   flutter:
     sdk: flutter
@@ -28,6 +31,8 @@ dev_dependencies:
     sdk: flutter
   dart_code_metrics: ^4.1.0
   lints: ^2.0.1
+  husky: ^0.1.6
+  lint_staged: ^0.2.0
 
 flutter:
 
