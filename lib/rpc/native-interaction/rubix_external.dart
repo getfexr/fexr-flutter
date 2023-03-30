@@ -14,11 +14,14 @@ class RubixExternalService {
   RubixExternalService._internal();
 
   RubixExternalClient getConnection(
-      {required String gateway, required String accessToken}) {
+      {required String gateway,
+      required String accessToken,
+      Duration idleTimeout = const Duration(minutes: 5)}) {
     ClientChannel channel = ClientChannel(gateway,
         port: Const.PORT,
-        options:
-            const ChannelOptions(credentials: ChannelCredentials.insecure()));
+        options: ChannelOptions(
+            credentials: ChannelCredentials.insecure(),
+            idleTimeout: idleTimeout));
     return RubixExternalClient(channel,
         options:
             CallOptions(metadata: {'Authorization': 'Bearer $accessToken'}));
