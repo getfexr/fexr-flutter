@@ -30,13 +30,6 @@ class RubixService {
             CallOptions(metadata: {'Authorization': 'Bearer $accessToken'}));
   }
 
-  void createDIDChallenge(String publicKey) {
-    RubixServiceClient stub = getConnection(gateway: "", accessToken: "");
-
-    var response = stub.createDIDChallenge(ChallengeReq(publicKey: publicKey));
-    print("Challenge is $response");
-  }
-
   Future<CreateDIDRes> createDID(
       {required String gateway,
       required String didImagePath,
