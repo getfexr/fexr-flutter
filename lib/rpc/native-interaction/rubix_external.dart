@@ -36,7 +36,7 @@ class RubixExternalService {
     stub.approveAuthRequest(AuthRequest(uuid: uuid));
   }
 
-  ResponseStream<TxnRequest> transactionRequest(
+  ResponseStream<TxnRequest> streamTransactionRequests(
       {required String gateway, required String accessToken}) {
     RubixExternalClient stub =
         getConnection(gateway: gateway, accessToken: accessToken);
