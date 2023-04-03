@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:fexr/const.dart';
 import 'package:fexr/fexr.dart';
+import 'package:fexr/protogen/native-interaction/rubix-native.pbgrpc.dart';
 import 'package:fexr/signature/dependencies.dart';
 import 'package:flutter/foundation.dart';
 import 'package:grpc/grpc.dart';
