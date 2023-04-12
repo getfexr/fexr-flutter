@@ -184,4 +184,10 @@ class RubixService {
         SignedPayload(payload: challengeString, signature: pvtSign));
     return response;
   }
+
+  Future<TransactionHistory> getTransactionHistory({required String gateway,required String accessToken}) async {
+    RubixServiceClient stub = getConnection(gateway: gateway, accessToken: accessToken);
+    var response = await stub.getTransactionHistory(Empty());
+    return response;
+  }
 }
