@@ -42,4 +42,10 @@ class RubixExternalService {
         getConnection(gateway: gateway, accessToken: accessToken);
     return stub.streamTransactionRequest(Empty());
   }
+
+   ResponseFuture<OrgStatus> approveOrgAuthRequest({required String gateway, required String accessToken, required String orgName, required String callBackUrl, required String sessionId}){
+    RubixExternalClient stub =
+        getConnection(gateway: gateway, accessToken: accessToken);
+    return stub.approveOrgAuthRequest(OrgAuthRequest(orgName: orgName, callBackUrl: callBackUrl, sessionId: sessionId));
+  }
 }
