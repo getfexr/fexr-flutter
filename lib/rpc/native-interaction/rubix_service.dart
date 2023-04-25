@@ -190,4 +190,29 @@ class RubixService {
     var response = await stub.getTransactionHistory(Empty());
     return response;
   }
+
+  Future<Status> signData(
+      {required RequestTransactionPayloadRes createDataResponse,
+      required ECPrivateKey privateKey,
+      required RubixServiceClient stub}) async {
+    var requestId = createDataResponse.requestId;
+    var hashbase64 = createDataResponse.hash;
+    var base64decode = base64.decode(hashbase64);
+    var response = await stub.signData(HashSigned(
+        id: requestId,
+        pvtSign: KeyPair().keySignature(base64decode, privateKey),
+        imgSign: []));
+    print("Sign Response:${response}");
+
+    return response;
+  }
+
+  ResponseStream<RequestTransactionPayloadRes> streamSignResponse({
+    required String gateway,
+    required String accessToken,
+  }){
+    RubixServiceClient stub =
+        getConnection(gateway: gateway, accessToken: accessToken);
+    return stub.streamSignResponse(Empty());
+  }
 }
