@@ -1184,52 +1184,62 @@ class TransactionHistory extends $pb.GeneratedMessage {
 
 class OnChainAsset extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'OnChainAsset', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creatorDid', protoName: 'creatorDid')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalSupply', protoName: 'totalSupply')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tokenNumber', protoName: 'tokenNumber')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creatorInput', protoName: 'creatorInput')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hash')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'url')
-    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timsstamp')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'assetName', protoName: 'assetName')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creatorName', protoName: 'creatorName')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creatorDID', protoName: 'creatorDID')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'price')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'note')
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hash')
+    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'chain')
+    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'url')
     ..hasRequiredFields = false
   ;
 
   OnChainAsset._() : super();
   factory OnChainAsset({
-    $core.String? type,
-    $core.String? creatorDid,
-    $core.String? totalSupply,
-    $core.String? tokenNumber,
-    $core.String? creatorInput,
+    $core.String? timsstamp,
+    $core.String? assetName,
+    $core.String? creatorName,
+    $core.String? creatorDID,
+    $core.String? price,
+    $core.String? note,
+    $core.String? status,
     $core.String? hash,
+    $core.String? chain,
     $core.String? url,
-    $core.String? signature,
   }) {
     final _result = create();
-    if (type != null) {
-      _result.type = type;
+    if (timsstamp != null) {
+      _result.timsstamp = timsstamp;
     }
-    if (creatorDid != null) {
-      _result.creatorDid = creatorDid;
+    if (assetName != null) {
+      _result.assetName = assetName;
     }
-    if (totalSupply != null) {
-      _result.totalSupply = totalSupply;
+    if (creatorName != null) {
+      _result.creatorName = creatorName;
     }
-    if (tokenNumber != null) {
-      _result.tokenNumber = tokenNumber;
+    if (creatorDID != null) {
+      _result.creatorDID = creatorDID;
     }
-    if (creatorInput != null) {
-      _result.creatorInput = creatorInput;
+    if (price != null) {
+      _result.price = price;
+    }
+    if (note != null) {
+      _result.note = note;
+    }
+    if (status != null) {
+      _result.status = status;
     }
     if (hash != null) {
       _result.hash = hash;
     }
+    if (chain != null) {
+      _result.chain = chain;
+    }
     if (url != null) {
       _result.url = url;
-    }
-    if (signature != null) {
-      _result.signature = signature;
     }
     return _result;
   }
@@ -1255,75 +1265,134 @@ class OnChainAsset extends $pb.GeneratedMessage {
   static OnChainAsset? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get type => $_getSZ(0);
+  $core.String get timsstamp => $_getSZ(0);
   @$pb.TagNumber(1)
-  set type($core.String v) { $_setString(0, v); }
+  set timsstamp($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasType() => $_has(0);
+  $core.bool hasTimsstamp() => $_has(0);
   @$pb.TagNumber(1)
-  void clearType() => clearField(1);
+  void clearTimsstamp() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get creatorDid => $_getSZ(1);
+  $core.String get assetName => $_getSZ(1);
   @$pb.TagNumber(2)
-  set creatorDid($core.String v) { $_setString(1, v); }
+  set assetName($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasCreatorDid() => $_has(1);
+  $core.bool hasAssetName() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCreatorDid() => clearField(2);
+  void clearAssetName() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get totalSupply => $_getSZ(2);
+  $core.String get creatorName => $_getSZ(2);
   @$pb.TagNumber(3)
-  set totalSupply($core.String v) { $_setString(2, v); }
+  set creatorName($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasTotalSupply() => $_has(2);
+  $core.bool hasCreatorName() => $_has(2);
   @$pb.TagNumber(3)
-  void clearTotalSupply() => clearField(3);
+  void clearCreatorName() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get tokenNumber => $_getSZ(3);
+  $core.String get creatorDID => $_getSZ(3);
   @$pb.TagNumber(4)
-  set tokenNumber($core.String v) { $_setString(3, v); }
+  set creatorDID($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasTokenNumber() => $_has(3);
+  $core.bool hasCreatorDID() => $_has(3);
   @$pb.TagNumber(4)
-  void clearTokenNumber() => clearField(4);
+  void clearCreatorDID() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get creatorInput => $_getSZ(4);
+  $core.String get price => $_getSZ(4);
   @$pb.TagNumber(5)
-  set creatorInput($core.String v) { $_setString(4, v); }
+  set price($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasCreatorInput() => $_has(4);
+  $core.bool hasPrice() => $_has(4);
   @$pb.TagNumber(5)
-  void clearCreatorInput() => clearField(5);
+  void clearPrice() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get hash => $_getSZ(5);
+  $core.String get note => $_getSZ(5);
   @$pb.TagNumber(6)
-  set hash($core.String v) { $_setString(5, v); }
+  set note($core.String v) { $_setString(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasHash() => $_has(5);
+  $core.bool hasNote() => $_has(5);
   @$pb.TagNumber(6)
-  void clearHash() => clearField(6);
+  void clearNote() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.String get url => $_getSZ(6);
+  $core.String get status => $_getSZ(6);
   @$pb.TagNumber(7)
-  set url($core.String v) { $_setString(6, v); }
+  set status($core.String v) { $_setString(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasUrl() => $_has(6);
+  $core.bool hasStatus() => $_has(6);
   @$pb.TagNumber(7)
-  void clearUrl() => clearField(7);
+  void clearStatus() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.String get signature => $_getSZ(7);
+  $core.String get hash => $_getSZ(7);
   @$pb.TagNumber(8)
-  set signature($core.String v) { $_setString(7, v); }
+  set hash($core.String v) { $_setString(7, v); }
   @$pb.TagNumber(8)
-  $core.bool hasSignature() => $_has(7);
+  $core.bool hasHash() => $_has(7);
   @$pb.TagNumber(8)
-  void clearSignature() => clearField(8);
+  void clearHash() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.String get chain => $_getSZ(8);
+  @$pb.TagNumber(9)
+  set chain($core.String v) { $_setString(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasChain() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearChain() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.String get url => $_getSZ(9);
+  @$pb.TagNumber(10)
+  set url($core.String v) { $_setString(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasUrl() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearUrl() => clearField(10);
+}
+
+class Assets extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Assets', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
+    ..pc<OnChainAsset>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'assets', $pb.PbFieldType.PM, subBuilder: OnChainAsset.create)
+    ..hasRequiredFields = false
+  ;
+
+  Assets._() : super();
+  factory Assets({
+    $core.Iterable<OnChainAsset>? assets,
+  }) {
+    final _result = create();
+    if (assets != null) {
+      _result.assets.addAll(assets);
+    }
+    return _result;
+  }
+  factory Assets.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Assets.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Assets clone() => Assets()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Assets copyWith(void Function(Assets) updates) => super.copyWith((message) => updates(message as Assets)) as Assets; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Assets create() => Assets._();
+  Assets createEmptyInstance() => create();
+  static $pb.PbList<Assets> createRepeated() => $pb.PbList<Assets>();
+  @$core.pragma('dart2js:noInline')
+  static Assets getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Assets>(create);
+  static Assets? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<OnChainAsset> get assets => $_getList(0);
 }
 

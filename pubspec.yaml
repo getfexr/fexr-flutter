@@ -2,7 +2,7 @@ name: fexr
 description: fexr-flutter is a lite wallet for Rubix Blockchain Protocol that helps to Connect your on-chain connectors to authenticate or sign third party accounts which are integrated with Rubix Blockchain Platform and uses Fexr APIs. Strict permission requirements built in Fexr apps will protect the access to your data also while allowing seamless integration.
 repository: https://github.com/getfexr/fexr-flutter
 issue_tracker: https://github.com/getfexr/fexr-flutter/issues
-version: 1.0.15
+version: 1.0.18
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

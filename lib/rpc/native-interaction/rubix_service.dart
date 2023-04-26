@@ -226,7 +226,7 @@ class RubixService {
         getConnection(gateway: gateway, accessToken: accessToken);
     return stub.streamSignResponse(Empty());
   }
-  Future<OnChainAsset> getAsset(
+  Future<Assets> getAsset(
       {required String gateway,
       required String accessToken,
       required String did}) async {
