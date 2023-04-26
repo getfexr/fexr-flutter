@@ -1182,3 +1182,148 @@ class TransactionHistory extends $pb.GeneratedMessage {
   void clearError() => clearField(2);
 }
 
+class OnChainAsset extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'OnChainAsset', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creatorDid', protoName: 'creatorDid')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'totalSupply', protoName: 'totalSupply')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tokenNumber', protoName: 'tokenNumber')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creatorInput', protoName: 'creatorInput')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hash')
+    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'url')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature')
+    ..hasRequiredFields = false
+  ;
+
+  OnChainAsset._() : super();
+  factory OnChainAsset({
+    $core.String? type,
+    $core.String? creatorDid,
+    $core.String? totalSupply,
+    $core.String? tokenNumber,
+    $core.String? creatorInput,
+    $core.String? hash,
+    $core.String? url,
+    $core.String? signature,
+  }) {
+    final _result = create();
+    if (type != null) {
+      _result.type = type;
+    }
+    if (creatorDid != null) {
+      _result.creatorDid = creatorDid;
+    }
+    if (totalSupply != null) {
+      _result.totalSupply = totalSupply;
+    }
+    if (tokenNumber != null) {
+      _result.tokenNumber = tokenNumber;
+    }
+    if (creatorInput != null) {
+      _result.creatorInput = creatorInput;
+    }
+    if (hash != null) {
+      _result.hash = hash;
+    }
+    if (url != null) {
+      _result.url = url;
+    }
+    if (signature != null) {
+      _result.signature = signature;
+    }
+    return _result;
+  }
+  factory OnChainAsset.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory OnChainAsset.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  OnChainAsset clone() => OnChainAsset()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  OnChainAsset copyWith(void Function(OnChainAsset) updates) => super.copyWith((message) => updates(message as OnChainAsset)) as OnChainAsset; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static OnChainAsset create() => OnChainAsset._();
+  OnChainAsset createEmptyInstance() => create();
+  static $pb.PbList<OnChainAsset> createRepeated() => $pb.PbList<OnChainAsset>();
+  @$core.pragma('dart2js:noInline')
+  static OnChainAsset getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OnChainAsset>(create);
+  static OnChainAsset? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get type => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set type($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasType() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearType() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get creatorDid => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set creatorDid($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasCreatorDid() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearCreatorDid() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get totalSupply => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set totalSupply($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasTotalSupply() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearTotalSupply() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get tokenNumber => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set tokenNumber($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasTokenNumber() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTokenNumber() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.String get creatorInput => $_getSZ(4);
+  @$pb.TagNumber(5)
+  set creatorInput($core.String v) { $_setString(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasCreatorInput() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearCreatorInput() => clearField(5);
+
+  @$pb.TagNumber(6)
+  $core.String get hash => $_getSZ(5);
+  @$pb.TagNumber(6)
+  set hash($core.String v) { $_setString(5, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasHash() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearHash() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.String get url => $_getSZ(6);
+  @$pb.TagNumber(7)
+  set url($core.String v) { $_setString(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasUrl() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearUrl() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.String get signature => $_getSZ(7);
+  @$pb.TagNumber(8)
+  set signature($core.String v) { $_setString(7, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasSignature() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearSignature() => clearField(8);
+}
+

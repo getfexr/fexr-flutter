@@ -99,7 +99,7 @@ class RubixService {
         initiateTransactionResponse: response,
         imagePath: imagePath,
         privateKey: privateKey,
-        stub: stub);
+        stub: stub,onlyPrivateKey: false);
     return signResp;
   }
 
@@ -121,7 +121,7 @@ class RubixService {
         initiateTransactionResponse: response,
         imagePath: imagePath,
         privateKey: privateKey,
-        stub: stub);
+        stub: stub,onlyPrivateKey: true);
     return signResp;
   }
 
@@ -129,24 +129,31 @@ class RubixService {
       {required RequestTransactionPayloadRes initiateTransactionResponse,
       required String imagePath,
       required ECPrivateKey privateKey,
-      required RubixServiceClient stub}) async {
+      required RubixServiceClient stub, required bool onlyPrivateKey}) async {
     var requestId = initiateTransactionResponse.requestId;
     var hashbase64 = initiateTransactionResponse.hash;
     var base64decode = base64.decode(hashbase64);
-    var hash = utf8.decode(base64decode);
-
-    var imgSign = await GenerateSign().genSignFromShares(imagePath, hash);
-    var imgSignBytes = Dependencies().bitstreamToBytes(imgSign);
-    var imgSignHash = Dependencies().calculateHash(imgSign);
-    var signContent = Uint8List.fromList(imgSignHash.codeUnits);
-
-    var response = await stub.signResponse(HashSigned(
+    if (onlyPrivateKey == false) {
+      var hash = utf8.decode(base64decode);
+      var imgSign = await GenerateSign().genSignFromShares(imagePath, hash);
+      var imgSignBytes = Dependencies().bitstreamToBytes(imgSign);
+      var imgSignHash = Dependencies().calculateHash(imgSign);
+      var signContent = Uint8List.fromList(imgSignHash.codeUnits);
+       var response = await stub.signResponse(HashSigned(
         id: requestId,
         pvtSign: KeyPair().keySignature(signContent, privateKey),
         imgSign: imgSignBytes));
     print("Sign Response:${response}");
-
     return response;
+  } else {
+    var response = await stub.signResponse(HashSigned(
+        id: requestId,
+        pvtSign: KeyPair().keySignature(base64decode, privateKey),
+        imgSign: []));
+    print("Sign Response:${response}");
+    return response;
+  }
+      
   }
 
   Future<GetBalanceRes> getBalance(
@@ -215,4 +222,15 @@ class RubixService {
         getConnection(gateway: gateway, accessToken: accessToken);
     return stub.streamSignResponse(Empty());
   }
+  Future<OnChainAsset> getAsset(
+      {required String gateway,
+      required String accessToken,
+      required String did}) async {
+    RubixServiceClient stub =
+        getConnection(gateway: gateway, accessToken: accessToken);
+    var response = await stub.getAsset(Empty());
+    print("Get Balance Response:${response}");
+    return response;
+  }
+
 }
