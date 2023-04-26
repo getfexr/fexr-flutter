@@ -200,7 +200,7 @@ class RubixService {
 
   Future<Status> signData(
       {required RequestTransactionPayloadRes createDataResponse,
-      required ECPrivateKey privateKey,
+      required String privateKeyString,
       required String gateway,
       required String accessToken}) async {
     var requestId = createDataResponse.requestId;
@@ -208,6 +208,7 @@ class RubixService {
     var base64decode = base64.decode(hashbase64);
     RubixServiceClient stub =
         getConnection(gateway: gateway, accessToken: accessToken);
+    var privateKey = KeyPair().privateKeyFromPem(privateKeyString);
     var response = await stub.signData(HashSigned(
         id: requestId,
         pvtSign: KeyPair().keySignature(base64decode, privateKey),
