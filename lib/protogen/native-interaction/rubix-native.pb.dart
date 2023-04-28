@@ -1184,7 +1184,7 @@ class TransactionHistory extends $pb.GeneratedMessage {
 
 class OnChainAsset extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'OnChainAsset', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timsstamp')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'assetName', protoName: 'assetName')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creatorName', protoName: 'creatorName')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'creatorDID', protoName: 'creatorDID')
@@ -1199,7 +1199,7 @@ class OnChainAsset extends $pb.GeneratedMessage {
 
   OnChainAsset._() : super();
   factory OnChainAsset({
-    $core.String? timsstamp,
+    $core.String? timestamp,
     $core.String? assetName,
     $core.String? creatorName,
     $core.String? creatorDID,
@@ -1211,8 +1211,8 @@ class OnChainAsset extends $pb.GeneratedMessage {
     $core.String? url,
   }) {
     final _result = create();
-    if (timsstamp != null) {
-      _result.timsstamp = timsstamp;
+    if (timestamp != null) {
+      _result.timestamp = timestamp;
     }
     if (assetName != null) {
       _result.assetName = assetName;
@@ -1265,13 +1265,13 @@ class OnChainAsset extends $pb.GeneratedMessage {
   static OnChainAsset? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get timsstamp => $_getSZ(0);
+  $core.String get timestamp => $_getSZ(0);
   @$pb.TagNumber(1)
-  set timsstamp($core.String v) { $_setString(0, v); }
+  set timestamp($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasTimsstamp() => $_has(0);
+  $core.bool hasTimestamp() => $_has(0);
   @$pb.TagNumber(1)
-  void clearTimsstamp() => clearField(1);
+  void clearTimestamp() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get assetName => $_getSZ(1);

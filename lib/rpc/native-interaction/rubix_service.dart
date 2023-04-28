@@ -200,22 +200,36 @@ class RubixService {
 
   Future<Status> signData(
       {required RequestTransactionPayloadRes createDataResponse,
+      required String imagePath,
       required String privateKeyString,
       required String gateway,
-      required String accessToken}) async {
+      required String accessToken,
+      required bool onlyPrivateKey}) async {
     var requestId = createDataResponse.requestId;
     var hashbase64 = createDataResponse.hash;
     var base64decode = base64.decode(hashbase64);
     RubixServiceClient stub =
         getConnection(gateway: gateway, accessToken: accessToken);
     var privateKey = KeyPair().privateKeyFromPem(privateKeyString);
-    var response = await stub.signData(HashSigned(
+    if (onlyPrivateKey == false) {
+      var hash = utf8.decode(base64decode);
+      var imgSign = await GenerateSign().genSignFromShares(imagePath, hash);
+      var imgSignBytes = Dependencies().bitstreamToBytes(imgSign);
+      var imgSignHash = Dependencies().calculateHash(imgSign);
+      var signContent = Uint8List.fromList(imgSignHash.codeUnits);
+      var response = await stub.signData(HashSigned(
+        id: requestId,
+        pvtSign: KeyPair().keySignature(signContent, privateKey),
+        imgSign: imgSignBytes));
+        return response;
+    }else {
+      var response = await stub.signData(HashSigned(
         id: requestId,
         pvtSign: KeyPair().keySignature(base64decode, privateKey),
         imgSign: []));
-    print("Sign Response:${response}");
-
-    return response;
+        print("Sign Response:${response}");
+        return response;
+    }
   }
 
   ResponseStream<RequestTransactionPayloadRes> streamSignResponse({
