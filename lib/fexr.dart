@@ -8,3 +8,5 @@ export 'package:fexr/signature/sign_model.dart';
 export 'package:fexr/rpc/native-interaction/rubix_service.dart';
 export 'package:fexr/signature/key_gen.dart';
 export 'package:fexr/rpc/native-interaction/rubix_external.dart';
+export 'package:fexr/did-generation/address_image.dart';
+export 'package:fexr/did-generation/prop_image.dart';
