@@ -7,10 +7,9 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
 class RubixDID {
-
   //Function which creates the DID image, Public Share and Private Share.
   static Future<bool> create(String passkey) async {
-    String imagePath = 'assets/fexr_did_image.png';
+    String imagePath = 'assets/DID256x.png';
     Future<String> imgBin = PropImage().imageToBinary(imagePath);
 
     String imgBinStr = await imgBin;

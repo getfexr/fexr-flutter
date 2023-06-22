@@ -17,7 +17,9 @@
         "titleBar.activeForeground": "#e7e7e7",
         "titleBar.inactiveBackground": "#6e3e9699",
         "titleBar.inactiveForeground": "#e7e7e799",
-        "commandCenter.border": "#e7e7e799"
+        "commandCenter.border": "#e7e7e799",
+        "minimap.background": "#00000000",
+        "scrollbar.shadow": "#00000000"
     },
     "peacock.color": "#6e3e96"
 }
