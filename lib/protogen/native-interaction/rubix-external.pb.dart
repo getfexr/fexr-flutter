@@ -1,32 +1,37 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: native-interaction/rubix-external.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class AuthRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AuthRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'uuid')
-    ..hasRequiredFields = false
-  ;
-
-  AuthRequest._() : super();
   factory AuthRequest({
     $core.String? uuid,
   }) {
-    final _result = create();
+    final $result = create();
     if (uuid != null) {
-      _result.uuid = uuid;
+      $result.uuid = uuid;
     }
-    return _result;
+    return $result;
   }
+  AuthRequest._() : super();
   factory AuthRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory AuthRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'AuthRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'protos'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'uuid')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -36,8 +41,10 @@ class AuthRequest extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  AuthRequest copyWith(void Function(AuthRequest) updates) => super.copyWith((message) => updates(message as AuthRequest)) as AuthRequest; // ignore: deprecated_member_use
+  AuthRequest copyWith(void Function(AuthRequest) updates) => super.copyWith((message) => updates(message as AuthRequest)) as AuthRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static AuthRequest create() => AuthRequest._();
   AuthRequest createEmptyInstance() => create();
@@ -57,33 +64,34 @@ class AuthRequest extends $pb.GeneratedMessage {
 }
 
 class OrgAuthRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'OrgAuthRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'orgName', protoName: 'orgName')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'callBackUrl', protoName: 'callBackUrl')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sessionId', protoName: 'sessionId')
-    ..hasRequiredFields = false
-  ;
-
-  OrgAuthRequest._() : super();
   factory OrgAuthRequest({
     $core.String? orgName,
     $core.String? callBackUrl,
     $core.String? sessionId,
   }) {
-    final _result = create();
+    final $result = create();
     if (orgName != null) {
-      _result.orgName = orgName;
+      $result.orgName = orgName;
     }
     if (callBackUrl != null) {
-      _result.callBackUrl = callBackUrl;
+      $result.callBackUrl = callBackUrl;
     }
     if (sessionId != null) {
-      _result.sessionId = sessionId;
+      $result.sessionId = sessionId;
     }
-    return _result;
+    return $result;
   }
+  OrgAuthRequest._() : super();
   factory OrgAuthRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory OrgAuthRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OrgAuthRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'protos'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'orgName', protoName: 'orgName')
+    ..aOS(2, _omitFieldNames ? '' : 'callBackUrl', protoName: 'callBackUrl')
+    ..aOS(3, _omitFieldNames ? '' : 'sessionId', protoName: 'sessionId')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -93,8 +101,10 @@ class OrgAuthRequest extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  OrgAuthRequest copyWith(void Function(OrgAuthRequest) updates) => super.copyWith((message) => updates(message as OrgAuthRequest)) as OrgAuthRequest; // ignore: deprecated_member_use
+  OrgAuthRequest copyWith(void Function(OrgAuthRequest) updates) => super.copyWith((message) => updates(message as OrgAuthRequest)) as OrgAuthRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static OrgAuthRequest create() => OrgAuthRequest._();
   OrgAuthRequest createEmptyInstance() => create();
@@ -132,23 +142,24 @@ class OrgAuthRequest extends $pb.GeneratedMessage {
 }
 
 class OrgStatus extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'OrgStatus', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'status')
-    ..hasRequiredFields = false
-  ;
-
-  OrgStatus._() : super();
   factory OrgStatus({
     $core.bool? status,
   }) {
-    final _result = create();
+    final $result = create();
     if (status != null) {
-      _result.status = status;
+      $result.status = status;
     }
-    return _result;
+    return $result;
   }
+  OrgStatus._() : super();
   factory OrgStatus.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory OrgStatus.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OrgStatus', package: const $pb.PackageName(_omitMessageNames ? '' : 'protos'), createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'status')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -158,8 +169,10 @@ class OrgStatus extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  OrgStatus copyWith(void Function(OrgStatus) updates) => super.copyWith((message) => updates(message as OrgStatus)) as OrgStatus; // ignore: deprecated_member_use
+  OrgStatus copyWith(void Function(OrgStatus) updates) => super.copyWith((message) => updates(message as OrgStatus)) as OrgStatus;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static OrgStatus create() => OrgStatus._();
   OrgStatus createEmptyInstance() => create();
@@ -179,19 +192,6 @@ class OrgStatus extends $pb.GeneratedMessage {
 }
 
 class TxnRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TxnRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'protos'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receiver')
-    ..a<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'amount', $pb.PbFieldType.OD)
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'comment')
-    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.O3)
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'purpose')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'externalParty', protoName: 'externalParty')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ticker')
-    ..aOB(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'privateKeyOnly', protoName: 'privateKeyOnly')
-    ..hasRequiredFields = false
-  ;
-
-  TxnRequest._() : super();
   factory TxnRequest({
     $core.String? receiver,
     $core.double? amount,
@@ -200,37 +200,46 @@ class TxnRequest extends $pb.GeneratedMessage {
     $core.String? purpose,
     $core.String? externalParty,
     $core.String? ticker,
-    $core.bool? privateKeyOnly,
   }) {
-    final _result = create();
+    final $result = create();
     if (receiver != null) {
-      _result.receiver = receiver;
+      $result.receiver = receiver;
     }
     if (amount != null) {
-      _result.amount = amount;
+      $result.amount = amount;
     }
     if (comment != null) {
-      _result.comment = comment;
+      $result.comment = comment;
     }
     if (type != null) {
-      _result.type = type;
+      $result.type = type;
     }
     if (purpose != null) {
-      _result.purpose = purpose;
+      $result.purpose = purpose;
     }
     if (externalParty != null) {
-      _result.externalParty = externalParty;
+      $result.externalParty = externalParty;
     }
     if (ticker != null) {
-      _result.ticker = ticker;
+      $result.ticker = ticker;
     }
-    if (privateKeyOnly != null) {
-      _result.privateKeyOnly = privateKeyOnly;
-    }
-    return _result;
+    return $result;
   }
+  TxnRequest._() : super();
   factory TxnRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory TxnRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TxnRequest', package: const $pb.PackageName(_omitMessageNames ? '' : 'protos'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'receiver')
+    ..a<$core.double>(2, _omitFieldNames ? '' : 'amount', $pb.PbFieldType.OD)
+    ..aOS(3, _omitFieldNames ? '' : 'comment')
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'type', $pb.PbFieldType.O3)
+    ..aOS(5, _omitFieldNames ? '' : 'purpose')
+    ..aOS(6, _omitFieldNames ? '' : 'externalParty', protoName: 'externalParty')
+    ..aOS(7, _omitFieldNames ? '' : 'ticker')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -240,8 +249,10 @@ class TxnRequest extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  TxnRequest copyWith(void Function(TxnRequest) updates) => super.copyWith((message) => updates(message as TxnRequest)) as TxnRequest; // ignore: deprecated_member_use
+  TxnRequest copyWith(void Function(TxnRequest) updates) => super.copyWith((message) => updates(message as TxnRequest)) as TxnRequest;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static TxnRequest create() => TxnRequest._();
   TxnRequest createEmptyInstance() => create();
@@ -312,14 +323,8 @@ class TxnRequest extends $pb.GeneratedMessage {
   $core.bool hasTicker() => $_has(6);
   @$pb.TagNumber(7)
   void clearTicker() => clearField(7);
-
-  @$pb.TagNumber(8)
-  $core.bool get privateKeyOnly => $_getBF(7);
-  @$pb.TagNumber(8)
-  set privateKeyOnly($core.bool v) { $_setBool(7, v); }
-  @$pb.TagNumber(8)
-  $core.bool hasPrivateKeyOnly() => $_has(7);
-  @$pb.TagNumber(8)
-  void clearPrivateKeyOnly() => clearField(8);
 }
 
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

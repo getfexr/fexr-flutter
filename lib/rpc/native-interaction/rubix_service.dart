@@ -99,7 +99,9 @@ class RubixService {
         initiateTransactionResponse: response,
         imagePath: imagePath,
         privateKey: privateKey,
-        stub: stub,onlyPrivateKey: false);
+        stub: stub,
+        onlyPrivateKey: false,
+        decimal: initiatePayload.tokenCount % 1 != 0);
     return signResp;
   }
 
@@ -121,7 +123,8 @@ class RubixService {
         initiateTransactionResponse: response,
         imagePath: imagePath,
         privateKey: privateKey,
-        stub: stub,onlyPrivateKey: true);
+        stub: stub,
+        onlyPrivateKey: true);
     return signResp;
   }
 
@@ -129,7 +132,9 @@ class RubixService {
       {required RequestTransactionPayloadRes initiateTransactionResponse,
       required String imagePath,
       required ECPrivateKey privateKey,
-      required RubixServiceClient stub, required bool onlyPrivateKey}) async {
+      required RubixServiceClient stub,
+      required bool onlyPrivateKey,
+      bool decimal = false}) async {
     var requestId = initiateTransactionResponse.requestId;
     var hashbase64 = initiateTransactionResponse.hash;
     var base64decode = base64.decode(hashbase64);
@@ -139,21 +144,68 @@ class RubixService {
       var imgSignBytes = Dependencies().bitstreamToBytes(imgSign);
       var imgSignHash = Dependencies().calculateHash(imgSign);
       var signContent = Uint8List.fromList(imgSignHash.codeUnits);
-       var response = await stub.signResponse(HashSigned(
-        id: requestId,
-        pvtSign: KeyPair().keySignature(signContent, privateKey),
-        imgSign: imgSignBytes));
-    print("Sign Response:${response}");
-    return response;
-  } else {
-    var response = await stub.signResponse(HashSigned(
-        id: requestId,
-        pvtSign: KeyPair().keySignature(base64decode, privateKey),
-        imgSign: []));
-    print("Sign Response:${response}");
-    return response;
-  }
-      
+      var response = await stub.signResponse(HashSigned(
+          id: requestId,
+          pvtSign: KeyPair().keySignature(signContent, privateKey),
+          imgSign: imgSignBytes));
+      print("Sign Response 1/3:${response.toString()}");
+      if (decimal && response.message != "") {
+        print("******************decimal sign 2******************");
+        //TODO: get the request node sent to sky after this response
+        var hashbase64Dec = response.message;
+        var base64decodeDec = base64.decode(hashbase64Dec);
+        var hashDec = utf8.decode(base64decodeDec);
+        var imgSignDec =
+            await GenerateSign().genSignFromShares(imagePath, hashDec);
+        var imgSignBytesDec = Dependencies().bitstreamToBytes(imgSignDec);
+        var imgSignHashDec = Dependencies().calculateHash(imgSignDec);
+        var signContentDec = Uint8List.fromList(imgSignHashDec.codeUnits);
+        var decimalResponse = await stub.signResponse(HashSigned(
+            id: requestId,
+            pvtSign: KeyPair().keySignature(signContentDec, privateKey),
+            imgSign: imgSignBytesDec));
+        print("Sign Response 2/3:${decimalResponse.toString()}");
+        if (decimal && decimalResponse.message != "") {
+          print("******************decimal sign 3******************");
+          //TODO: get the request node sent to sky after this response
+          var hashbase64Dec = decimalResponse.message;
+          var base64decodeDec = base64.decode(hashbase64Dec);
+          var hashDec = utf8.decode(base64decodeDec);
+          var imgSignDec =
+              await GenerateSign().genSignFromShares(imagePath, hashDec);
+          var imgSignBytesDec = Dependencies().bitstreamToBytes(imgSignDec);
+          var imgSignHashDec = Dependencies().calculateHash(imgSignDec);
+          var signContentDec = Uint8List.fromList(imgSignHashDec.codeUnits);
+          var decimalResponse2 = await stub.signResponse(HashSigned(
+              id: requestId,
+              pvtSign: KeyPair().keySignature(signContentDec, privateKey),
+              imgSign: imgSignBytesDec));
+          print("Sign Response 3/3:${decimalResponse2.toString()}");
+          return decimalResponse2;
+        }
+        return decimalResponse;
+      }
+      return response;
+    } else {
+      var response = await stub.signResponse(HashSigned(
+          id: requestId,
+          pvtSign: KeyPair().keySignature(base64decode, privateKey),
+          imgSign: []));
+      print("Sign Response PKI ONLY:${response.toString()}");
+      if (decimal) {
+        print("******************decimal******************");
+        var hashbase64Dec = response.message;
+        print("DECIMAL HASH: ${hashbase64Dec}");
+        var base64decodeDec = base64.decode(hashbase64Dec);
+        //TODO: get the request node sent to sky after this response
+        var decimalResponse = await stub.signResponse(HashSigned(
+            id: requestId,
+            pvtSign: KeyPair().keySignature(base64decodeDec, privateKey),
+            imgSign: []));
+        return decimalResponse;
+      }
+      return response;
+    }
   }
 
   Future<GetBalanceRes> getBalance(
@@ -192,8 +244,10 @@ class RubixService {
     return response;
   }
 
-  Future<TransactionHistory> getTransactionHistory({required String gateway,required String accessToken}) async {
-    RubixServiceClient stub = getConnection(gateway: gateway, accessToken: accessToken);
+  Future<TransactionHistory> getTransactionHistory(
+      {required String gateway, required String accessToken}) async {
+    RubixServiceClient stub =
+        getConnection(gateway: gateway, accessToken: accessToken);
     var response = await stub.getTransactionHistory(Empty());
     return response;
   }
@@ -218,28 +272,29 @@ class RubixService {
       var imgSignHash = Dependencies().calculateHash(imgSign);
       var signContent = Uint8List.fromList(imgSignHash.codeUnits);
       var response = await stub.signData(HashSigned(
-        id: requestId,
-        pvtSign: KeyPair().keySignature(signContent, privateKey),
-        imgSign: imgSignBytes));
-        return response;
-    }else {
+          id: requestId,
+          pvtSign: KeyPair().keySignature(signContent, privateKey),
+          imgSign: imgSignBytes));
+      return response;
+    } else {
       var response = await stub.signData(HashSigned(
-        id: requestId,
-        pvtSign: KeyPair().keySignature(base64decode, privateKey),
-        imgSign: []));
-        print("Sign Response:${response}");
-        return response;
+          id: requestId,
+          pvtSign: KeyPair().keySignature(base64decode, privateKey),
+          imgSign: []));
+      print("Sign Response:${response}");
+      return response;
     }
   }
 
   ResponseStream<RequestTransactionPayloadRes> streamSignResponse({
     required String gateway,
     required String accessToken,
-  }){
+  }) {
     RubixServiceClient stub =
         getConnection(gateway: gateway, accessToken: accessToken);
     return stub.streamSignResponse(Empty());
   }
+
   Future<Assets> getAsset(
       {required String gateway,
       required String accessToken,
@@ -250,5 +305,4 @@ class RubixService {
     print("Get Balance Response:${response}");
     return response;
   }
-
 }
