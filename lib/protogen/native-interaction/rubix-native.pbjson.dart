@@ -121,13 +121,15 @@ const RequestTransactionPayloadRes$json = {
   '2': [
     {'1': 'requestId', '3': 1, '4': 1, '5': 9, '10': 'requestId'},
     {'1': 'hash', '3': 2, '4': 1, '5': 9, '10': 'hash'},
+    {'1': 'onlyPrivateKey', '3': 3, '4': 1, '5': 8, '10': 'onlyPrivateKey'},
   ],
 };
 
 /// Descriptor for `RequestTransactionPayloadRes`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List requestTransactionPayloadResDescriptor = $convert.base64Decode(
     'ChxSZXF1ZXN0VHJhbnNhY3Rpb25QYXlsb2FkUmVzEhwKCXJlcXVlc3RJZBgBIAEoCVIJcmVxdW'
-    'VzdElkEhIKBGhhc2gYAiABKAlSBGhhc2g=');
+    'VzdElkEhIKBGhhc2gYAiABKAlSBGhhc2gSJgoOb25seVByaXZhdGVLZXkYAyABKAhSDm9ubHlQ'
+    'cml2YXRlS2V5');
 
 @$core.Deprecated('Use hashSignedDescriptor instead')
 const HashSigned$json = {
@@ -150,13 +152,14 @@ const Status$json = {
   '2': [
     {'1': 'status', '3': 1, '4': 1, '5': 8, '10': 'status'},
     {'1': 'message', '3': 2, '4': 1, '5': 9, '10': 'message'},
+    {'1': 'onlyPrivateKey', '3': 3, '4': 1, '5': 8, '10': 'onlyPrivateKey'},
   ],
 };
 
 /// Descriptor for `Status`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List statusDescriptor = $convert.base64Decode(
     'CgZTdGF0dXMSFgoGc3RhdHVzGAEgASgIUgZzdGF0dXMSGAoHbWVzc2FnZRgCIAEoCVIHbWVzc2'
-    'FnZQ==');
+    'FnZRImCg5vbmx5UHJpdmF0ZUtleRgDIAEoCFIOb25seVByaXZhdGVLZXk=');
 
 @$core.Deprecated('Use generateReqDescriptor instead')
 const GenerateReq$json = {

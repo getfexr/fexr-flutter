@@ -99,9 +99,7 @@ class RubixService {
         initiateTransactionResponse: response,
         imagePath: imagePath,
         privateKey: privateKey,
-        stub: stub,
-        onlyPrivateKey: false,
-        decimal: initiatePayload.tokenCount % 1 != 0);
+        stub: stub);
     return signResp;
   }
 
@@ -123,90 +121,64 @@ class RubixService {
         initiateTransactionResponse: response,
         imagePath: imagePath,
         privateKey: privateKey,
-        stub: stub,
-        onlyPrivateKey: true);
+        stub: stub);
     return signResp;
   }
 
-  Future<Status> signResponse(
-      {required RequestTransactionPayloadRes initiateTransactionResponse,
-      required String imagePath,
-      required ECPrivateKey privateKey,
-      required RubixServiceClient stub,
-      required bool onlyPrivateKey,
-      bool decimal = false}) async {
+  Future<Status> signResponse({
+    required RequestTransactionPayloadRes initiateTransactionResponse,
+    required String imagePath,
+    required ECPrivateKey privateKey,
+    required RubixServiceClient stub,
+  }) async {
     var requestId = initiateTransactionResponse.requestId;
     var hashbase64 = initiateTransactionResponse.hash;
     var base64decode = base64.decode(hashbase64);
-    if (onlyPrivateKey == false) {
+
+    Future<Status> recursiveSign(
+        String requestId, Uint8List signContent, Uint8List signBytes, bool onlyPrivateKey) async {
+      var response = await stub.signResponse(HashSigned(
+        id: requestId,
+        pvtSign: KeyPair().keySignature(signContent, privateKey),
+        imgSign: onlyPrivateKey ? Uint8List(0) : signBytes,
+      ));
+      print("Sign Response:${response.toString()}");
+
+      if (response.message != "") {
+        var nextHashbase64 = response.message;
+        var nextBase64decode = base64.decode(nextHashbase64);
+        Uint8List nextSignContent;
+        Uint8List nextImgSignBytes = Uint8List(0);
+        if (response.onlyPrivateKey) {
+            nextSignContent = nextBase64decode;
+        } else {
+            var nextHash = utf8.decode(nextBase64decode);
+            var nextImgSign = await GenerateSign().genSignFromShares(imagePath, nextHash);
+            nextImgSignBytes = Dependencies().bitstreamToBytes(nextImgSign);
+            var nextImgSignHash = Dependencies().calculateHash(nextImgSign);
+            nextSignContent = Uint8List.fromList(nextImgSignHash.codeUnits);
+        }
+        return await recursiveSign(requestId, nextSignContent, nextImgSignBytes, response.onlyPrivateKey);
+      } else {
+        return response;
+      }
+    }
+
+    Uint8List initialSignContent;
+    Uint8List imgSignBytes = Uint8List(0);
+    if (initiateTransactionResponse.onlyPrivateKey) {
+      initialSignContent = base64decode;
+    } else {
       var hash = utf8.decode(base64decode);
       var imgSign = await GenerateSign().genSignFromShares(imagePath, hash);
-      var imgSignBytes = Dependencies().bitstreamToBytes(imgSign);
+      imgSignBytes = Dependencies().bitstreamToBytes(imgSign);
       var imgSignHash = Dependencies().calculateHash(imgSign);
-      var signContent = Uint8List.fromList(imgSignHash.codeUnits);
-      var response = await stub.signResponse(HashSigned(
-          id: requestId,
-          pvtSign: KeyPair().keySignature(signContent, privateKey),
-          imgSign: imgSignBytes));
-      print("Sign Response 1/3:${response.toString()}");
-      if (decimal && response.message != "") {
-        print("******************decimal sign 2******************");
-        //TODO: get the request node sent to sky after this response
-        var hashbase64Dec = response.message;
-        var base64decodeDec = base64.decode(hashbase64Dec);
-        var hashDec = utf8.decode(base64decodeDec);
-        var imgSignDec =
-            await GenerateSign().genSignFromShares(imagePath, hashDec);
-        var imgSignBytesDec = Dependencies().bitstreamToBytes(imgSignDec);
-        var imgSignHashDec = Dependencies().calculateHash(imgSignDec);
-        var signContentDec = Uint8List.fromList(imgSignHashDec.codeUnits);
-        var decimalResponse = await stub.signResponse(HashSigned(
-            id: requestId,
-            pvtSign: KeyPair().keySignature(signContentDec, privateKey),
-            imgSign: imgSignBytesDec));
-        print("Sign Response 2/3:${decimalResponse.toString()}");
-        if (decimal && decimalResponse.message != "") {
-          print("******************decimal sign 3******************");
-          //TODO: get the request node sent to sky after this response
-          var hashbase64Dec = decimalResponse.message;
-          var base64decodeDec = base64.decode(hashbase64Dec);
-          var hashDec = utf8.decode(base64decodeDec);
-          var imgSignDec =
-              await GenerateSign().genSignFromShares(imagePath, hashDec);
-          var imgSignBytesDec = Dependencies().bitstreamToBytes(imgSignDec);
-          var imgSignHashDec = Dependencies().calculateHash(imgSignDec);
-          var signContentDec = Uint8List.fromList(imgSignHashDec.codeUnits);
-          var decimalResponse2 = await stub.signResponse(HashSigned(
-              id: requestId,
-              pvtSign: KeyPair().keySignature(signContentDec, privateKey),
-              imgSign: imgSignBytesDec));
-          print("Sign Response 3/3:${decimalResponse2.toString()}");
-          return decimalResponse2;
-        }
-        return decimalResponse;
-      }
-      return response;
-    } else {
-      var response = await stub.signResponse(HashSigned(
-          id: requestId,
-          pvtSign: KeyPair().keySignature(base64decode, privateKey),
-          imgSign: []));
-      print("Sign Response PKI ONLY:${response.toString()}");
-      if (decimal) {
-        print("******************decimal******************");
-        var hashbase64Dec = response.message;
-        print("DECIMAL HASH: ${hashbase64Dec}");
-        var base64decodeDec = base64.decode(hashbase64Dec);
-        //TODO: get the request node sent to sky after this response
-        var decimalResponse = await stub.signResponse(HashSigned(
-            id: requestId,
-            pvtSign: KeyPair().keySignature(base64decodeDec, privateKey),
-            imgSign: []));
-        return decimalResponse;
-      }
-      return response;
+      initialSignContent = Uint8List.fromList(imgSignHash.codeUnits);
     }
+    return await recursiveSign(requestId, initialSignContent, imgSignBytes, initiateTransactionResponse.onlyPrivateKey);
   }
+
+
 
   Future<GetBalanceRes> getBalance(
       {required String gateway,

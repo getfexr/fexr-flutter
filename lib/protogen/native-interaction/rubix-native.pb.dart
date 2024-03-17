@@ -517,6 +517,7 @@ class RequestTransactionPayloadRes extends $pb.GeneratedMessage {
   factory RequestTransactionPayloadRes({
     $core.String? requestId,
     $core.String? hash,
+    $core.bool? onlyPrivateKey,
   }) {
     final $result = create();
     if (requestId != null) {
@@ -524,6 +525,9 @@ class RequestTransactionPayloadRes extends $pb.GeneratedMessage {
     }
     if (hash != null) {
       $result.hash = hash;
+    }
+    if (onlyPrivateKey != null) {
+      $result.onlyPrivateKey = onlyPrivateKey;
     }
     return $result;
   }
@@ -534,6 +538,7 @@ class RequestTransactionPayloadRes extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'RequestTransactionPayloadRes', package: const $pb.PackageName(_omitMessageNames ? '' : 'protos'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'requestId', protoName: 'requestId')
     ..aOS(2, _omitFieldNames ? '' : 'hash')
+    ..aOB(3, _omitFieldNames ? '' : 'onlyPrivateKey', protoName: 'onlyPrivateKey')
     ..hasRequiredFields = false
   ;
 
@@ -575,6 +580,15 @@ class RequestTransactionPayloadRes extends $pb.GeneratedMessage {
   $core.bool hasHash() => $_has(1);
   @$pb.TagNumber(2)
   void clearHash() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.bool get onlyPrivateKey => $_getBF(2);
+  @$pb.TagNumber(3)
+  set onlyPrivateKey($core.bool v) { $_setBool(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasOnlyPrivateKey() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearOnlyPrivateKey() => clearField(3);
 }
 
 class HashSigned extends $pb.GeneratedMessage {
@@ -659,6 +673,7 @@ class Status extends $pb.GeneratedMessage {
   factory Status({
     $core.bool? status,
     $core.String? message,
+    $core.bool? onlyPrivateKey,
   }) {
     final $result = create();
     if (status != null) {
@@ -666,6 +681,9 @@ class Status extends $pb.GeneratedMessage {
     }
     if (message != null) {
       $result.message = message;
+    }
+    if (onlyPrivateKey != null) {
+      $result.onlyPrivateKey = onlyPrivateKey;
     }
     return $result;
   }
@@ -676,6 +694,7 @@ class Status extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Status', package: const $pb.PackageName(_omitMessageNames ? '' : 'protos'), createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'status')
     ..aOS(2, _omitFieldNames ? '' : 'message')
+    ..aOB(3, _omitFieldNames ? '' : 'onlyPrivateKey', protoName: 'onlyPrivateKey')
     ..hasRequiredFields = false
   ;
 
@@ -717,6 +736,15 @@ class Status extends $pb.GeneratedMessage {
   $core.bool hasMessage() => $_has(1);
   @$pb.TagNumber(2)
   void clearMessage() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.bool get onlyPrivateKey => $_getBF(2);
+  @$pb.TagNumber(3)
+  set onlyPrivateKey($core.bool v) { $_setBool(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasOnlyPrivateKey() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearOnlyPrivateKey() => clearField(3);
 }
 
 class GenerateReq extends $pb.GeneratedMessage {
